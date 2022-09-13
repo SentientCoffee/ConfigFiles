@@ -1,0 +1,837 @@
+{
+  // ---------------------------------------------------------------------------------------------
+  // VS Code specific
+  // ---------------------------------------------------------------------------------------------
+
+  "debug.autoExpandLazyVariables": true,
+  "debug.console.fontFamily":      "'FiraCode Nerd Font', 'FiraCode NF', Hack, monospace",
+  "debug.console.fontSize":        18,
+  // "debug.console.fontSize"           : 11,
+  "debug.console.historySuggestions":  true,
+  "debug.console.closeOnEnd":          false,
+  "debug.internalConsoleOptions":      "openOnSessionStart",
+  "debug.inlineValues":                "on",
+  "debug.onTaskErrors":                "abort",
+  "debug.openDebug":                   "openOnSessionStart",
+  "debug.openExplorerOnEnd":           true,
+  "debug.showInStatusBar":             "never",
+  "debug.terminal.clearBeforeReusing": true,
+  "debug.toolBarLocation":             "floating",
+
+  "diffEditor.ignoreTrimWhitespace": false,
+
+  "editor.bracketPairColorization.enabled": true,
+  "editor.colorDecorators":                 true,
+  "editor.cursorBlinking":                  "blink",
+  "editor.cursorStyle":                     "line",
+  "editor.cursorSmoothCaretAnimation":      false,
+  "editor.cursorSurroundingLines":          10,
+  "editor.cursorSurroundingLinesStyle":     "default",
+  "editor.cursorWidth":                     1,
+  "editor.detectIndentation":               false,
+  "editor.fontFamily":                      "'FiraCode Nerd Font', 'FiraCode NF', Hack, monospace",
+  "editor.fontLigatures":                   "'ss01', 'ss02', 'ss03', 'ss05', 'ss06', 'ss08', 'cv16'",
+  "editor.fontSize":                        18,
+  // "editor.fontSize"                         : 11,
+  "editor.fontWeight":                        "200",
+  "editor.guides.bracketPairs":               true,
+  "editor.guides.bracketPairsHorizontal":     false,
+  "editor.guides.highlightActiveBracketPair": true,
+  "editor.guides.highlightActiveIndentation": true,
+  "editor.guides.indentation":                true,
+  "editor.letterSpacing":                     -0.75,
+  "editor.hover.enabled":                     true,
+  "editor.hover.above":                       false,
+  "editor.largeFileOptimizations":            false,
+  "editor.minimap.maxColumn":                 50,
+  "editor.minimap.renderCharacters":          false,
+  "editor.minimap.size":                      "fill",
+  "editor.renderWhitespace":                  "all",
+  "editor.semanticHighlighting.enabled":      true,
+  "editor.snippetSuggestions":                "inline",
+  "editor.suggest.insertMode":                "insert",
+  "editor.suggest.showColors":                true,
+  "editor.suggest.showCustomcolors":          true,
+  "editor.suggest.showEnumMembers":           true,
+  "editor.suggest.showStatusBar":             true,
+  "editor.tabCompletion":                     "on",
+  "editor.wordSeparators":                    "/\\()[]{}\"'`~+=-_,.;:<>~!?@#$%^&*|│",
+  "editor.language.colorizedBracketPairs":    [
+    [ "{", "}" ],
+    [ "(", ")" ],
+  ],
+  "editor.unicodeHighlight.allowedCharacters": {
+    "á": true, "é": true, "í": true, "ó": true, "ú": true,
+    "Á": true, "É": true, "Í": true, "Ó": true, "Ú": true,
+    "à": true, "è": true, "ì": true, "ò": true, "ù": true,
+    "À": true, "È": true, "Ì": true, "Ò": true, "Ù": true,
+    "ä": true, "ë": true, "ï": true, "ö": true, "ü": true,
+    "Ä": true, "Ë": true, "Ï": true, "Ö": true, "Ü": true,
+    "â": true, "ê": true, "î": true, "ô": true, "û": true,
+    "Â": true, "Ê": true, "Î": true, "Ô": true, "Û": true,
+  },
+
+  "explorer.autoReveal":                   false,
+  "explorer.confirmDragAndDrop":           false,
+  "explorer.confirmDelete":                false,
+  "explorer.expandSingleFolderWorkspaces": true,
+  "explorer.incrementalNaming":            "smart",
+
+  "extensions.ignoreRecommendations":             true,
+  "extensions.closeExtensionDetailsOnViewChange": true,
+
+  "files.autoSave":               "onFocusChange",
+  "files.insertFinalNewline":     true,
+  "files.restoreUndoStack":       true,
+  "files.trimTrailingWhitespace": true,
+  "files.associations":           {
+    "*.asset":     "yaml",
+    "*.desktop":   "ini",
+    "*.json":      "jsonc",
+    "*.meta":      "yaml",
+    "*.nupkgproj": "xml",
+    "*.prefab":    "yaml",
+    "*.uss":       "css",
+    "*.unity":     "yaml",
+    "*.uxml":      "xml"
+  },
+
+  "git.autoStash":                    true,
+  "git.autofetch":                    true,
+  "git.autoRepositoryDetection":      "subFolders",
+  "git.branchWhitespaceChar":         "_",
+  "git.confirmSync":                  false,
+  "git.closeDiffOnOperation":         false,
+  "git.defaultCloneDirectory":        "C:/Repos",
+  "git.fetchOnPull":                  true,
+  "git.ignoreLimitWarning":           true,
+  "git.inputValidation":              "off",
+  "git.inputValidationLength":        200,
+  "git.openDiffOnClick":              true,
+  "git.requireGitUserConfig":         true,
+  "git.showProgress":                 true,
+  "git.supportCancellation":          true,
+  "git.terminalAuthentication":       true,
+  "git.terminalGitEditor":            true,
+  "git.useCommitInputAsStashMessage": true,
+  "git.useEditorAsCommitInput":       true,
+  "git.useIntegratedAskPass":         true,
+  "git.verboseCommit":                true,
+
+  "html.format.wrapAttributes": "aligned-multiple",
+  "html.format.wrapLineLength": 200,
+
+  // "markdown.preview.fontFamily"                 : "Roboto, -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif",
+  // "markdown.preview.fontSize"                   : 12,
+  // "markdown.preview.doubleClickToSwitchToEditor": true,
+  // "markdown.preview.scrollEditorWithPreview"    : false,
+  // "markdown.preview.scrollPreviewWithEditor"    : true,
+  // "markdown.preview.typographer"                : true,
+
+  "merge-conflict.autoNavigateNextConflict.enabled": true,
+
+  "notebook.cellToolbarLocation": {
+    "default":          "right",
+    "jupyter-notebook": "left",
+  },
+
+  "problems.autoReveal":          true,
+  "problems.decorations.enabled": true,
+  "problems.defaultViewMode":     "table",
+  "problems.showCurrentInStatus": true,
+  "problems.sortOrder":           "severity",
+
+  "telemetry.telemetryLevel": "off",
+
+  "terminal.explorerKind":                        "external",
+  "terminal.external.windowsExec":                "C:\\dev\\cmder\\cmder.exe",
+  "terminal.integrated.customGlyphs":             true,
+  "terminal.integrated.defaultProfile.windows":   "Cmder",
+  "terminal.integrated.enablePersistentSessions": true,
+  "terminal.integrated.fontFamily":               "'FiraCode Nerd Font Mono', 'FiraCode NF', Hack, monospace",
+  "terminal.integrated.fontSize":                 18,
+  // "terminal.integrated.fontSize"                 : 11,
+  "terminal.integrated.fontWeight":                "200",
+  "terminal.integrated.fontWeightBold":            "500",
+  "terminal.integrated.letterSpacing":             -0.75,
+  "terminal.integrated.lineHeight":                1.1,
+  "terminal.integrated.gpuAcceleration":           "on",
+  "terminal.integrated.tabs.enabled":              true,
+  "terminal.integrated.automationProfile.windows": {
+    "path": "${env:windir}\\System32\\cmd.exe",
+    "args": [ "/k", "C:\\dev\\cmder\\vendor\\bin\\vscode_init.cmd" ],
+    "icon": "run-all",
+  },
+  "terminal.integrated.profiles.windows": {
+    "Command Prompt": {
+      "path": [
+        "${env:windir}\\Sysnative\\cmd.exe",
+        "${env:windir}\\System32\\cmd.exe",
+      ],
+      "args": [],
+      "icon": "terminal-cmd",
+    },
+    "PowerShell": {
+      "source": "PowerShell",
+      "icon":   "terminal-powershell",
+    },
+    "Git Bash": {
+      "source": "Git Bash",
+      "icon":   "git-branch",
+    },
+    "Cmder": {
+      "path": "${env:windir}\\System32\\cmd.exe",
+      "args": [ "/k", "C:\\dev\\cmder\\vendor\\bin\\vscode_init.cmd" ],
+      "icon": "run-all",
+    }
+  },
+
+  "update.mode": "start",
+
+  "window.confirmBeforeClose": "keyboardOnly",
+  "window.title":              "${appName}${separator}${rootName}${separator}${activeFolderMedium}${separator}${activeEditorShort} ${dirty}",
+  "window.titleBarStyle":      "custom",
+
+  "workbench.colorTheme":            "Dark Coffee",
+  "workbench.iconTheme":             "vscode-icons",
+  "workbench.layoutControl.enabled": false,
+  "workbench.startupEditor":         "none",
+  "workbench.sideBar.location":      "right",
+  "workbench.editorAssociations":    {
+    "*.ipynb": "jupyter-notebook"
+  },
+
+  "zenMode.centerLayout":    false,
+  "zenMode.fullScreen":      true,
+  "zenMode.hideLineNumbers": false,
+  "zenMode.hideTabs":        false,
+  "zenMode.hideActivityBar": false,
+
+  // ---------------------------------------------------------------------------------------------
+  // Extensions settings
+  // ---------------------------------------------------------------------------------------------
+
+  "alignment.indentBase":      "activeline",
+  "alignment.operatorPadding": "right",
+  "alignment.surroundSpace":   {
+    "colon":      [ -1, 1 ],
+    "assignment": [  1, 1 ],
+    "arrow":      [  1, 1 ],
+    "comment":    2,
+  },
+
+  "atlascode.bitbucket.enabled":                  false,
+  "atlascode.jira.explorer.enabled":              true,
+  "atlascode.jira.explorer.fetchAllQueryResults": false,
+  "atlascode.jira.statusbar.showUser":            false,
+  "atlascode.jira.statusbar.showLogin":           true,
+  "atlascode.jira.statusbar.showProduct":         false,
+  "atlascode.jira.todoIssues.enabled":            false,
+  "atlascode.jira.jqlList":                       [
+    {
+      "id":      "435bd73c-8f81-434c-b0e1-90acc21f9c27",
+      "enabled": true,
+      "name":    "Sedna Games",
+      "query":   "assignee = currentUser() AND resolution = Unresolved ORDER BY lastViewed DESC",
+      "siteId":  "485df3f7-097b-4ee0-95fe-fe34a2d15c9d",
+      "monitor": true
+    }
+  ],
+  "atlascode.jira.todoIssues.triggers": [],
+
+  "auto-comment-blocks.singleLineBlockOnEnter": true,
+  "auto-comment-blocks.hashStyleBlocks":        [
+    "git-commit",
+    "gitconfig",
+    "gitignore",
+    "python",
+    "yaml",
+  ],
+  "auto-comment-blocks.slashStyleBlocks": [
+    "c",
+    "cpp",
+    "csharp",
+    "css",
+    "dart",
+    "jai",
+    "jsonc",
+    "odin",
+    "scss",
+  ],
+  "auto-comment-blocks.disabledLanguages": [
+    "markdown",
+    "plaintext",
+  ],
+
+  "C_Cpp.default.cppStandard":                                  "c++17",
+  "C_Cpp.dimInactiveRegions":                                   true,
+  "C_Cpp.enhancedColorization":                                 "Enabled",
+  "C_Cpp.formatting":                                           "vcFormat",
+  "C_Cpp.inactiveRegionOpacity":                                0.55,
+  "C_Cpp.vcFormat.indent.accessSpecifiers":                     false,
+  "C_Cpp.vcFormat.indent.braces":                               false,
+  "C_Cpp.vcFormat.indent.caseLabels":                           true,
+  "C_Cpp.vcFormat.indent.caseContents":                         true,
+  "C_Cpp.vcFormat.indent.caseContentsWhenBlock":                false,
+  "C_Cpp.vcFormat.indent.gotoLabels":                           "oneLeft",
+  "C_Cpp.vcFormat.indent.lambdaBracesWhenParameter":            false,
+  "C_Cpp.vcFormat.indent.namespaceContents":                    false,
+  "C_Cpp.vcFormat.indent.preprocessor":                         "oneLeft",
+  "C_Cpp.vcFormat.indent.multiLineRelativeTo":                  "innermostParenthesis",
+  "C_Cpp.vcFormat.indent.preserveComments":                     true,
+  "C_Cpp.vcFormat.indent.preserveWithinParentheses":            false,
+  "C_Cpp.vcFormat.indent.withinParentheses":                    "indent",
+  "C_Cpp.vcFormat.newLine.beforeElse":                          true,
+  "C_Cpp.vcFormat.newLine.beforeCatch":                         true,
+  "C_Cpp.vcFormat.newLine.beforeWhileInDoWhile":                true,
+  "C_Cpp.vcFormat.newLine.beforeOpenBrace.block":               "sameLine",
+  "C_Cpp.vcFormat.newLine.beforeOpenBrace.function":            "sameLine",
+  "C_Cpp.vcFormat.newLine.beforeOpenBrace.namespace":           "sameLine",
+  "C_Cpp.vcFormat.newLine.beforeOpenBrace.type":                "sameLine",
+  "C_Cpp.vcFormat.newLine.beforeOpenBrace.lambda":              "sameLine",
+  "C_Cpp.vcFormat.newLine.closeBraceSameLine.emptyFunction":    true,
+  "C_Cpp.vcFormat.newLine.closeBraceSameLine.emptyType":        true,
+  "C_Cpp.vcFormat.newLine.scopeBracesOnSeparateLines":          false,
+  "C_Cpp.vcFormat.space.afterCastCloseParenthesis":             false,
+  "C_Cpp.vcFormat.space.afterComma":                            true,
+  "C_Cpp.vcFormat.space.afterKeywordsInControlFlowStatements":  false,
+  "C_Cpp.vcFormat.space.aroundAssignmentOperator":              "insert",
+  "C_Cpp.vcFormat.space.aroundBinaryOperator":                  "insert",
+  "C_Cpp.vcFormat.space.aroundTernaryOperator":                 "insert",
+  "C_Cpp.vcFormat.space.beforeBlockOpenBrace":                  true,
+  "C_Cpp.vcFormat.space.beforeComma":                           false,
+  "C_Cpp.vcFormat.space.beforeConstructorColon":                true,
+  "C_Cpp.vcFormat.space.beforeEmptySquareBrackets":             false,
+  "C_Cpp.vcFormat.space.beforeFunctionOpenParenthesis":         "remove",
+  "C_Cpp.vcFormat.space.beforeInheritanceColon":                true,
+  "C_Cpp.vcFormat.space.beforeInitializerListOpenBrace":        true,
+  "C_Cpp.vcFormat.space.beforeLambdaOpenParenthesis":           false,
+  "C_Cpp.vcFormat.space.beforeOpenSquareBracket":               false,
+  "C_Cpp.vcFormat.space.betweenEmptyBraces":                    false,
+  "C_Cpp.vcFormat.space.betweenEmptyLambdaBrackets":            false,
+  "C_Cpp.vcFormat.space.betweenEmptyParameterListParentheses":  false,
+  "C_Cpp.vcFormat.space.betweenEmptySquareBrackets":            false,
+  "C_Cpp.vcFormat.space.groupSquareBrackets":                   true,
+  "C_Cpp.vcFormat.space.insertAfterSemicolon":                  false,
+  "C_Cpp.vcFormat.space.pointerReferenceAlignment":             "right",
+  "C_Cpp.vcFormat.space.preserveInInitializerList":             true,
+  "C_Cpp.vcFormat.space.removeAroundMemberOperators":           true,
+  "C_Cpp.vcFormat.space.removeAroundUnaryOperator":             true,
+  "C_Cpp.vcFormat.space.removeBeforeSemicolon":                 true,
+  "C_Cpp.vcFormat.space.withinCastParentheses":                 false,
+  "C_Cpp.vcFormat.space.withinControlFlowStatementParentheses": false,
+  "C_Cpp.vcFormat.space.withinExpressionParentheses":           false,
+  "C_Cpp.vcFormat.space.withinInitializerListBraces":           true,
+  "C_Cpp.vcFormat.space.withinLambdaBrackets":                  false,
+  "C_Cpp.vcFormat.space.withinParameterListParentheses":        false,
+  "C_Cpp.vcFormat.space.withinSquareBrackets":                  false,
+  "C_Cpp.vcFormat.wrap.preserveBlocks":                         "allOneLineScopes",
+  "C_Cpp.commentContinuationPatterns":                          [
+    "/**",
+    "//",
+  ],
+
+  "csharp.format.enable":                true,
+  "csharp.referencesCodeLens.enabled":   false,
+  "csharp.semanticHighlighting.enabled": true,
+
+  "customizeUI.activityBar":             "regular",
+  "customizeUI.activityBarHideSettings": false,
+  "customizeUI.font.regular":            "Scada",
+  // "customizeUI.font.monospace"         : "FiraCode NF",
+  "customizeUI.font.monospace": "FiraCode Nerd Font Mono",
+  // "customizeUI.listRowHeight"          : 28,
+  "customizeUI.listRowHeight":     20,
+  "customizeUI.statusBarPosition": "under-panel",
+  "customizeUI.fontSizeMap":       {
+    "13px":      "16px",
+    "14px":      "16px",
+    "menu":      "16px",
+    "tab-title": "16px",
+    "monospace": "18px",
+    // "13px"     : "12px",
+    // "14px"     : "12px",
+    // "menu"     : "12px",
+    // "tab-title": "12px",
+    // "monospace": "11px",
+  },
+
+  "customLocalFormatters.formatters": [
+    {
+      "command":   "odinfmt",
+      "languages": [ "odin" ],
+    }
+  ],
+
+  "dart.debugSdkLibraries":             false,
+  "dart.devToolsReuseWindows":          true,
+  "dart.embedDevTools":                 true,
+  "dart.enableSnippets":                true,
+  "dart.flutterHotReloadOnSave":        "manual",
+  "dart.lineLength":                    200,
+  "dart.openDevTools":                  "never",
+  "dart.previewHotReloadOnSaveWatcher": true,
+  "dart.showTodos":                     false,
+
+  "discord.lowerDetailsDebugging":  "{workspace}",
+  "discord.lowerDetailsEditing":    "{workspace}",
+  "discord.lowerDetailsIdling":     "No workspace",
+  "discord.removeRemoteRepository": true,
+
+  "github.gitAuthentication": true,
+  "github.gitProtocol":       "ssh",
+
+  "githubIssues.issueBranchTitle":      "Issue${issueNumber}-${sanitizedIssueTitle}",
+  "githubIssues.workingIssueFormatScm": "[FIX] ${issueTitle} (Fixes ${issueNumberLabel})",
+  "githubPullRequests.fileListLayout":  "flat",
+  "githubPullRequests.queries":         [
+    {
+      "label": "Waiting For My Review",
+      "query": "is:open review-requested:${user}",
+    },
+    {
+      "label": "Assigned To Me",
+      "query": "is:open assignee:${user}",
+    },
+    {
+      "label": "Created By Me",
+      "query": "is:open author:${user}",
+    },
+  ],
+  "githubPullRequests.remotes": [
+    "origin",
+    "upstream",
+  ],
+
+  "hexeditor.columnWidth":       32,
+  "hexeditor.showDecodedText":   true,
+  "hexeditor.defaultEndianness": "little",
+  "hexeditor.inspectorType":     "sidebar",
+
+  "java.jdt.ls.java.home": "C:\\Program Files\\Java\\jdk-17.0.2",
+
+  "lldb.commandCompletions":  true,
+  "lldb.dereferencePointers": true,
+  "lldb.evaluateForHovers":   true,
+  "lldb.verboseLogging":      true,
+
+  "markdown.extension.italic.indicator":                    "_",
+  "markdown.extension.list.indentationSize":                "inherit",
+  "markdown.extension.math.enabled":                        true,
+  "markdown.extension.orderedList.autoRenumber":            false,
+  "markdown.extension.orderedList.marker":                  "ordered",
+  "markdown.extension.preview.autoShowPreviewToSide":       false,
+  "markdown.extension.print.includeVscodeStylesheets":      true,
+  "markdown.extension.print.theme":                         "dark",
+  "markdown.extension.syntax.decorations":                  true,
+  "markdown.extension.tableFormatter.enabled":              true,
+  "markdown.extension.tableFormatter.normalizeIndentation": true,
+  "markdown.extension.toc.unorderedList.marker":            "-",
+  "markdown.extension.toc.updateOnSave":                    true,
+
+  "markdownlint.focusMode": false,
+  "markdownlint.run":       "onSave",
+  "markdownlint.config":    {
+    "MD007": {
+      "indent":         4,
+      "start_indent":   2,
+      "start_indented": false
+    },
+    "MD025": false,
+    "MD026": false,
+    "MD033": false,
+  },
+
+  "markdown-preview-enhanced.automaticallyShowPreviewOfMarkdownBeingEdited": false,
+  "markdown-preview-enhanced.breakOnSingleNewLine":                          false,
+  "markdown-preview-enhanced.codeBlockTheme":                                "monokai.css",
+  "markdown-preview-enhanced.enableCriticMarkupSyntax":                      true,
+  "markdown-preview-enhanced.enableEmojiSyntax":                             true,
+  "markdown-preview-enhanced.enableExtendedTableSyntax":                     false,
+  "markdown-preview-enhanced.enableHTML5Embed":                              true,
+  "markdown-preview-enhanced.enableLinkify":                                 true,
+  "markdown-preview-enhanced.enableScriptExecution":                         false,
+  "markdown-preview-enhanced.enableTypographer":                             true,
+  "markdown-preview-enhanced.frontMatterRenderingOption":                    "code block",
+  "markdown-preview-enhanced.HTML5EmbedUseImageSyntax":                      true,
+  "markdown-preview-enhanced.liveUpdate":                                    true,
+  "markdown-preview-enhanced.previewTheme":                                  "github-dark.css",
+  "markdown-preview-enhanced.scrollSync":                                    false,
+  "markdown-preview-enhanced.singlePreview":                                 true,
+
+  "markdown-pdf.displayHeaderFooter": false,
+  "markdown-pdf.breaks":              true,
+  "markdown-pdf.format":              "Letter",
+  "markdown-pdf.margin.top":          "0.5cm",
+  "markdown-pdf.margin.bottom":       "0.5cm",
+  "markdown-pdf.margin.left":         "0.5cm",
+  "markdown-pdf.margin.right":        "0.5cm",
+  "markdown-pdf.scale":               0.88,
+  "markdown-pdf.highlight":           true,
+  // "markdown-pdf.highlightStyle"      : "monokai.css",
+  "markdown-pdf.includeDefaultStyles": true,
+  "markdown-pdf.styles":               [
+    "C:\\Users\\Daniel\\AppData\\Roaming\\Code\\User\\markdown-pdf\\github-markdown.css",
+  ],
+  "markdown-pdf.type": [
+    "pdf",
+  ],
+
+  "maven.executable.path": "C:\\Program Files\\Java\\apache-maven-3.8.5\\bin\\mvn.cmd",
+
+  "ols.debug.engine":              "auto",
+  "ols.trace.server":              "verbose",
+  "ols.updates.askBeforeDownload": true,
+
+  "omnisharp.enableDecompilationSupport": true,
+  "omnisharp.enableImportCompletion":     true,
+  "omnisharp.enableRoslynAnalyzers":      true,
+  "omnisharp.organizeImportsOnFormat":    true,
+
+  "python.defaultInterpreterPath":        "C:\\dev\\Python39\\x86_64\\python.exe",
+  "python.diagnostics.sourceMapsEnabled": true,
+  "python.languageServer":                "Pylance",
+
+  "redhat.telemetry.enabled": false,
+
+  "todo-tree.filtering.useBuiltInExcludes":        "file and search excludes",
+  "todo-tree.general.debug":                       true,
+  "todo-tree.general.enableFileWatcher":           true,
+  "todo-tree.general.rootFolder":                  "${workspaceFolder}",
+  "todo-tree.general.revealBehaviour":             "start of todo",
+  "todo-tree.highlights.highlightDelay":           100,
+  "todo-tree.regex.enableMultiLine":               false,
+  "todo-tree.regex.regex":                         "(?<!://)(?<=//|/\\*|///|/\\*\\*|#|<!--)[^\\S\\r\\n]*((?:(?:@?($TAGS)[,:;?]?)|(?:@(\\w+|@+)[,:;?]?))([(][^)]*[)][,:;?]?)?)(.*)",
+  "todo-tree.regex.regexCaseSensitive":            false,
+  "todo-tree.ripgrep.ripgrepArgs":                 "--max-columns=300 --no-config --pcre2",
+  "todo-tree.tree.autoRefresh":                    true,
+  "todo-tree.tree.buttons.expand":                 false,
+  "todo-tree.tree.buttons.groupBySubTag":          false,
+  "todo-tree.tree.buttons.groupByTag":             true,
+  "todo-tree.tree.disableCompactFolders":          false,
+  "todo-tree.tree.expanded":                       true,
+  "todo-tree.tree.hideTreeWhenEmpty":              false,
+  "todo-tree.tree.scanMode":                       "workspace",
+  "todo-tree.tree.showBadges":                     true,
+  "todo-tree.tree.showCountsInTree":               true,
+  "todo-tree.tree.showCurrentScanMode":            false,
+  "todo-tree.tree.sortTagsOnlyViewAlphabetically": true,
+  "todo-tree.filtering.excludeGlobs":              [
+    "**/*.asset",
+    "**/*.bat",
+    "**/*.cmd",
+    "**/*.md",
+    "**/*.vfx",
+    "**/.git/**/*",
+  ],
+  "todo-tree.general.schemes": [
+    "file",
+    "ssh",
+    "untitled",
+  ],
+  "todo-tree.general.tags": [
+    "brief", "name", "param",
+    "return", "returns",
+    "copydoc", "copyright",
+    "remarks",
+
+    "<summary>", "</summary>",
+    "<c>",  "</c>",
+    "<p>",  "</p>",
+    "<br>", "</br>",
+
+    "Note",
+    "Reference",
+    "Temporary", "Temp", "Hack",
+    "Test", "Testing", "Robustness",
+    "Todo", "Cleanup", "Incomplete", "Volatile", "Refactor",
+
+    "NoCommit", "NoCheckIn",
+  ],
+  "todo-tree.general.tagGroups": {
+    "DOC": [
+      "brief", "name", "param",
+      "return", "returns",
+      "copydoc", "copyright",
+      "remarks",
+
+      "<summary>", "</summary>",
+      "<c>",  "</c>",
+      "<p>",  "</p>",
+      "<br>", "</br>",
+
+      "Note",
+    ],
+    "REFERENCE": [ "Reference", ],
+    "TEMPORARY": [ "Temporary", "Temp", "Hack", "NoCommit", "NoCheckIn", ],
+    "TEST":      [ "Test", "Testing", "Robustness", ],
+    "TODO":      [ "Todo", "Cleanup", "Incomplete", "Volatile", "Refactor", ],
+  },
+  "todo-tree.highlights.defaultHighlight": {
+    "type":              "capture-groups:1,4",
+    "foreground":        "#5BA5D3",
+    "fontStyle":         "italic",
+    "textDecoration":    "underline",
+    "icon":              "issue-opened",
+    "iconColour":        "#5BA5D3",
+    "hideFromTree":      false,
+    "hideFromStatusBar": false,
+    "rulerColor":        "#5BA5D3",
+    "rulerLane":         "left",
+  },
+  "todo-tree.highlights.customHighlight": {
+    "DOC": {
+      "type":              "capture-groups:1,4",
+      "foreground":        "#5BD35F",
+      "hideFromTree":      true,
+      "hideFromStatusBar": true,
+      "rulerColor":        "#5BD35F",
+    },
+    "REFERENCE": {
+      "type":              "capture-groups:1,4,5",
+      "foreground":        "#FA844D",
+      "textDecoration":    "normal",
+      "hideFromTree":      true,
+      "hideFromStatusBar": true,
+      "rulerColor":        "#000000",
+    },
+    "TEMPORARY": {
+      "type":              "capture-groups:1,4",
+      "foreground":        "#DD3636",
+      "icon":              "alert",
+      "iconColour":        "#DD3636",
+      "textDecoration":    "underline double",
+      "hideFromStatusBar": true,
+      "rulerColor":        "#DD3636",
+    },
+    "TEST": {
+      "type":              "capture-groups:1,4",
+      "foreground":        "#FFAA44",
+      "icon":              "beaker",
+      "iconColour":        "#FFAA44",
+      "textDecoration":    "underline double",
+      "hideFromStatusBar": true,
+      "rulerColor":        "#FFAA44",
+    },
+  },
+
+  "vsicons.customIconFolderPath":      "/home/daniel/.config/VSCodium/User",
+  "vsicons.dontShowNewVersionMessage": true,
+  "vsicons.associations.files":        [
+    {
+      "icon":       "odin",
+      "format":     "svg",
+      "extensions": [ "odin" ],
+    },
+  ],
+  "vsicons.associations.folderDefault.folder":      { "icon": "folder", "format": "svg", },
+  "vsicons.associations.folderDefault.root_folder": { "icon": "root_folder", "format": "svg", },
+
+  "yaml.format.printWidth": 200,
+  "yaml.schemas":           {
+    "file:///c%3A/Users/Daniel/.vscode/extensions/atlassian.atlascode-2.10.12/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+  },
+
+  // ---------------------------------------------------------------------------------------------
+  // Language specific settings
+  // ---------------------------------------------------------------------------------------------
+
+  "[css]": {
+    "editor.tabSize": 2,
+  },
+
+  "[dart]": {
+    "editor.formatOnSave":                            true,
+    "editor.formatOnType":                            true,
+    "editor.selectionHighlight":                      true,
+    "editor.suggest.snippetsPreventQuickSuggestions": true,
+    "editor.suggestSelection":                        "first",
+    "editor.tabCompletion":                           "onlySnippets",
+    "editor.tabSize":                                 2,
+    "editor.wordBasedSuggestions":                    false,
+    "editor.language.colorizedBracketPairs":          [
+      [ "[", "]" ],
+      [ "(", ")" ],
+      [ "{", "}" ],
+    ],
+  },
+
+  "[html]": {
+    "editor.linkedEditing":                  true,
+    "editor.tabSize":                        2,
+    "editor.language.colorizedBracketPairs": [
+      [ "{{",   "}}" ],
+      [ "{%",   "%}" ],
+      [ "{%-", "-%}" ],
+    ],
+  },
+
+  "[javascript]" : {
+    "editor.language.colorizedBracketPairs": [
+      [ "[", "]" ],
+      [ "(", ")" ],
+      [ "{", "}" ],
+    ],
+  },
+
+  "[json]": {
+    "editor.guides.bracketPairs":            true,
+    "editor.suggest.insertMode":             "replace",
+    "editor.tabSize":                        2,
+    "editor.language.colorizedBracketPairs": [
+      [ "{", "}" ],
+    ],
+    "editor.quickSuggestions": {
+      "strings": true,
+    },
+  },
+
+  "[jsonc]": {
+    "editor.guides.bracketPairs":            true,
+    "editor.suggest.insertMode":             "replace",
+    "editor.tabSize":                        2,
+    "editor.language.colorizedBracketPairs": [
+      [ "{", "}" ],
+    ],
+    "editor.quickSuggestions": {
+      "strings": true,
+    },
+  },
+
+  "[less]": {
+    "editor.tabSize": 2,
+  },
+
+  "[markdown]": {
+    "editor.defaultFormatter":               "DavidAnson.vscode-markdownlint",
+    "editor.wordWrap":                       "on",
+    "editor.language.colorizedBracketPairs": [],
+    "editor.quickSuggestions":               {
+      "comments": "off",
+      "strings":  "off",
+      "other":    "off"
+    },
+
+    "files.trimTrailingWhitespace": false,
+  },
+
+  "[r]" : {
+    "editor.language.colorizedBracketPairs": [
+      [ "[", "]" ],
+      [ "(", ")" ],
+      [ "{", "}" ],
+    ],
+  },
+
+  "[scss]": {
+    "editor.tabSize": 2,
+  },
+
+  "[plaintext]": {
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "editor.unicodeHighlight.invisibleCharacters": false,
+    "editor.bracketPairColorization.enabled":      false,
+    "editor.wordWrap":                             "on"
+  },
+
+  "[xml]": {
+    "editor.tabSize": 2,
+  },
+
+  "[yaml]": {
+    "editor.tabSize": 2,
+  },
+
+  // "[odin]": {
+  //   "alignment.surroundSpace"  : {
+  //     "colon": [ 1, 1 ],
+  //   },
+  // },
+
+  // ---------------------------------------------------------------------------------------------
+  // Editor colours
+  // ---------------------------------------------------------------------------------------------
+
+  "editor.tokenColorCustomizations": {
+    "[Monokai]": {
+      "comments": {
+        "fontStyle": "italic"
+      },
+      "functions": {
+        "foreground": "#66D9EF",
+        "fontStyle":  ""
+      },
+      "numbers": {
+        "foreground": "#FC9700",
+        "fontStyle":  ""
+      },
+      "strings": {
+        "fontStyle": "italic"
+      },
+      "textMateRules": [
+        {
+          "scope":    "constant.character.escape",
+          "settings": {
+            "foreground": "#72ba2b",
+            "fontStyle":  "italic"
+          }
+        },
+        {
+          "scope":    "constant.language",
+          "settings": {
+            "foreground": "#AE81FF",
+            "fontStyle":  ""
+          }
+        },
+        {
+          "scope":    "constant.numeric",
+          "settings": {
+            "foreground": "#FC9700",
+            "fontStyle":  ""
+          }
+        },
+        {
+          "scope":    "entity.name.type, entity.name.class, entity.name.namespace, entity.name.scope-resolution",
+          "settings": {
+            "foreground": "#A6E22E",
+            "fontStyle":  ""
+          }
+        },
+        {
+          "scope":    "keyword",
+          "settings": {
+            "foreground": "#AE81FF",
+            "fontStyle":  ""
+          }
+        },
+        {
+          "scope":    "keyword.control",
+          "settings": {
+            "foreground": "#AE81FF",
+            "fontStyle":  "italic"
+          }
+        },
+        {
+          "scope":    "keyword.operator",
+          "settings": {
+            "foreground": "#cacaca"
+          }
+        },
+        {
+          "scope":    "meta.preprocessor",
+          "settings": {
+            "foreground": "#AE81FF",
+            "fontStyle":  "italic bold"
+          }
+        },
+        {
+          "scope":    "storage.type",
+          "settings": {
+            "foreground": "#A6E22E",
+            "fontStyle":  ""
+          }
+        }
+      ]
+    }
+  },
+}
