@@ -14,7 +14,6 @@ HISTSIZE= HISTFILESIZE=  # Infinite shell history
 
 # ----------------------------------------------------------------------------
 
-source "${XDG_CONFIG_HOME}/shell/env.sh"
 source "${XDG_CONFIG_HOME}/shell/aliases.sh"
 source "${XDG_CONFIG_HOME}/shell/ssh_autostart.sh"
 
