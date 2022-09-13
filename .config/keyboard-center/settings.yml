@@ -1,0 +1,50 @@
+mappings:
+  MEMORY_1:
+    MACRO_2:
+      gamemode: 0
+      name: example-cut
+      string:
+      - [Ctrl, X]
+      - [Ctrl, V]
+      type: macro
+      value:
+      - - [1, 29]
+        - [1, 45]
+      - - [1, 29]
+        - [1, 47]
+    MACRO_3:
+      gamemode: 0
+      name: example-nice
+      string:
+      - [N]
+      - [I]
+      - [C]
+      - [E]
+      type: macro
+      value:
+      - - [1, 49]
+      - - [1, 23]
+      - - [1, 46]
+      - - [1, 18]
+    MACRO_8:
+      gamemode: 0
+      name: Screen Off
+      string: '0x253'
+      type: key
+      value: [1, 245]
+    MACRO_9:
+      gamemode: 0
+      name: Sleep
+      string: Sleep
+      type: key
+      value: [1, 142]
+  MEMORY_3:
+    MACRO_9:
+      gamemode: 0
+      name: Restart OpenRGB
+      string: command
+      type: command
+      value: [5, /bin/sh -c "killall openrgb; sleep 2s; openrgb --startminimized"]
+openRGB: {MEMORY_1: G910}
+settings: {minOnStart: true, retryCount: 5, showNotifications: false, usbDeviceID: 0,
+  usbTimeout: 1000}

@@ -1,0 +1,16 @@
+[
+    {
+        "action": 2,
+        "cron_line": "0 * * * * ?",
+        "name": "nice",
+        "run": true,
+        "sub_action": "Load profile: Purple-Orange-Wave"
+    },
+    {
+        "action": 2,
+        "cron_line": "0 * * * * ?",
+        "name": "nice2",
+        "run": true,
+        "sub_action": "Start all effects"
+    }
+]

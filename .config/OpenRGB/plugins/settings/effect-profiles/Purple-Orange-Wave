@@ -1,0 +1,36 @@
+{
+    "Effects": [
+        {
+            "AllowOnlyFirst": false,
+            "AutoStart": true,
+            "Brightness": 100,
+            "ControllerZones": [
+                {
+                    "description": "Logitech Keyboard Device",
+                    "location": "",
+                    "name": "Logitech G910 Orion Spectrum",
+                    "reverse": false,
+                    "serial": "037431523035",
+                    "vendor": "Logitech",
+                    "version": "",
+                    "zone_idx": 0
+                }
+            ],
+            "CustomSettings": {
+                "OscillationSpeed": 59.0,
+                "WaveFrequency": 4.0,
+                "WaveSpeed": 200.0
+            },
+            "EffectClassName": "Wavy",
+            "FPS": 60,
+            "RandomColors": false,
+            "Slider2Val": 1,
+            "Speed": 1,
+            "UserColors": [
+                16718297,
+                3644415
+            ]
+        }
+    ],
+    "version": 2
+}

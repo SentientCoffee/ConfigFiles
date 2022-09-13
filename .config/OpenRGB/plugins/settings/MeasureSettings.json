@@ -1,0 +1,42 @@
+[
+    {
+        "auto_start": true,
+        "brightness": 100,
+        "devices": [
+            {
+                "description": "ASUS Aura Core Device",
+                "location": "HID: /dev/hidraw5",
+                "name": "ASUS Aura Keyboard",
+                "serial": "",
+                "vendor": "ASUS",
+                "version": "",
+                "zone_idx": 0
+            }
+        ],
+        "devices_percentage_fill": [
+            false
+        ],
+        "fps": 60,
+        "hardware": 0,
+        "hardware_feature": 0,
+        "measure_color": {
+            "color_stops": [
+                [
+                    40.0,
+                    16718297
+                ],
+                [
+                    90.0,
+                    36095
+                ],
+                [
+                    105.0,
+                    255
+                ]
+            ]
+        },
+        "name": "CPU Temp",
+        "refresh_interval": 100,
+        "running": true
+    }
+]
