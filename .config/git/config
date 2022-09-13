@@ -1,0 +1,9 @@
+[user]
+    email = 22991229+SentientCoffee@users.noreply.github.com
+    name = Daniel
+[core]
+    longpaths = true
+    editor = micro
+[init]
+    defaultBranch = master
+    templatedir = ~/.git-templates
