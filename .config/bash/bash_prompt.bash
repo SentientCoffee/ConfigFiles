@@ -3,6 +3,9 @@
 #
 
 # Foreground colors
+FG_INVERSE="7"
+FG_DEFAULT="39"
+
 FG_BLACK="30"
 FG_RED="31"
 FG_GREEN="32"
@@ -12,7 +15,6 @@ FG_MAGENTA="35"
 FG_CYAN="36"
 FG_WHITE="37"
 
-# Foreground bright colors
 FG_BRIGHT_BLACK="90"
 FG_BRIGHT_RED="91"
 FG_BRIGHT_GREEN="92"
@@ -23,6 +25,8 @@ FG_BRIGHT_CYAN="96"
 FG_BRIGHT_WHITE="97"
 
 # Background colors
+BG_DEFAULT="39"
+
 BG_BLACK="40"
 BG_RED="41"
 BG_GREEN="42"
@@ -32,7 +36,6 @@ BG_MAGENTA="45"
 BG_CYAN="46"
 BG_WHITE="47"
 
-# Background bright colors
 BG_BRIGHT_BLACK="100"
 BG_BRIGHT_RED="101"
 BG_BRIGHT_GREEN="102"
@@ -44,7 +47,7 @@ BG_BRIGHT_WHITE="107"
 
 # Symbols
 CURRENT_TTY=$(tty)
-if [[ ${CURRENT_TTY%/*} == "/dev/pts" && $EUID -ne 0 ]]; then
+if [[ ${CURRENT_TTY} =~ "/dev/cons" && $EUID -ne 0 ]]; then
     STARTER=""
     SEPARATOR=""
     ENDER=""
@@ -65,19 +68,20 @@ SHELL_PROMPT="\s \\$"
 # is necessary to prevent issues with command line editing/browsing/completion!
 RESET="\[\e[0m\]"
 BOLD="\[\e[1m\]"
+INVERSE="\[\e[7m\]"
 
-printf -v START_COLOR_1        "\[\e[%s;%sm\]" "$FG_BLACK"        "$BG_RED"
+printf -v START_COLOR_1        "\[\e[%s;%sm\]" "$FG_INVERSE"      "$FG_RED"
 printf -v USER_HOST_COLOR      "\[\e[%s;%sm\]" "$FG_BRIGHT_WHITE" "$BG_RED"
 printf -v TRANSITION_COLOR_1_1 "\[\e[%s;%sm\]" "$FG_RED"          "$BG_GREEN"
 printf -v DIRECTORY_COLOR      "\[\e[%s;%sm\]" "$FG_BRIGHT_WHITE" "$BG_GREEN"
 printf -v TRANSITION_COLOR_1_2 "\[\e[%s;%sm\]" "$FG_GREEN"        "$BG_MAGENTA"
 printf -v GIT_COLOR            "\[\e[%s;%sm\]" "$FG_BRIGHT_WHITE" "$BG_MAGENTA"
-printf -v TRANSITION_COLOR_1_3 "\[\e[%s;%sm\]" "$FG_MAGENTA"      "$BG_BLACK"
+printf -v TRANSITION_COLOR_1_3 "\[\e[%s;%sm\]" "$FG_MAGENTA"      "$BG_DEFAULT"
 
-printf -v RETURN_CODE_COLOR    "\[\e[%s;%sm\]" "$FG_BRIGHT_RED"   "$BG_BLACK"
-printf -v START_COLOR_2        "\[\e[%s;%sm\]" "$FG_BLACK"        "$BG_BLUE"
+printf -v RETURN_CODE_COLOR    "\[\e[%sm\]"    "$FG_BRIGHT_RED"
+printf -v START_COLOR_2        "\[\e[%s;%sm\]" "$FG_INVERSE"      "$FG_BLUE"
 printf -v SHELL_COLOR          "\[\e[%s;%sm\]" "$FG_BRIGHT_WHITE" "$BG_BLUE"
-printf -v TRANSITION_COLOR_2_1 "\[\e[%s;%sm\]" "$FG_BLUE"         "$BG_BLACK"
+printf -v TRANSITION_COLOR_2_1 "\[\e[%sm\]"    "$FG_BLUE"
 
 GIT_COLOR_HINT_BG="$BG_MAGENTA"
 GIT_COLOR_HINT_FG="$FG_MAGENTA"
@@ -91,7 +95,7 @@ make_ps1_prompt () {
 
     echo -n "${START_COLOR_1}${STARTER}"
 
-    echo -n "${USER_HOST_COLOR}"
+    echo -n "${RESET}${USER_HOST_COLOR}"
     [[ $EUID -ne 0 ]] && echo -n " ${USER_HOST} " || echo -n " ROOT "
 
     echo -n "${TRANSITION_COLOR_1_1}${SEPARATOR}"
@@ -101,14 +105,14 @@ make_ps1_prompt () {
     if [[ -n $GIT_INFO ]]; then
         printf -v TRANSITION_COLOR_1_2 "\[\e[%s;%sm\]" "$FG_GREEN"          "$GIT_COLOR_HINT_BG"
         printf -v GIT_COLOR            "\[\e[%s;%sm\]" "$FG_BRIGHT_WHITE"   "$GIT_COLOR_HINT_BG"
-        printf -v TRANSITION_COLOR_1_3 "\[\e[%s;%sm\]" "$GIT_COLOR_HINT_FG" "$BG_BLACK"
+        printf -v TRANSITION_COLOR_1_3 "\[\e[%sm\]"    "$GIT_COLOR_HINT_FG"
 
         echo -n "${TRANSITION_COLOR_1_2}${SEPARATOR}"
         echo -n "${GIT_COLOR} ${GIT_INFO} "
-        echo -n "${TRANSITION_COLOR_1_3}${SEPARATOR}"
+        echo -n "${RESET}${TRANSITION_COLOR_1_3}${SEPARATOR}"
     else
-        printf -v TRANSITION_COLOR_1_2 "\[\e[%s;%sm\]" "$FG_GREEN" "$BG_BLACK"
-        echo -n "${TRANSITION_COLOR_1_2}${SEPARATOR}"
+        printf -v TRANSITION_COLOR_1_2 "\[\e[%sm\]" "$FG_GREEN"
+        echo -n "${RESET}${TRANSITION_COLOR_1_2}${SEPARATOR}"
     fi
 
     echo -n "${BOLD}${ENDER}${RESET}${NEWLINE}"
@@ -117,15 +121,15 @@ make_ps1_prompt () {
         echo -n "${RETURN_CODE_COLOR}${RETURN_CODE} "
     fi
 
-    echo -n "${START_COLOR_2}${STARTER}"
-    echo -n "${SHELL_COLOR} ${SHELL_PROMPT} "
-    echo -n "${TRANSITION_COLOR_2_1}${SEPARATOR}${BOLD}${ENDER}${RESET} "
+    echo -n "${RESET}${START_COLOR_2}${STARTER}"
+    echo -n "${RESET}${SHELL_COLOR} ${SHELL_PROMPT} "
+    echo -n "${RESET}${TRANSITION_COLOR_2_1}${SEPARATOR}${BOLD}${ENDER}${RESET} "
 }
 
 make_ps2_prompt () {
     echo -n "${START_COLOR_2}${STARTER}"
     echo -n "${SHELL_COLOR} ${SHELL_PROMPT} "
-    echo -n "${TRANSITION_COLOR_2_1}${SEPARATOR}${BOLD}${ENDER}${RESET} "
+    echo -n "${RESET}${TRANSITION_COLOR_2_1}${SEPARATOR}${BOLD}${ENDER}${RESET} "
 }
 
 make_bash_prompt () {
