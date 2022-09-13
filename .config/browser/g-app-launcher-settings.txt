@@ -1,0 +1,1 @@
+{"customShortcutsDatabase1":{},"customShortcutsDatabase2":{},"customShortcutsDatabase3":{},"autoListRemoved":[],"gbwaConfig":"override","showLaunchbox":false,"toolbarIcon":"app_launcher","toolbarIconDarkMode":true,"appDarkMode":true,"userList":["5","48","59","160","27","101","144","70","32"],"customServicesDatabase":{}}

@@ -1,0 +1,39 @@
+{
+  "allowedDomainsGoogleFonts": {
+    "docs.google.com": true
+  },
+  "allowlistedDomains": {
+    "nanopool.org": true
+  },
+  "amountInjected": 5570,
+  "badgeDefaultBackgroundColor": "#804d4d",
+  "badgeDefaultTextColor": "#d4d4d4",
+  "badgeHTMLFilterBackgroundColor": "#cc334d",
+  "badgeHTMLfilterTextColor": "#d4d4d4",
+  "badgeMissingResourceBackgroundColor": "#0000FF",
+  "badgeMissingResourceTextColor": "#FFFFFF",
+  "blockGoogleFonts": false,
+  "blockMissing": false,
+  "changeBadgeColorMissingResources": true,
+  "defaultRangeStatistic": "",
+  "disablePrefetch": true,
+  "domainsManipulateDOM": {
+    "": true,
+    "ubisoftconnect.com": true,
+    "www.youtube.com": true,
+    "www.pdfsharp.net": true
+  },
+  "enableLogging": false,
+  "enforceStaging": false,
+  "hideDonationButton": true,
+  "internalStatistics": false,
+  "internalStatisticsData": {},
+  "lastMappingUpdate": "2022-04-18",
+  "negateHtmlFilterList": false,
+  "selectedIcon": "Light",
+  "showIconBadge": true,
+  "storageType": "local",
+  "stripMetadata": true,
+  "updateNotification": 0,
+  "xhrTestDomain": "localcdn.org"
+}
