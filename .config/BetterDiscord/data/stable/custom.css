@@ -1,0 +1,168 @@
+body
+, button
+, input
+, select
+, textarea
+, ::placeholder
+{
+  /* letter-spacing: -0.2px!important; */
+  font-weight: 400 !important;
+  font-size  : 100% !important;
+  font-family:
+    Scada,
+    Cuprum,
+    Roboto Condensed,
+    sans-serif
+    !important;
+}
+
+h1
+, h2
+, h3
+, h4
+, h5
+, h6
+{
+  /* letter-spacing: -0.2px !important; */
+  font-family:
+    Scada,
+    Cuprum,
+    Roboto Condensed,
+    sans-serif
+    !important;
+}
+
+.anchor-1MIwyf
+, .markup-eYLPri a {
+  color: #8e6ecf !important;
+}
+
+bodyarea
+, input
+, p
+, select
+, textarea
+, .bd-description
+, .content-1G6Z6z
+, .customStatusText-_4TbWr
+, .emojiAliasPlaceholder-3H_iZA
+, .emojiInput-1aLNse
+, .markup-eYLPri
+, .message-2CShn3
+, .modeDefault-2fEh7a
+, .subText-OGOWMj
+, .topic-11NuQZ
+, ::placeholder
+, ::-webkit-input-placeholder
+{
+  font-size: 0.91rem !important;
+}
+
+header
+, h1
+, .activityName-3YXl6e
+, .bd-author
+, .bd-meta .bd-link
+, .detailsInner-2IFSJC
+, .emojiUploader-1f0pVx
+, .headerNameWrapper-3res2c
+, .headerText-15Q25Z
+, .membersGroup-2eiWxl
+, .name-28HaxV
+, .nameAndDecorators-3ERwy2
+, .nameTag-sc-gpq
+, .nickname-2gQ76l
+, .roleMention-11Aaqi
+, .roleName-2ZJJYR
+, .roleName-35qCvR
+, .roleName-3910zV
+, .roleRow-3HnunM
+, .secondaryHeader-2oeRPO
+, .systemMessage-1H1Z20 .anchorUnderlineOnHover-2qPutX
+, .title-17SveM
+, .title-3hptVQ
+, .userHook-3AdCBF
+, .wrapper-1ZcZW-
+, [data-slate-object="inline"] .mention
+{
+  font-size: 0.90rem !important;
+}
+
+.name-3BUDLf
+{
+  font-size: 0.85rem !important;
+}
+
+.timestamp-p1Df1m
+{
+  font-size: 0.75rem !important;
+}
+
+.nameAndDecorators-3ERwy2 > .name-3Vmqxm
+, .username-h_Y3Us
+{
+  font-size: 0.98rem !important;
+}
+
+code
+, span.inlineCode-2auMQi *
+, .bd-codeblock-language
+, .codeBlockText-311wOq
+, .codeLine-3a3dbd
+, .inlineCode-ERyvy_ *
+{
+  font-size             : 12px !important;
+  font-weight           : 500 !important;
+  font-variant-ligatures: no-contextual !important;
+  font-feature-settings : "ss01", "ss02", "ss03", "ss05", "ss06", "ss08" !important;
+  letter-spacing        : -0.75px !important;
+  line-height           : 1.1rem !important;
+  font-family:
+    "FiraCode Nerd Font Mono",
+    "FuraMono Nerd Font Mono",
+    "Hack",
+    monospace
+    !important;
+}
+
+#bd-customcss-editor *
+, #bd-editor-panel *
+, #bd-floating-editor *
+{
+  font-weight           : 400 !important;
+  font-variant-ligatures: no-contextual !important;
+  font-feature-settings : "ss01", "ss02", "ss03", "ss05", "ss06", "ss08" !important;
+  font-family:
+    "FiraCode Nerd Font Mono",
+    "FuraMono Nerd Font Mono",
+    "Hack",
+    monospace
+    !important;
+}
+
+pre code
+{
+  border : 0.2px solid white !important;
+  padding: 0.6rem !important;
+  margin : 0.5rem 0 !important;
+}
+
+code.inline
+, span.inlineCode-2auMQi
+{
+  font-size: 85% !important;
+  border   : 0.2px solid white !important;
+  padding  : 0.08rem 0.4rem !important;
+  margin   : 0.05rem 0 !important;
+}
+
+li > div > div > div > div > code.inline
+{
+  font-size   : 64% !important;
+  border-width: 0.05px !important;
+  padding     : 0.08rem 0.2rem !important;
+}
+
+.avatar-2e8lTP {
+  border-radius: 10% !important;
+}

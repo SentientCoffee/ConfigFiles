@@ -1,0 +1,242 @@
+{
+	"all": {
+		"amounts": {
+			"minAliasLength": 2
+		},
+		"configs": {
+			"case": true,
+			"exact": false,
+			"autoc": true,
+			"regex": true,
+			"file": false
+		},
+		"general": {
+			"replaceBeforeSend": true,
+			"addContextMenu": true,
+			"addAutoComplete": true
+		},
+		"places": {
+			"normal": true,
+			"edit": true,
+			"upload": true
+		},
+		"words": {
+			"\\b([Aa])([Ss]|[Hh]|[Qq][Uu])i\\b": {
+				"replace": "$1$2í",
+				"filedata": null,
+				"case": true,
+				"exact": false,
+				"autoc": true,
+				"regex": true,
+				"file": false
+			},
+			"\\b([Aa])([Ss]|[Hh]|[Qq][Uu])I\\b": {
+				"replace": "$1$2Í",
+				"filedata": null,
+				"case": true,
+				"exact": false,
+				"autoc": true,
+				"regex": true,
+				"file": false
+			},
+			"\\b([Aa][Jj])A\\b": {
+				"replace": "$1Á",
+				"filedata": null,
+				"case": true,
+				"exact": false,
+				"autoc": true,
+				"regex": true,
+				"file": false
+			},
+			"\\b([Aa][Jj])a\\b": {
+				"replace": "$1á",
+				"filedata": null,
+				"case": true,
+				"exact": false,
+				"autoc": true,
+				"regex": true,
+				"file": false
+			},
+			"\\b([Aa][Tt][Rr])A([Ss])\\b": {
+				"replace": "$1Á$2",
+				"filedata": null,
+				"case": true,
+				"exact": false,
+				"autoc": true,
+				"regex": true,
+				"file": false
+			},
+			"\\b([Aa][Tt][Rr])a([Ss])\\b": {
+				"replace": "$1á$2",
+				"filedata": null,
+				"case": true,
+				"exact": false,
+				"autoc": true,
+				"regex": true,
+				"file": false
+			},
+			"\\b([Dd][Ee][Ss][Pp][Uu])E([Ss])\\b": {
+				"replace": "$1É$2",
+				"filedata": null,
+				"case": true,
+				"exact": false,
+				"autoc": true,
+				"regex": true,
+				"file": false
+			},
+			"\\b([Dd][Ee][Ss][Pp][Uu])e([Ss])\\b": {
+				"replace": "$1é$2",
+				"filedata": null,
+				"case": true,
+				"exact": false,
+				"autoc": true,
+				"regex": true,
+				"file": false
+			},
+			"\\b([Ee][Ss][Pp][Aa])N([Oo][Ll])\\b": {
+				"replace": "$1Ñ$2",
+				"filedata": null,
+				"case": true,
+				"exact": false,
+				"autoc": true,
+				"regex": true,
+				"file": false
+			},
+			"\\b([Ee][Ss][Pp][Aa])n([Oo][Ll])\\b": {
+				"replace": "$1ñ$2",
+				"filedata": null,
+				"case": true,
+				"exact": false,
+				"autoc": true,
+				"regex": true,
+				"file": false
+			},
+			"\\b([Ee][Xx][Tt][Rr][Aa])N([Oo])\\b": {
+				"replace": "$1Ñ$2",
+				"filedata": null,
+				"case": true,
+				"exact": false,
+				"autoc": true,
+				"regex": true,
+				"file": false
+			},
+			"\\b([Ee][Xx][Tt][Rr][Aa])n([Oo])\\b": {
+				"replace": "$1ñ$2",
+				"filedata": null,
+				"case": true,
+				"exact": false,
+				"autoc": true,
+				"regex": true,
+				"file": false
+			},
+			"\\b([Ii][Nn][Gg][Ll])E([Ss])\\b": {
+				"replace": "$1É$2",
+				"filedata": null,
+				"case": true,
+				"exact": false,
+				"autoc": true,
+				"regex": true,
+				"file": false
+			},
+			"\\b([Ii][Nn][Gg][Ll])e([Ss])\\b": {
+				"replace": "$1é$2",
+				"filedata": null,
+				"case": true,
+				"exact": false,
+				"autoc": true,
+				"regex": true,
+				"file": false
+			},
+			"\\b([Mm])A([Ss])\\b": {
+				"replace": "$1Á$2",
+				"filedata": null,
+				"case": true,
+				"exact": false,
+				"autoc": true,
+				"regex": true,
+				"file": false
+			},
+			"\\b([Mm])I([Aa]|[Oo])\\b": {
+				"replace": "$1Í$2",
+				"filedata": null,
+				"case": true,
+				"exact": false,
+				"autoc": true,
+				"regex": true,
+				"file": false
+			},
+			"\\b([Mm])a([Ss])\\b": {
+				"replace": "$1á$2",
+				"filedata": null,
+				"case": true,
+				"exact": false,
+				"autoc": true,
+				"regex": true,
+				"file": false
+			},
+			"\\b([Mm])i([Aa]|[Oo])\\b": {
+				"replace": "$1í$2",
+				"filedata": null,
+				"case": true,
+				"exact": false,
+				"autoc": true,
+				"regex": true,
+				"file": false
+			},
+			"\\b([Pp][Ee][Rr][Dd])O([Nn])\\b": {
+				"replace": "$1Ó$2",
+				"filedata": null,
+				"case": true,
+				"exact": false,
+				"autoc": true,
+				"regex": true,
+				"file": false
+			},
+			"\\b([Pp][Ee][Rr][Dd])o([Nn])\\b": {
+				"replace": "$1ó$2",
+				"filedata": null,
+				"case": true,
+				"exact": false,
+				"autoc": true,
+				"regex": true,
+				"file": false
+			},
+			"\\b([Pp][Oo][Rr] [Qq][Uu])E\\b": {
+				"replace": "$1É",
+				"filedata": null,
+				"case": true,
+				"exact": false,
+				"autoc": true,
+				"regex": true,
+				"file": false
+			},
+			"\\b([Pp][Oo][Rr] [Qq][Uu])e\\b": {
+				"replace": "$1é",
+				"filedata": null,
+				"case": true,
+				"exact": false,
+				"autoc": true,
+				"regex": true,
+				"file": false
+			},
+			"\\b([Tt][Aa][Mm][Bb][Ii])E([Nn])\\b": {
+				"replace": "$1É$2",
+				"filedata": null,
+				"case": true,
+				"exact": false,
+				"autoc": true,
+				"regex": true,
+				"file": false
+			},
+			"\\b([Tt][Aa][Mm][Bb][Ii])e([Nn])\\b": {
+				"replace": "$1é$2",
+				"filedata": null,
+				"case": true,
+				"exact": false,
+				"autoc": true,
+				"regex": true,
+				"file": false
+			}
+		}
+	}
+}

@@ -1,0 +1,16 @@
+{
+    "currentVersionInfo": {
+        "version": "2.1.3",
+        "hasShownChangelog": true
+    },
+    "settings": {
+        "buttonOnRight": false,
+        "buttonIndex": 0,
+        "chatButtonsLength": 6,
+        "timestampFormat": "F",
+        "replaceInMessages": false,
+        "showInAttachMenu": false,
+        "tabIndex": 2,
+        "onRight": true
+    }
+}

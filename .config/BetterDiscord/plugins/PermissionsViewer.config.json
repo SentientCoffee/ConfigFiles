@@ -1,0 +1,11 @@
+{
+    "currentVersionInfo": {
+        "version": "0.2.5",
+        "hasShownChangelog": true
+    },
+    "settings": {
+        "contextMenus": true,
+        "popouts": false,
+        "displayMode": "cozy"
+    }
+}

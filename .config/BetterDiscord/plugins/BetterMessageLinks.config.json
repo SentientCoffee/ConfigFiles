@@ -1,0 +1,20 @@
+{
+    "currentVersionInfo": {
+        "version": "1.4.12",
+        "hasShownChangelog": true
+    },
+    "settings": {
+        "ignoreMessage": false,
+        "ignoreAttachment": true,
+        "messageReplaceText": "<Discord message>",
+        "attachmentReplaceText": "<Attachment>",
+        "showAuthorIcon": true,
+        "showGuildIcon": true,
+        "noDisplayIfSameGuild": true,
+        "progressBar": true,
+        "spinner": 0,
+        "mentionStyle": true,
+        "animationType": "TRANSLATE",
+        "advancedFooter": "$guildName, $channelName at $timestamp"
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "currentVersionInfo": {
+        "version": "1.0.1",
+        "hasShownChangelog": true
+    },
+    "settings": {
+        "popoutOnClick": false,
+        "nicknameByDefault": true,
+        "popout": {
+            "avatar": true,
+            "username": true
+        },
+        "statusPicker": {
+            "avatar": true,
+            "username": true
+        },
+        "nickname": {
+            "showNickname": true,
+            "oppositeOnHover": true
+        }
+    }
+}

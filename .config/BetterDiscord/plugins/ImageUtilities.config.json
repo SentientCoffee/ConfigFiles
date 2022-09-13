@@ -1,0 +1,61 @@
+{
+	"all": {
+		"amounts": {
+			"hoverDelay": 0
+		},
+		"detailsSettings": {
+			"footnote": true,
+			"tooltip": false,
+			"tooltipDelay": 0
+		},
+		"engines": {
+			"_all": true,
+			"Baidu": true,
+			"Bing": true,
+			"Google": true,
+			"ImgOps": true,
+			"IQDB": true,
+			"Reddit": true,
+			"SauceNAO": true,
+			"Sogou": true,
+			"TinEye": true,
+			"WhatAnime": true,
+			"Yandex": true
+		},
+		"general": {
+			"nsfwMode": true
+		},
+		"ownLocations": {
+			"Downloads": {
+				"enabled": false,
+				"location": "/home/daniel/download"
+			}
+		},
+		"places": {
+			"userAvatars": true,
+			"groupIcons": true,
+			"guildIcons": true,
+			"emojis": true
+		},
+		"rescaleSettings": {
+			"imageViewer": "WINDOW",
+			"messages": "NONE"
+		},
+		"resizeSettings": {
+			"messages": false,
+			"imageViewer": false
+		},
+		"viewerSettings": {
+			"copyImage": true,
+			"details": true,
+			"galleryMode": true,
+			"saveImage": true,
+			"zoomMode": true
+		},
+		"zoomSettings": {
+			"lensSize": 300,
+			"pixelMode": false,
+			"zoomLevel": 2.5
+		}
+	}
+}

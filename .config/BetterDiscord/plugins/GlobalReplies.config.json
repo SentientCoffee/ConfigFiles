@@ -1,0 +1,7 @@
+{
+    "currentVersionInfo": {
+        "version": "1.0.5",
+        "hasShownChangelog": true
+    },
+    "template": "Replying to {{author}} from {{channel}} ({{messageLink}}) {{newLine}} > {{message}} {{newLine}} "
+}

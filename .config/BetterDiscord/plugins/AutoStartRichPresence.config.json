@@ -1,0 +1,17 @@
+{
+    "settings": {
+        "lastChangelogVersionSeen": "2.0.4",
+        "rpcEventInjection": false
+    },
+    "profiles": [
+        {
+            "name": "Custom RPC",
+            "clientID": "917603947248746526",
+            "details": "AHHHHHHHHHH",
+            "state": "Literally dying.",
+            "largeImageKey": "despresso",
+            "largeImageText": "Despresso.",
+            "enableStartTime": true
+        }
+    ]
+}

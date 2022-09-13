@@ -1,0 +1,24 @@
+{
+	"all": {
+		"dates": {
+			"timestampDate": {
+				"formatString": "$date $time",
+				"dateString": "$monthS $d, $yyyy",
+				"timeString": "$hh:$mm"
+			},
+			"tooltipDate": {
+				"formatString": "$day, $date @ $time ($agoAmount)",
+				"dateString": "$month $d, $yyyy"
+			}
+		},
+		"general": {
+			"changeForChat": true,
+			"changeForEdit": true,
+			"changeForMarkup": true,
+			"showInAuditLogs": true,
+			"showInChat": true,
+			"showInEmbed": true,
+			"showInMarkup": true
+		}
+	}
+}
