@@ -1,0 +1,13 @@
+Xcursor.theme: Breeze_Obsidian
+
+Xft.antialias: 1
+Xft.dpi: 96
+!Xft.dpi: 168
+Xft.hinting: 1
+Xft.hintstyle: hintfull
+
+Nsxiv.window.background: #1a1a1a
+Nsxiv.window.foreground: #b4b4b4
+Nsxiv.bar.font: Scada:size=9
+Nsxiv.bar.background: #2b2b2b
+Nsxiv.bar.foreground: #d4d4d4

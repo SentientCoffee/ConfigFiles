@@ -1,0 +1,41 @@
+#!/bin/sh
+
+USER_RESOURCES="${XDG_CONFIG_HOME}/x11/Xresources"
+USER_MODMAP="${XDG_CONFIG_HOME}/x11/Xmodmap"
+SYS_RESOURCES="/etc/X11/xinit/.Xresources"
+SYS_MODMAP="/etc/X11/xinit/.Xmodmap"
+
+[ -f "${SYS_RESOURCES}"  ] && xrdb -merge "${SYS_RESOURCES}"
+[ -f "${USER_RESOURCES}" ] && xrdb -merge "${USER_RESOURCES}"
+[ -f "${SYS_MODMAP}"     ] && xmodmap "${SYS_MODMAP}"
+[ -f "${USER_MODMAP}"    ] && xmodmap "${USER_MODMAP}"
+
+run () {
+    pgrep "${1}" || "$@" > "${XDG_CACHE_HOME}/logs/${1}.log" 2>&1 &
+}
+
+DP_MONITORS=$(xrandr | grep -v "eDP1" | grep "DP" | grep -e "\bconnected\b"),
+HDMI_MONITORS=$(xrandr | grep "HDMI" | grep -e "\bconnected\b")
+if [ -n "${DP_MONITORS}" ] ; then
+    source "${XDG_CONFIG_HOME}/arandr/3_monitors_dp.sh"
+elif [ -n "${HDMI_MONITORS}" ] ; then
+    source "${XDG_CONFIG_HOME}/arandr/3_monitors_hdmi.sh"
+else
+    source "${XDG_CONFIG_HOME}/arandr/laptop_monitor.sh"
+fi
+
+# run xrandr --output HDMI1 --rotate left  2>/dev/null
+# run xlayoutdisplay --dpi 96 --wait 3
+
+run clipmenud                 # > "${XDG_CACHE_HOME}/logs/clipmenu.log"        2>&1
+run discord --start-minimized # > "${XDG_CACHE_HOME}/logs/discord.log"         2>&1
+run keepassxc                 # > "${XDG_CACHE_HOME}/logs/keepassxc.log"       2>&1
+run keyboard-center           # > "${XDG_CACHE_HOME}/logs/keyboard-center.log" 2>&1
+run mailspring -b             # > "${XDG_CACHE_HOME}/logs/mailspring.log"      2>&1
+run nm-applet                 # > "${XDG_CACHE_HOME}/logs/nm-applet.log"       2>&1
+run openrgb --startminimized  # > "${XDG_CACHE_HOME}/logs/openrgb.log"         2>&1
+run pcmanfm -d                # > "${XDG_CACHE_HOME}/logs/pcmanfm.log"         2>&1
+run picom -b                  # > "${XDG_CACHE_HOME}/logs/picom.log"           2>&1
+
+run lxsession -s "Awesome" -e "Awesome" # > "${XDG_CACHE_HOME}/logs/lxsession.log" 2>&1
+exec awesome --replace > "${XDG_CACHE_HOME}/logs/awesomewm.log" 2>&1
