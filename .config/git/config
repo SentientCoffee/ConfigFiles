@@ -6,4 +6,4 @@
     editor = micro
 [init]
     defaultBranch = master
-    templatedir = ~/.git-templates
+    templatedir = ~/.config/git/templates
