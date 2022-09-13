@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Action
+Tooltip=Open with Gprename
+Name=Open with Gprename
+Profiles=profile-one;
+Icon=/usr/bin/gprename
+
+
+[X-Action-Profile profile-one]
+MimeTypes=inode/directory;
+Exec=/usr/bin/gprename %f
+Name=Open in terminal
