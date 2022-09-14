@@ -1,35 +1,11 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 
-# Import additional configuration files
-#
-# Imports are loaded in order, skipping all missing files, with the importing
-# file being loaded last. If a field is already present in a previous import, it
-# will be replaced.
-#
 # All imports must either be absolute paths starting with `/`, or paths relative
 # to the user's home directory starting with `~/`.
 #import:
 #  - /path/to/alacritty.yml
 
-# Any items in the `env` entry below will be added as
-# environment variables. Some entries may override variables
-# set by alacritty itself.
-#env:
-  # TERM variable
-  #
-  # This value is used to set the `$TERM` environment variable for
-  # each instance of Alacritty. If it is not present, alacritty will
-  # check the local terminfo database and use `alacritty` if it is
-  # available, otherwise `xterm-256color` is used.
-  #TERM: alacritty
-
 window:
-  #dimensions:
-  #  columns: 260
-  #  lines: 75
-  #position:
-  #  x: 8
-  #  y: 8
   padding:
     x: 4
     y: 4
@@ -38,7 +14,6 @@ window:
   startup_mode: Windowed
   title: alacritty
   dynamic_title: true
-  # opacity: 0.8
 
 scrolling:
   history: 10000
@@ -46,18 +21,8 @@ scrolling:
 
 font:
   normal:
-    # family: FiraCode NF (Windows)
     family: FiraCode Nerd Font Mono
     style: Regular
-  #bold:
-    #family: monospace
-    #style: Bold
-  #italic:
-    #family: monospace
-    #style: Italic
-  #bold_italic:
-    #family: monospace
-    #style: Bold Italic
   size: 8
   offset:
     x: -1
@@ -69,8 +34,6 @@ colors:
   primary:
     background: "#1a1a1a"
     foreground: "#b4b4b4"
-    #dim_foreground: "#828482"
-    #bright_foreground: "#eaeaea"
   cursor:
     text: CellBackground
     cursor: CellForeground
@@ -81,22 +44,6 @@ colors:
     focused_match:
       foreground: "#ffffff"
       background: "#c5944b"
-    #bar:
-    #  background: "#c5c8c6"
-    #  foreground: "#1d1f21"
-  #hints:
-    #start:
-    #  foreground: "#1d1f21"
-    #  background: "#e9ff5e"
-    #end:
-    #  foreground: "#e9ff5e"
-    #  background: "#1d1f21"
-  #line_indicator:
-  #  foreground: None
-  #  background: None
-  #selection:
-  #  text: CellBackground
-  #  background: CellForeground
 
   normal:
     black:   "#1a1a1a"
@@ -116,21 +63,6 @@ colors:
     magenta: "#e64dcc"
     cyan:    "#4de6e6"
     white:   "#ffffff"
-  #dim:
-  #  black:   "#131415"
-  #  red:     "#864343"
-  #  green:   "#777c44"
-  #  yellow:  "#9e824c"
-  #  blue:    "#556a7d"
-  #  magenta: "#75617b"
-  #  cyan:    "#5b7d78"
-  #  white:   "#828482"
-  #indexed_colors: []
-
-# bell:
-  # animation: Ease
-  # duration: 750
-  # color: "#b29933"
 
 selection:
   semantic_escape_chars: " \t/\\()[]{}\"'`~+=-_,.;:<>~!?@#$%^&*|│"
