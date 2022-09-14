@@ -1,0 +1,77 @@
+filetype: odin
+
+detect:
+    filename: "(\\.od(i?)n$)"
+
+rules:
+    - identifier: "\\b[A-Za-z_][0-9A-Za-z_]*\\b"
+    - identifier.class: "\\b[A-Za-z_][0-9A-Za-z_]*[[:space:]]*:[[:space:]]*:[[:space:]]*(#(force_inline)[[:space:]]+)?proc[[:space:]]*(\"(std|c)\")*[[:space:]]*"
+    - identifier.class: "\\b[A-Za-z_][0-9A-Za-z_]*[[:space:]]*\\([[:space:]]*"
+    - identifier.var:
+        start: "\\$"
+        end: "[[:space:]]"
+        rules:
+          - symbol.operator: "[:=,]"
+          - identifier.var: "\\b[A-Za-z_][0-9A-Za-z_]*\\b"
+
+    - type: "\\b[A-Za-z_][0-9A-Za-z_]*[[:space:]]*:[[:space:]]*:[[:space:]]*(struct|union|enum|bit_set|bit_field|distinct)"
+    - type.keyword: "\\b(import|foreign|package)\\b"
+    - type.keyword: "\\b(bool|b8|b16|b32|b64)\\b"
+    - type.keyword: "\\b((int|i8)|((i16|i32|i64|i128)(le|be)?))\\b"
+    - type.keyword: "\\b((uint(ptr)?|u8)|((u16|u32|u64|u128)(le|be)?))\\b"
+    - type.keyword: "\\b(float|f32|f64|complex64|complex128|quaternion128|quaternion256)\\b"
+    - type.keyword: "\\b(distinct|opaque)\\b"
+    - type.keyword: "\\b(c?string|rune|rawptr|any|typeid|proc|struct|enum|union|bit_set|bit_field|map|context)\\b"
+    - type.keyword: "\\b(if|else|when|for|in|notin|not_in|defer|using|switch|return|const|do|where|fallthrough|break|continue|case|dynamic|cast|auto_cast|transmute)\\b"
+    - type.keyword: "\\b(nil|true|false)\\b"
+    - type.keyword: "\\b(size_of|align_of|offset_of|type_of|typeid_of)\\b"
+    - preproc: "#(align[[:space:]][0-9]*|force_inline|partial|type)"
+    - preproc:
+        start: "@\\((private|default_calling_convention|link_(name|prefix))"
+        end: "\\)"
+        rules:
+          - symbol.operator: "[=,]"
+          - constant.string:
+              start: "\""
+              end: "\""
+              skip: "\\\\."
+              rules: []
+
+    - symbol.brackets: "[(){}]|\\[|\\]"
+    - symbol.operator: "[-+*/%=<>.:;,~&|^!?]"
+
+      # Integer literals
+    - constant.number: "\\b([0-9][0-9_]*)\\b"
+      # Decimal floats
+    - constant.number: "\\b([0-9][0-9_]*[.][0-9][0-9_]*)\\b"
+      # Binary literals
+    - constant.number: "\\b(0[Bb][01][01_]*)\\b"
+      # Hexadecimal literals
+    - constant.number: "\\b(0[Xx][0-9a-fA-F][0-9a-fA-F_]*)\\b"
+      # Octal literals
+    - constant.number: "\\b(0[Oo][0-7][0-7_]*)\\b"
+    - constant.number: "(---)"
+
+    - constant.string:
+        start: "\""
+        end: "\""
+        skip: "\\\\."
+        rules:
+            - constant.specialChar: "\\\\([\"'abfnrtv\\\\]|[0-3]?[0-7]{1,2}|x[0-9A-Fa-f]{1,2}|u[0-9A-Fa-f]{4}|U[0-9A-Fa-f]{8})"
+            - constant.specialChar: "%([ -+#0]*([0-9]*|[*]?)?([.]([0-9]*|[*]?))?(hh|h|l|ll|L|j|z|t)?[diuoxXfFaAeEgGcspn%])"
+            - constant.specialChar:
+                start: "{"
+                end: "}"
+                rules: []
+
+    - comment:
+        start: "//"
+        end: "$"
+        rules:
+            - todo: "([Tt][Oo][Dd][Oo]|[Nn][Oo][Tt][Ee])[,;:?]?"
+
+    - comment:
+        start: "/\\*"
+        end: "\\*/"
+        rules:
+            - todo: "([Tt][Oo][Dd][Oo]|[Nn][Oo][Tt][Ee])[,;:?]?"

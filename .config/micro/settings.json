@@ -1,0 +1,20 @@
+{
+    "backups": "~/.local/share/micro/backups",
+    "basename": true,
+    "colorscheme": "dark-coffee-tc",
+    "diffgutter": true,
+    "ft:yaml": {
+        "tabsize": 2
+    },
+    "indentchar": "→",
+    "mkparents": true,
+    "parsecursor": true,
+    "rmtrailingws": true,
+    "savecursor": true,
+    "saveundo": true,
+    "scrollmargin": 8,
+    "scrollspeed": 4,
+    "tabmovement": true,
+    "tabstospaces": true,
+    "xterm": true
+}

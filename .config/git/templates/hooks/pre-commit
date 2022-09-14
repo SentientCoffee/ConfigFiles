@@ -1,0 +1,30 @@
+#!/usr/bin/bash
+
+# Redirect output to stderr
+exec 1>&2;
+
+function output() {
+    OUT=$(grep --context=3 --extended-regexp --ignore-case --line-number "^.*(nocommit|nocheckin)" ${1})
+    if [[ -n ${OUT} ]]; then
+        printf "  \x1b[32m%s\x1b[0m\n" "${1}"
+        echo -n "${OUT}" | awk '{
+            if(tolower($0) ~ /(nocommit|nocheckin)/) {
+                print "    \x1b[31m" $0 "\x1b[0m";
+            }
+            else {
+                print "    " $0;
+            }
+        }'
+    fi
+}
+
+export GREP_COLORS="ms=37:mc=37:sl=31:cx=37:fn=32:ln=32:bn=32:se=37"
+export -f output
+
+nocommits=$(git status --porcelain | sed "/^D\|^[ ]D\|^??\|\/$/d" | sed "s/^.*[ ]//" | xargs -I {} bash -c 'output "$@"' _ {})
+
+if [[ -n "$nocommits" ]]; then
+    printf "Pre-commit hook failed. You left \`\x1b[31mnocommit\x1b[0m\`s or \`\x1b[31mnocheckin\x1b[0m\`s here:\n"
+    echo -e "$nocommits"
+    exit 1
+fi
