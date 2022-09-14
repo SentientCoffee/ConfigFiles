@@ -24,6 +24,8 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 
 export RUSTUP_HOME="${XDG_DATA_HOME}/rustup"
 
+export UPDATEDB_DIR="${XDG_CACHE_HOME}/plocate"
+
 export WINEPREFIX="${XDG_DATA_HOME}/wineprefixes/default"
 
 export XAUTHORITY="${XDG_RUNTIME_DIR}/Xauthority"
