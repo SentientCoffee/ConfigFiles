@@ -3,10 +3,9 @@
   // VS Code specific
   // ---------------------------------------------------------------------------------------------
 
-  "debug.autoExpandLazyVariables": true,
-  "debug.console.fontFamily":      "'FiraCode Nerd Font', 'FiraCode NF', Hack, monospace",
-  "debug.console.fontSize":        18,
-  // "debug.console.fontSize"           : 11,
+  "debug.autoExpandLazyVariables":     true,
+  "debug.console.fontFamily":          "'FiraCode Nerd Font', 'FiraCode NF', Hack, monospace",
+  "debug.console.fontSize":            14,
   "debug.console.historySuggestions":  true,
   "debug.console.closeOnEnd":          false,
   "debug.internalConsoleOptions":      "openOnSessionStart",
@@ -20,19 +19,18 @@
 
   "diffEditor.ignoreTrimWhitespace": false,
 
-  "editor.bracketPairColorization.enabled": true,
-  "editor.colorDecorators":                 true,
-  "editor.cursorBlinking":                  "blink",
-  "editor.cursorStyle":                     "line",
-  "editor.cursorSmoothCaretAnimation":      false,
-  "editor.cursorSurroundingLines":          10,
-  "editor.cursorSurroundingLinesStyle":     "default",
-  "editor.cursorWidth":                     1,
-  "editor.detectIndentation":               false,
-  "editor.fontFamily":                      "'FiraCode Nerd Font', 'FiraCode NF', Hack, monospace",
-  "editor.fontLigatures":                   "'ss01', 'ss02', 'ss03', 'ss05', 'ss06', 'ss08', 'cv16'",
-  "editor.fontSize":                        18,
-  // "editor.fontSize"                         : 11,
+  "editor.bracketPairColorization.enabled":   true,
+  "editor.colorDecorators":                   true,
+  "editor.cursorBlinking":                    "blink",
+  "editor.cursorStyle":                       "line",
+  "editor.cursorSmoothCaretAnimation":        false,
+  "editor.cursorSurroundingLines":            10,
+  "editor.cursorSurroundingLinesStyle":       "default",
+  "editor.cursorWidth":                       1,
+  "editor.detectIndentation":                 false,
+  "editor.fontFamily":                        "'FiraCode Nerd Font', 'FiraCode NF', Hack, monospace",
+  "editor.fontLigatures":                     "'ss01', 'ss02', 'ss03', 'ss05', 'ss06', 'ss08', 'cv16'",
+  "editor.fontSize":                          16,
   "editor.fontWeight":                        "200",
   "editor.guides.bracketPairs":               true,
   "editor.guides.bracketPairsHorizontal":     false,
@@ -144,46 +142,42 @@
   "telemetry.telemetryLevel": "off",
 
   "terminal.explorerKind":                        "external",
-  "terminal.external.windowsExec":                "C:\\dev\\cmder\\cmder.exe",
+  "terminal.external.linuxExec":                  "/usr/bin/alacritty",
   "terminal.integrated.customGlyphs":             true,
-  "terminal.integrated.defaultProfile.windows":   "Cmder",
+  "terminal.integrated.defaultProfile.windows":   "zsh",
   "terminal.integrated.enablePersistentSessions": true,
   "terminal.integrated.fontFamily":               "'FiraCode Nerd Font Mono', 'FiraCode NF', Hack, monospace",
-  "terminal.integrated.fontSize":                 18,
-  // "terminal.integrated.fontSize"                 : 11,
-  "terminal.integrated.fontWeight":                "200",
-  "terminal.integrated.fontWeightBold":            "500",
-  "terminal.integrated.letterSpacing":             -0.75,
-  "terminal.integrated.lineHeight":                1.1,
-  "terminal.integrated.gpuAcceleration":           "on",
-  "terminal.integrated.tabs.enabled":              true,
-  "terminal.integrated.automationProfile.windows": {
-    "path": "${env:windir}\\System32\\cmd.exe",
-    "args": [ "/k", "C:\\dev\\cmder\\vendor\\bin\\vscode_init.cmd" ],
-    "icon": "run-all",
+  "terminal.integrated.fontSize":                 16,
+  "terminal.integrated.fontWeight":               "200",
+  "terminal.integrated.fontWeightBold":           "500",
+  "terminal.integrated.letterSpacing":            -0.75,
+  "terminal.integrated.lineHeight":               1.1,
+  "terminal.integrated.gpuAcceleration":          "on",
+  "terminal.integrated.tabs.enabled":             true,
+  "terminal.integrated.automationProfile.linux":  {
+    "path": "/usr/bin/sh",
+    "args": [ "-c" ],
+    "icon": "run-all"
   },
-  "terminal.integrated.profiles.windows": {
-    "Command Prompt": {
-      "path": [
-        "${env:windir}\\Sysnative\\cmd.exe",
-        "${env:windir}\\System32\\cmd.exe",
-      ],
-      "args": [],
-      "icon": "terminal-cmd",
+  "terminal.integrated.profiles.linux": {
+    "bash": {
+      "path": "bash",
+      "icon": "terminal-bash"
     },
-    "PowerShell": {
-      "source": "PowerShell",
-      "icon":   "terminal-powershell",
+    "zsh": {
+      "path": "zsh"
     },
-    "Git Bash": {
-      "source": "Git Bash",
-      "icon":   "git-branch",
-    },
-    "Cmder": {
-      "path": "${env:windir}\\System32\\cmd.exe",
-      "args": [ "/k", "C:\\dev\\cmder\\vendor\\bin\\vscode_init.cmd" ],
-      "icon": "run-all",
-    }
+    // "fish": {
+    //   "path": "fish"
+    // },
+    // "tmux": {
+    //   "path": "tmux",
+    //   "icon": "terminal-tmux"
+    // },
+    // "pwsh": {
+    //   "path": "pwsh",
+    //   "icon": "terminal-powershell"
+    // }
   },
 
   "update.mode": "start",
@@ -338,22 +332,15 @@
   "customizeUI.activityBar":             "regular",
   "customizeUI.activityBarHideSettings": false,
   "customizeUI.font.regular":            "Scada",
-  // "customizeUI.font.monospace"         : "FiraCode NF",
-  "customizeUI.font.monospace": "FiraCode Nerd Font Mono",
-  // "customizeUI.listRowHeight"          : 28,
-  "customizeUI.listRowHeight":     20,
-  "customizeUI.statusBarPosition": "under-panel",
-  "customizeUI.fontSizeMap":       {
+  "customizeUI.font.monospace":          "FiraCode Nerd Font Mono",
+  "customizeUI.listRowHeight":           20,
+  "customizeUI.statusBarPosition":       "under-panel",
+  "customizeUI.fontSizeMap":             {
     "13px":      "16px",
     "14px":      "16px",
     "menu":      "16px",
     "tab-title": "16px",
-    "monospace": "18px",
-    // "13px"     : "12px",
-    // "14px"     : "12px",
-    // "menu"     : "12px",
-    // "tab-title": "12px",
-    // "monospace": "11px",
+    "monospace": "16px",
   },
 
   "customLocalFormatters.formatters": [
@@ -407,8 +394,6 @@
   "hexeditor.showDecodedText":   true,
   "hexeditor.defaultEndianness": "little",
   "hexeditor.inspectorType":     "sidebar",
-
-  "java.jdt.ls.java.home": "C:\\Program Files\\Java\\jdk-17.0.2",
 
   "lldb.commandCompletions":  true,
   "lldb.dereferencePointers": true,
@@ -477,8 +462,6 @@
     "pdf",
   ],
 
-  "maven.executable.path": "C:\\Program Files\\Java\\apache-maven-3.8.5\\bin\\mvn.cmd",
-
   "ols.debug.engine":              "auto",
   "ols.trace.server":              "verbose",
   "ols.updates.askBeforeDownload": true,
@@ -488,7 +471,7 @@
   "omnisharp.enableRoslynAnalyzers":      true,
   "omnisharp.organizeImportsOnFormat":    true,
 
-  "python.defaultInterpreterPath":        "C:\\dev\\Python39\\x86_64\\python.exe",
+  "python.defaultInterpreterPath":        "/usr/bin/python3",
   "python.diagnostics.sourceMapsEnabled": true,
   "python.languageServer":                "Pylance",
 
@@ -615,7 +598,7 @@
     },
   },
 
-  "vsicons.customIconFolderPath":      "/home/daniel/.config/VSCodium/User",
+  "vsicons.customIconFolderPath":      "${env:XDG_CONFIG_HOME}/VSCodium/User",
   "vsicons.dontShowNewVersionMessage": true,
   "vsicons.associations.files":        [
     {
@@ -692,6 +675,7 @@
     "editor.tabSize":                        2,
     "editor.language.colorizedBracketPairs": [
       [ "{", "}" ],
+      [ "[", "]" ],
     ],
     "editor.quickSuggestions": {
       "strings": true,
