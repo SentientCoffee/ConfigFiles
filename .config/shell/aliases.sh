@@ -36,6 +36,7 @@ alias gs="git status"
 alias ka="killall -v"
 
 alias lg="lazygit"
+alias lg-dotfiles="lazygit -g \"${HOME}/.dotfiles\" -w \"${HOME}\""
 alias ll="lsd -Ahl --color=auto --group-directories-first"
 alias ln="ln -iv"
 alias locate="locate -d ${UPDATEDB_DIR}/locate.db"
