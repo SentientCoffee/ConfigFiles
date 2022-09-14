@@ -612,7 +612,7 @@
     },
   },
 
-  "vsicons.customIconFolderPath":      "/home/daniel/.config/VSCodium/User",
+  "vsicons.customIconFolderPath":      "%AppData%\\VSCodium\\User",
   "vsicons.dontShowNewVersionMessage": true,
   "vsicons.associations.files":        [
     {
