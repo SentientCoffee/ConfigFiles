@@ -47,7 +47,7 @@ BG_BRIGHT_WHITE="107"
 
 # Symbols
 CURRENT_TTY=$(tty)
-if [[ ${CURRENT_TTY} =~ "/dev/cons" && $EUID -ne 0 ]]; then
+if [[ ${CURRENT_TTY} =~ "/dev/pts" && $EUID -ne 0 ]]; then
     STARTER=""
     SEPARATOR=""
     ENDER=""

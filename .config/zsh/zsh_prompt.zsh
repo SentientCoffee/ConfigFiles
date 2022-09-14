@@ -37,40 +37,40 @@ DIRECTORY="%~"
 SHELL_PROMPT="${ZSH_NAME} %#"
 
 # Color combos
-RESET="%f%k%b"
+RESET="%f%k%b%s"
 BOLD="%B"
+INVERSE="%S"
 
 GIT_COLOR_HINT="$MAGENTA"
 
-printf -v START_COLOR_1        "%%F{%s}%%K{%s}" "$BLACK"          "$RED"
+printf -v START_COLOR_1        "%%F{%s}"        "$RED"
 printf -v USER_HOST_COLOR      "%%F{%s}%%K{%s}" "$BRIGHT_WHITE"   "$RED"
 printf -v TRANSITION_COLOR_1_1 "%%F{%s}%%K{%s}" "$RED"            "$GREEN"
 printf -v DIRECTORY_COLOR      "%%F{%s}%%K{%s}" "$BRIGHT_WHITE"   "$GREEN"
-printf -v TRANSITION_COLOR_1_2 "%%F{%s}%%K{%s}" "$GREEN" "$BLACK"
+printf -v TRANSITION_COLOR_1_2 "%%F{%s}"        "$GREEN"
 
-printf -v TRANSITION_COLOR_1_3 "%%F{%s}%%K{%s}" "$GIT_COLOR_HINT" "$BLACK"
+printf -v TRANSITION_COLOR_1_3 "%%F{%s}"        "$GIT_COLOR_HINT"
 printf -v GIT_COLOR            "%%F{%s}%%K{%s}" "$BRIGHT_WHITE"   "$GIT_COLOR_HINT"
-printf -v TRANSITION_COLOR_1_4 "%%F{%s}%%K{%s}" "$BLACK"          "$GIT_COLOR_HINT"
+printf -v TRANSITION_COLOR_1_4 "%%F{%s}"        "$GIT_COLOR_HINT"
 
 printf -v RETURN_CODE_COLOR    "%%F{%s}%%K{%s}" "$BRIGHT_RED"   "$BLACK"
-printf -v START_COLOR_2        "%%F{%s}%%K{%s}" "$BLACK"        "$BLUE"
+printf -v START_COLOR_2        "%%F{%s}"        "$BLUE"
 printf -v SHELL_COLOR          "%%F{%s}%%K{%s}" "$BRIGHT_WHITE" "$BLUE"
-printf -v TRANSITION_COLOR_2_1 "%%F{%s}%%K{%s}" "$BLUE"         "$BLACK"
+printf -v TRANSITION_COLOR_2_1 "%%F{%s}"        "$BLUE"
 
 # Commands
 source "${XDG_CONFIG_HOME}/shell/git_prompt.sh"
 
 make_top_ps1_prompt () {
-    print -n "${START_COLOR_1}${STARTER_L}"
+    print -n "${INVERSE}${START_COLOR_1}${STARTER_L}"
 
-    print -n "${USER_HOST_COLOR}"
+    print -n "${RESET}${USER_HOST_COLOR}"
     [[ ${EUID} -ne 0 ]] && print -n " ${USER_HOST} " || print -n " ROOT "
 
     print -n "${TRANSITION_COLOR_1_1}${SEPARATOR_L}"
     print -n "${DIRECTORY_COLOR} ${DIRECTORY} "
 
-    printf -v TRANSITION_COLOR_1_2 "%%F{%s}%%K{%s}" "$GREEN" "$BLACK"
-    print -n "${TRANSITION_COLOR_1_2}${SEPARATOR_L}"
+    print -n "${RESET}${TRANSITION_COLOR_1_2}${SEPARATOR_L}"
 
     print -n "${BOLD}${ENDER_L}${RESET}"
 }
@@ -85,23 +85,23 @@ make_top_rps1_prompt () {
         print -n "${GIT_COLOR}  "
     fi
 
-    print -n "${TRANSITION_COLOR_1_4} ${STARTER_R}"
+    print -n "${RESET}${INVERSE}${TRANSITION_COLOR_1_4} ${STARTER_R}${RESET}"
 }
 
 make_bottom_ps1_prompt () {
-    print -n "${START_COLOR_2}${STARTER_L}"
-    print -n "${SHELL_COLOR} ${SHELL_PROMPT} "
-    print -n "${TRANSITION_COLOR_2_1}${SEPARATOR_L}${BOLD}${ENDER_L}${RESET} "
+    print -n "${INVERSE}${START_COLOR_2}${STARTER_L}"
+    print -n "${RESET}${SHELL_COLOR} ${SHELL_PROMPT} "
+    print -n "${RESET}${TRANSITION_COLOR_2_1}${SEPARATOR_L}${BOLD}${ENDER_L}${RESET} "
 }
 
 make_bottom_rps1_prompt () {
-    TRANSITION_COLOR_2_2="%F{%0(?.$GREEN.$RED)}%K{$BLACK}"
+    TRANSITION_COLOR_2_2="%F{%0(?.$GREEN.$RED)}"
     RETURN_CODE_COLOR="%F{$BRIGHT_WHITE}%K{%0(?.$GREEN.$RED)}"
-    TRANSITION_COLOR_2_3="%F{$BLACK}%K{%0(?.$GREEN.$RED)}"
+    TRANSITION_COLOR_2_3="%F{%0(?.$GREEN.$RED)}"
 
-    print -n "${TRANSITION_COLOR_2_2}${ENDER_R}${SEPARATOR_R}"
-    print -n "${RETURN_CODE_COLOR} %? "
-    print -n "${TRANSITION_COLOR_2_3}${STARTER_R}"
+    print -n "${RESET}${TRANSITION_COLOR_2_2}${ENDER_R}${SEPARATOR_R}"
+    print -n "${RESET}${RETURN_CODE_COLOR} %? "
+    print -n "${RESET}${INVERSE}${TRANSITION_COLOR_2_3}${STARTER_R}"
 }
 
 make_ps2_prompt () {
