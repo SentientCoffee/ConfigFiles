@@ -1,0 +1,47 @@
+{
+  "blacklist": [],
+  "cache": false,
+  "container-uas": {
+    "firefox-container-2": "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:90.0) Gecko/20100101 Firefox/90.0"
+  },
+  "custom": {
+    "www.google.com": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36",
+    "www.pornhub.com": [
+      "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:96.0) Gecko/20100101 Firefox/96.0",
+      "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:94.0) Gecko/20100101 Firefox/94.0",
+      "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.93 Safari/537.36",
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36"
+    ],
+    "addons.mozilla.org": [
+      "Mozilla/5.0 (X11; Linux x86_64; rv:104.0) Gecko/20100101 Firefox/104.0"
+    ],
+    "*": [
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36",
+      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.4 Safari/605.1.15",
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0"
+    ]
+  },
+  "exactMatch": false,
+  "faqs": false,
+  "json-forced": false,
+  "json-guid": "e0511bfb-c74c-44e8-b0fc-7c00fb7c186d",
+  "last-update": 1653353745916,
+  "log": true,
+  "mode": "custom",
+  "parser": {},
+  "popup-browser": "Firefox",
+  "popup-os": "Windows",
+  "popup-sort": "descending",
+  "protected": [
+    "google.com/recaptcha",
+    "gstatic.com/recaptcha",
+    "accounts.google.com",
+    "accounts.youtube.com",
+    "gitlab.com",
+    "docs.google.com",
+    "steamdb.info"
+  ],
+  "siblings": {},
+  "ua": "",
+  "whitelist": []
+}
