@@ -7,7 +7,7 @@ UNSTAGED_SYMBOL=""
 STAGED_SYMBOL=""
 
 get_git_info () {
-    BRANCH=$(git branch --no-color 2>/dev/null | grep '*' | awk '{print $2}')
+    BRANCH=$(git branch --no-color 2>/dev/null | grep '*' | awk '{ print $2 }')
     STATUS=$(git status --porcelain 2>/dev/null)
 
     OUT="${BRANCH_ICON} ${BRANCH}"
@@ -18,9 +18,9 @@ get_git_info () {
     UNSTAGED=$(grep -E "^.[DM]" <<< "$STATUS" | wc -l)
     UNTRACKED=$(grep -E "^\?"   <<< "$STATUS" | wc -l)
 
-    [[ STAGED    -gt 0 ]] && SYMBOLS+=" ${STAGED_SYMBOL} ${STAGED}"
-    [[ UNSTAGED  -gt 0 ]] && SYMBOLS+=" ${UNSTAGED_SYMBOL} ${UNSTAGED}"
-    [[ UNTRACKED -gt 0 ]] && SYMBOLS+=" ${UNTRACKED_SYMBOL} ${UNTRACKED}"
+    [[ ${STAGED}    -gt 0 ]] && SYMBOLS+=" ${STAGED_SYMBOL} ${STAGED}"
+    [[ ${UNSTAGED}  -gt 0 ]] && SYMBOLS+=" ${UNSTAGED_SYMBOL} ${UNSTAGED}"
+    [[ ${UNTRACKED} -gt 0 ]] && SYMBOLS+=" ${UNTRACKED_SYMBOL} ${UNTRACKED}"
 
     SYMBOLS="${SYMBOLS:- ${STATUS_CLEAN}}"
     OUT+="${SYMBOLS:+ ${STATUS_SEPARATOR}${SYMBOLS}}"

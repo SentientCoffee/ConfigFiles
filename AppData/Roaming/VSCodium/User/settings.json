@@ -47,6 +47,7 @@
   "editor.renderWhitespace":                  "all",
   "editor.semanticHighlighting.enabled":      true,
   "editor.snippetSuggestions":                "inline",
+  "editor.stickyScroll.enabled":              true,
   "editor.suggest.insertMode":                "insert",
   "editor.suggest.showColors":                true,
   "editor.suggest.showCustomcolors":          true,
@@ -337,9 +338,9 @@
   "customizeUI.activityBarHideSettings": false,
   "customizeUI.font.regular":            "Scada",
   "customizeUI.font.monospace":          "FiraCode NF",
-  "customizeUI.listRowHeight":     20,
-  "customizeUI.statusBarPosition": "under-panel",
-  "customizeUI.fontSizeMap":       {
+  "customizeUI.listRowHeight":           20,
+  "customizeUI.statusBarPosition":       "under-panel",
+  "customizeUI.fontSizeMap":             {
     "13px":      "12px",
     "14px":      "12px",
     "menu":      "12px",

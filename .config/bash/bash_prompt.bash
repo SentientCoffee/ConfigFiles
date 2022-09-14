@@ -127,8 +127,8 @@ make_ps1_prompt () {
 }
 
 make_ps2_prompt () {
-    echo -n "${START_COLOR_2}${STARTER}"
-    echo -n "${SHELL_COLOR} ${SHELL_PROMPT} "
+    echo -n "${RESET}${START_COLOR_2}${STARTER}"
+    echo -n "${RESET}${SHELL_COLOR} ${SHELL_PROMPT} "
     echo -n "${RESET}${TRANSITION_COLOR_2_1}${SEPARATOR}${BOLD}${ENDER}${RESET} "
 }
 
