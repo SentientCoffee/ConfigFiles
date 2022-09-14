@@ -3,9 +3,8 @@
   // VS Code specific
   // ---------------------------------------------------------------------------------------------
 
-  "debug.autoExpandLazyVariables": true,
-  "debug.console.fontFamily":      "'FiraCode Nerd Font', 'FiraCode NF', Hack, monospace",
-  // "debug.console.fontSize":        18,
+  "debug.autoExpandLazyVariables":     true,
+  "debug.console.fontFamily":          "'FiraCode Nerd Font', 'FiraCode NF', Hack, monospace",
   "debug.console.fontSize":            11,
   "debug.console.historySuggestions":  true,
   "debug.console.closeOnEnd":          false,
@@ -20,18 +19,17 @@
 
   "diffEditor.ignoreTrimWhitespace": false,
 
-  "editor.bracketPairColorization.enabled": true,
-  "editor.colorDecorators":                 true,
-  "editor.cursorBlinking":                  "blink",
-  "editor.cursorStyle":                     "line",
-  "editor.cursorSmoothCaretAnimation":      false,
-  "editor.cursorSurroundingLines":          10,
-  "editor.cursorSurroundingLinesStyle":     "default",
-  "editor.cursorWidth":                     1,
-  "editor.detectIndentation":               false,
-  "editor.fontFamily":                      "'FiraCode Nerd Font', 'FiraCode NF', Hack, monospace",
-  "editor.fontLigatures":                   "'ss01', 'ss02', 'ss03', 'ss05', 'ss06', 'ss08', 'cv16'",
-  // "editor.fontSize":                        18,
+  "editor.bracketPairColorization.enabled":   true,
+  "editor.colorDecorators":                   true,
+  "editor.cursorBlinking":                    "blink",
+  "editor.cursorStyle":                       "line",
+  "editor.cursorSmoothCaretAnimation":        false,
+  "editor.cursorSurroundingLines":            10,
+  "editor.cursorSurroundingLinesStyle":       "default",
+  "editor.cursorWidth":                       1,
+  "editor.detectIndentation":                 false,
+  "editor.fontFamily":                        "'FiraCode Nerd Font', 'FiraCode NF', Hack, monospace",
+  "editor.fontLigatures":                     "'ss01', 'ss02', 'ss03', 'ss05', 'ss06', 'ss08', 'cv16'",
   "editor.fontSize":                          11,
   "editor.fontWeight":                        "200",
   "editor.guides.bracketPairs":               true,
@@ -143,13 +141,12 @@
 
   "telemetry.telemetryLevel": "off",
 
-  "terminal.explorerKind":                        "external",
-  "terminal.external.windowsExec":                "C:\\dev\\cmder\\cmder.exe",
-  "terminal.integrated.customGlyphs":             true,
-  "terminal.integrated.defaultProfile.windows":   "Git Bash",
-  "terminal.integrated.enablePersistentSessions": true,
-  "terminal.integrated.fontFamily":               "'FiraCode Nerd Font Mono', 'FiraCode NF', Hack, monospace",
-  // "terminal.integrated.fontSize":                 18,
+  "terminal.explorerKind":                         "external",
+  "terminal.external.windowsExec":                 "C:\\dev\\cmder\\cmder.exe",
+  "terminal.integrated.customGlyphs":              true,
+  "terminal.integrated.defaultProfile.windows":    "Git Bash",
+  "terminal.integrated.enablePersistentSessions":  true,
+  "terminal.integrated.fontFamily":                "'FiraCode Nerd Font Mono', 'FiraCode NF', Hack, monospace",
   "terminal.integrated.fontSize":                  11,
   "terminal.integrated.fontWeight":                "200",
   "terminal.integrated.fontWeightBold":            "500",
@@ -835,5 +832,4 @@
       ]
     }
   },
-  "workbench.activityBar.visible": false,
 }
