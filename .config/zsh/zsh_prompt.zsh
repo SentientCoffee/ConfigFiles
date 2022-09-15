@@ -105,9 +105,7 @@ make_bottom_rps1_prompt () {
 }
 
 make_ps2_prompt () {
-    print -n "${START_COLOR_2}${STARTER_L}"
-    print -n "${SHELL_COLOR} ${SHELL_PROMPT} "
-    print -n "${TRANSITION_COLOR_2_1}${SEPARATOR_L}${BOLD}${ENDER_L}${RESET} "
+    make_bottom_ps1_prompt
 }
 
 make_rps2_prompt () {
