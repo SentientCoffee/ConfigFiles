@@ -522,11 +522,14 @@
     "untitled",
   ],
   "todo-tree.general.tags": [
-    "brief", "name", "param",
+    "file", "brief", "name", "param",
     "return", "returns",
+    "defgroup", "addtogroup", "ingroup",
     "copydoc", "copyright",
     "remarks",
+    "private", "cond", "endcond",
 
+    "namespace",
     "<summary>", "</summary>",
     "<c>",  "</c>",
     "<p>",  "</p>",
@@ -542,11 +545,14 @@
   ],
   "todo-tree.general.tagGroups": {
     "DOC": [
-      "brief", "name", "param",
+      "file", "brief", "name", "param",
       "return", "returns",
+      "defgroup", "addtogroup", "ingroup",
       "copydoc", "copyright",
       "remarks",
+      "private", "cond", "endcond",
 
+      "namespace",
       "<summary>", "</summary>",
       "<c>",  "</c>",
       "<p>",  "</p>",

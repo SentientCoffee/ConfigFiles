@@ -7,6 +7,11 @@ agent_start () {
     . "${ENV}" >| /dev/null ;
 }
 
+agent_add_keys () {
+    ssh-add "${HOME}/.ssh/id_ed25519"
+    ssh-add "${HOME}/.ssh/id_ed25519_ontariotech"
+}
+
 agent_load_env
 
 # AGENT_RUN_STATE: 0=agent running w/ key; 1=agent w/o key; 2= agent not running
@@ -18,17 +23,16 @@ if [ ! "${SSH_AUTH_SOCK}" ] || [ ${AGENT_RUN_STATE} = 2 ]; then
     echo -e "Agent started."
 
     echo -e "===== Adding keys ====="
-    ssh-add ${HOME}/.ssh/id_ed25519
-    ssh-add ${HOME}/.ssh/id_ed25519_ontariotech
+    agent_add_keys
 
     echo -e "===== Setting Windows SSH environment variables ====="
     echo -e "PID: ${SSH_AGENT_PID} | Socket: ${SSH_AUTH_SOCK})"
     setx SSH_AGENT_PID ${SSH_AGENT_PID}
     setx SSH_AUTH_SOCK ${SSH_AUTH_SOCK}
+
 elif [ "${SSH_AUTH_SOCK}" ] && [ ${AGENT_RUN_STATE} = 1 ]; then
     echo -e "ssh-agent already started.\n===== Adding keys ====="
-    ssh-add ${HOME}/.ssh/id_ed25519
-    ssh-add ${HOME}/.ssh/id_ed25519_ontariotech
+    agent_add_keys
 fi
 
 unset ENV
