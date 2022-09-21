@@ -17,4 +17,3 @@ doskey ls=dir /w /oG $*
 doskey ls1=dir /b /oG $*
 doskey ll=dir /n /oG $*
 
-doskey ssh-dbs=ssh dbs-mkm-03
