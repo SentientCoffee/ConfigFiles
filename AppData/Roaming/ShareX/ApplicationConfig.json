@@ -3,7 +3,7 @@
     "Description": "",
     "Job": "None",
     "UseDefaultAfterCaptureJob": true,
-    "AfterCaptureJob": "ShowAfterCaptureWindow, CopyImageToClipboard",
+    "AfterCaptureJob": "ShowAfterCaptureWindow, CopyImageToClipboard, SaveImageToFile",
     "UseDefaultAfterUploadJob": true,
     "AfterUploadJob": "CopyURLToClipboard",
     "UseDefaultDestinations": true,
@@ -165,7 +165,7 @@
         "ShowInfo": true,
         "ShowMagnifier": true,
         "UseSquareMagnifier": false,
-        "MagnifierPixelCount": 15,
+        "MagnifierPixelCount": 7,
         "MagnifierPixelSize": 10,
         "ShowCrosshair": false,
         "UseLightResizeNodes": false,
@@ -174,7 +174,7 @@
         "FixedSize": "250, 250",
         "ShowFPS": false,
         "FPSLimit": 100,
-        "MenuIconSize": 0,
+        "MenuIconSize": 20,
         "MenuLocked": false,
         "RememberMenuState": false,
         "MenuCollapsed": false,
@@ -251,7 +251,7 @@
         },
         "LastRegionTool": "RegionRectangle",
         "LastAnnotationTool": "DrawingRectangle",
-        "LastEditorTool": "DrawingRectangle",
+        "LastEditorTool": "EffectBlur",
         "ImageEditorStartMode": "AutoSize",
         "ImageEditorWindowState": {
           "Location": "0, 0",
@@ -592,7 +592,15 @@
     }
   ],
   "FirstTimeMinimizeToTray": false,
-  "TaskListViewColumnWidths": [],
+  "TaskListViewColumnWidths": [
+    200,
+    80,
+    167,
+    100,
+    60,
+    60,
+    739
+  ],
   "PreviewSplitterDistance": 335,
   "Language": "Automatic",
   "ShowTray": true,
@@ -601,9 +609,9 @@
   "TaskbarProgressEnabled": true,
   "UseWhiteShareXIcon": false,
   "RememberMainFormPosition": false,
-  "MainFormPosition": "0, 0",
+  "MainFormPosition": "792, 671",
   "RememberMainFormSize": false,
-  "MainFormSize": "0, 0",
+  "MainFormSize": "1644, 1128",
   "TrayLeftClickAction": "RectangleRegion",
   "TrayLeftDoubleClickAction": "OpenMainWindow",
   "TrayMiddleClickAction": "ClipboardUploadWithContentViewer",
@@ -818,8 +826,8 @@
   "HistorySettings": {
     "RememberWindowState": true,
     "WindowState": {
-      "Location": "0, 0",
-      "Size": "0, 0",
+      "Location": "1129, 643",
+      "Size": "1498, 873",
       "IsMaximized": false
     },
     "SplitterDistance": 550,
@@ -829,8 +837,8 @@
   "ImageHistorySettings": {
     "RememberWindowState": true,
     "WindowState": {
-      "Location": "0, 0",
-      "Size": "0, 0",
+      "Location": "1248, 643",
+      "Size": "1260, 873",
       "IsMaximized": false
     },
     "ThumbnailSize": "150, 150",
