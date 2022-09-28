@@ -322,5 +322,15 @@
     {
       "key": "ctrl+e",
       "command": "-workbench.action.quickOpen"
+    },
+    {
+      "key": "ctrl+k ctrl+v",
+      "command": "restructuredtext.showPreviewToSide",
+      "when": "editorLangId == 'restructuredtext'"
+    },
+    {
+      "key": "ctrl+k ctrl+r",
+      "command": "-restructuredtext.showPreviewToSide",
+      "when": "editorLangId == 'restructuredtext'"
     }
 ]

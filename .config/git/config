@@ -7,3 +7,6 @@
 [init]
     defaultBranch = master
     templatedir = ~/.config/git/templates
+[alias]
+    gconf = "config --global --edit"
+    lconf = "config --local --edit"
