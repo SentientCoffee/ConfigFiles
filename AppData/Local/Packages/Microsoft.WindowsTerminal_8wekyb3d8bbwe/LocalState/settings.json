@@ -38,11 +38,20 @@
                 "splitMode": "duplicate"
             },
             "keys": "alt+shift+d"
+        },
+        {
+            "command": 
+            {
+                "action": "sendInput",
+                "input": "cls\n\n"
+            },
+            "keys": "ctrl+l"
         }
     ],
     "copyFormatting": "none",
     "copyOnSelect": false,
     "defaultProfile": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+    "experimental.rendering.forceFullRepaint": true,
     "initialCols": 250,
     "initialRows": 60,
     "profiles": 
@@ -69,7 +78,6 @@
                 "weight": "normal"
             },
             "hidden": false,
-            "opacity": 85,
             "startingDirectory": "%UserProfile%",
             "useAcrylic": true
         },
@@ -79,14 +87,7 @@
                 "commandline": "%SystemRoot%\\System32\\cmd.exe",
                 "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
                 "name": "Command Prompt",
-                "opacity": 100,
                 "useAcrylic": false
-            },
-            {
-                "colorScheme": "Campbell Powershell",
-                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-                "name": "Windows PowerShell"
             },
             {
                 "background": "#0C260F",
@@ -98,8 +99,15 @@
             {
                 "guid": "{7cc284c1-30b6-5f58-b734-375c1b7827b8}",
                 "hidden": false,
+                "icon": "C:\\Users\\dapresas\\AppData\\Roaming\\ProgramIcons\\vs11.ico",
                 "name": "VS Dev Cmd",
                 "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "colorScheme": "Campbell Powershell",
+                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "name": "Windows PowerShell"
             },
             {
                 "colorScheme": "Campbell Powershell",
@@ -109,19 +117,12 @@
                 "source": "Windows.Terminal.VisualStudio"
             },
             {
-                "commandline": "cmd.exe /k \"C:\\BuildTools\\VC\\Auxiliary\\Build\\vcvarsall.bat x64\"",
-                "guid": "{7163fec3-adaa-4658-a06a-8e3a2f0519e6}",
-                "icon": "%AppData%/ProgramIcons/vs11.ico",
-                "name": "VS Dev Cmd (AMD)",
-                "startingDirectory": "%UserProfile%\\Repos\\WORK"
-            },
-            {
                 "colorScheme": "Campbell Powershell",
                 "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NoExit -Command \"&{Import-Module \"\"\"C:\\BuildTools\\Common7\\Tools\\Microsoft.VisualStudio.DevShell.dll\"\"\"; Enter-VsDevShell 0d950e69 -SkipAutomaticLocation -DevCmdArguments \"\"\"-arch=x64 -host_arch=x64\"\"\"}\"",
                 "elevate": true,
                 "guid": "{561f6bb2-63b3-4077-a020-0cc21ac70eda}",
                 "hidden": true,
-                "icon": "%AppData%/ProgramIcons/vs11.ico",
+                "icon": "%AppData%/ProgramIcons/vs11-amd.ico",
                 "name": "VS Dev Powershell (AMD)"
             },
             {

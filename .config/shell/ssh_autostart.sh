@@ -17,21 +17,22 @@ agent_load_env
 # AGENT_RUN_STATE: 0=agent running w/ key; 1=agent w/o key; 2= agent not running
 AGENT_RUN_STATE=$(ssh-add -l >| /dev/null 2>&1; echo $?)
 
+echo -e "---------- Starting ssh-agent ----------"
 if [ ! "${SSH_AUTH_SOCK}" ] || [ ${AGENT_RUN_STATE} = 2 ]; then
-    echo -e "===== Starting ssh-agent ====="
     agent_start
     echo -e "Agent started."
 
-    echo -e "===== Adding keys ====="
+    echo -e "\n---------- Adding keys ----------"
     agent_add_keys
 
-    echo -e "===== Setting Windows SSH environment variables ====="
+    echo -e "\n---------- Setting Windows SSH environment variables ----------"
     echo -e "PID: ${SSH_AGENT_PID} | Socket: ${SSH_AUTH_SOCK})"
     setx SSH_AGENT_PID ${SSH_AGENT_PID}
     setx SSH_AUTH_SOCK ${SSH_AUTH_SOCK}
 
 elif [ "${SSH_AUTH_SOCK}" ] && [ ${AGENT_RUN_STATE} = 1 ]; then
-    echo -e "ssh-agent already started.\n===== Adding keys ====="
+    echo -e "ssh-agent already started."
+    echo -e "\n---------- Adding keys ----------"
     agent_add_keys
 fi
 
