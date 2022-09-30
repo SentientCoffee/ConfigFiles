@@ -28,9 +28,9 @@
       "ToastWindowDuration": 3.0,
       "ToastWindowFadeDuration": 1.0,
       "ToastWindowPlacement": "BottomRight",
-      "ToastWindowSize": "400, 300",
-      "ToastWindowLeftClickAction": "OpenUrl",
-      "ToastWindowRightClickAction": "CloseNotification",
+      "ToastWindowSize": "600, 450",
+      "ToastWindowLeftClickAction": "OpenFolder",
+      "ToastWindowRightClickAction": "CopyFilePath",
       "ToastWindowMiddleClickAction": "AnnotateImage",
       "ToastWindowAutoHide": true,
       "UseCustomCaptureSound": false,
@@ -40,7 +40,7 @@
       "UseCustomErrorSound": false,
       "CustomErrorSoundPath": "",
       "DisableNotifications": false,
-      "DisableNotificationsOnFullscreen": false,
+      "DisableNotificationsOnFullscreen": true,
       "PopUpNotification": "ToastNotification"
     },
     "UseDefaultImageSettings": true,
@@ -120,19 +120,19 @@
     },
     "UseDefaultCaptureSettings": true,
     "CaptureSettings": {
-      "ShowCursor": true,
+      "ShowCursor": false,
       "ScreenshotDelay": 0.0,
-      "CaptureTransparent": false,
-      "CaptureShadow": true,
+      "CaptureTransparent": true,
+      "CaptureShadow": false,
       "CaptureShadowOffset": 100,
       "CaptureClientArea": false,
-      "CaptureAutoHideTaskbar": false,
+      "CaptureAutoHideTaskbar": true,
       "CaptureCustomRegion": "0, 0, 0, 0",
       "SurfaceOptions": {
         "QuickCrop": true,
         "MinimumSize": 5,
-        "RegionCaptureActionRightClick": "RemoveShapeCancelCapture",
-        "RegionCaptureActionMiddleClick": "SwapToolType",
+        "RegionCaptureActionRightClick": "SwapToolType",
+        "RegionCaptureActionMiddleClick": "RemoveShape",
         "RegionCaptureActionX1Click": "CaptureFullscreen",
         "RegionCaptureActionX2Click": "CaptureActiveMonitor",
         "DetectWindows": true,
@@ -165,7 +165,7 @@
         "ShowInfo": true,
         "ShowMagnifier": true,
         "UseSquareMagnifier": false,
-        "MagnifierPixelCount": 7,
+        "MagnifierPixelCount": 5,
         "MagnifierPixelSize": 10,
         "ShowCrosshair": false,
         "UseLightResizeNodes": false,
@@ -250,8 +250,8 @@
           "HighlightColor": "Yellow"
         },
         "LastRegionTool": "RegionRectangle",
-        "LastAnnotationTool": "DrawingRectangle",
-        "LastEditorTool": "DrawingRectangle",
+        "LastAnnotationTool": "ToolSelect",
+        "LastEditorTool": "EffectHighlight",
         "ImageEditorStartMode": "AutoSize",
         "ImageEditorWindowState": {
           "Location": "0, 0",
@@ -276,14 +276,14 @@
       },
       "FFmpegOptions": {
         "OverrideCLIPath": false,
-        "CLIPath": "%ApplicationData%\\ShareX\\Tools\\ffmpeg.exe",
+        "CLIPath": "%UserProfile%\\bin\\ffmpeg\\bin\\ffmpeg.exe",
         "VideoSource": "GDI grab",
         "AudioSource": "None",
         "VideoCodec": "libx264",
         "AudioCodec": "libvoaacenc",
         "UserArgs": "",
         "UseCustomCommands": false,
-        "CustomCommands": "",
+        "CustomCommands": "-hide_banner -f gdigrab -thread_queue_size 1024 -rtbufsize 256M -framerate 30 -offset_x 0 -offset_y 0 -video_size 3840x2160 -draw_mouse 1 -i desktop -c:v libx264 -r 30 -preset ultrafast -tune zerolatency -crf 28 -pix_fmt yuv420p -movflags +faststart -y \"output.mp4\"",
         "x264_Preset": "ultrafast",
         "x264_CRF": 28,
         "x264_Use_Bitrate": false,
@@ -609,12 +609,12 @@
   "TaskbarProgressEnabled": true,
   "UseWhiteShareXIcon": false,
   "RememberMainFormPosition": false,
-  "MainFormPosition": "792, 671",
+  "MainFormPosition": "699, 370",
   "RememberMainFormSize": false,
-  "MainFormSize": "1644, 1128",
-  "TrayLeftClickAction": "RectangleRegion",
-  "TrayLeftDoubleClickAction": "OpenMainWindow",
-  "TrayMiddleClickAction": "ClipboardUploadWithContentViewer",
+  "MainFormSize": "2133, 1324",
+  "TrayLeftClickAction": "OpenMainWindow",
+  "TrayLeftDoubleClickAction": "OpenImageHistory",
+  "TrayMiddleClickAction": "RectangleRegion",
   "CheckPreReleaseUpdates": false,
   "UseDarkTheme": true,
   "UseCustomTheme": true,
@@ -734,7 +734,7 @@
   "TaskViewMode": "ThumbnailView",
   "ShowThumbnailTitle": true,
   "ThumbnailTitleLocation": "Top",
-  "ThumbnailSize": "200, 150",
+  "ThumbnailSize": "300, 225",
   "ThumbnailClickAction": "Default",
   "ShowColumns": true,
   "ImagePreview": "Automatic",
@@ -819,84 +819,84 @@
   "HistoryCheckURL": false,
   "RecentTasks": [
     {
-      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\WindowsTerminal_Neu9kzAWCi.png",
+      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\WindowsTerminal_1shBIrBaqe.png",
       "URL": null,
       "ThumbnailURL": null,
       "DeletionURL": null,
       "ShortenedURL": null,
-      "Time": "2022-09-21T13:35:37.9006597Z"
+      "Time": "2022-09-26T20:17:04.4497812Z"
     },
     {
-      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\WindowsTerminal_uuBFZpGENf.png",
+      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\WindowsTerminal_PxFL3diAjI.png",
       "URL": null,
       "ThumbnailURL": null,
       "DeletionURL": null,
       "ShortenedURL": null,
-      "Time": "2022-09-21T13:41:57.3955935Z"
+      "Time": "2022-09-26T20:25:08.1691048Z"
     },
     {
-      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\WindowsTerminal_BwEE3uoWDO.png",
+      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\brave_oM5RJoZ5mP.png",
       "URL": null,
       "ThumbnailURL": null,
       "DeletionURL": null,
       "ShortenedURL": null,
-      "Time": "2022-09-21T13:42:58.1215633Z"
+      "Time": "2022-09-28T20:08:53.5635881Z"
     },
     {
-      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\brave_qzL6YzaqKD.png",
+      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\brave_4sHeEb2sE3.png",
       "URL": null,
       "ThumbnailURL": null,
       "DeletionURL": null,
       "ShortenedURL": null,
-      "Time": "2022-09-22T00:23:02.1172202Z"
+      "Time": "2022-09-28T20:09:35.5273496Z"
     },
     {
-      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\WindowsTerminal_V4dVthsxmo.png",
+      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\brave_HjBk3g5U3A.png",
       "URL": null,
       "ThumbnailURL": null,
       "DeletionURL": null,
       "ShortenedURL": null,
-      "Time": "2022-09-26T17:40:43.316325Z"
+      "Time": "2022-09-29T03:37:05.2245536Z"
     },
     {
-      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\WindowsTerminal_DnskKjVYij.png",
+      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\Code_Ma9wJMaQ0s.png",
       "URL": null,
       "ThumbnailURL": null,
       "DeletionURL": null,
       "ShortenedURL": null,
-      "Time": "2022-09-26T17:42:43.7341256Z"
+      "Time": "2022-09-29T03:58:25.9928731Z"
     },
     {
-      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\I49w0DeNAR.png",
+      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\Code_emtEbl0d70.png",
       "URL": null,
       "ThumbnailURL": null,
       "DeletionURL": null,
       "ShortenedURL": null,
-      "Time": "2022-09-26T17:43:49.2381477Z"
+      "Time": "2022-09-29T03:59:49.2346071Z"
     },
     {
-      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\rnXsYQDH58.png",
+      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\brave_g6js5nDxGe.png",
       "URL": null,
       "ThumbnailURL": null,
       "DeletionURL": null,
       "ShortenedURL": null,
-      "Time": "2022-09-26T17:44:50.3447001Z"
+      "Time": "2022-09-29T16:26:22.7094122Z"
     },
     {
-      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\WindowsTerminal_c0H6xYEoWY.png",
+      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\brave_GbmT6dJeiZ.png",
       "URL": null,
       "ThumbnailURL": null,
       "DeletionURL": null,
       "ShortenedURL": null,
-      "Time": "2022-09-26T18:02:47.7901655Z"
+      "Time": "2022-09-29T16:28:32.6798231Z"
     },
     {
-      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\Code_fxmIj9NR2z.png",
+      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\dark_coffee_demo.gif",
       "URL": null,
       "ThumbnailURL": null,
       "DeletionURL": null,
       "ShortenedURL": null,
-      "Time": "2022-09-26T18:04:55.3757362Z"
+      "Time": "2022-09-29T20:53:24.1088081Z"
     }
   ],
   "RecentTasksSave": true,
@@ -948,7 +948,7 @@
   "AutoCaptureRepeatTime": 60.0,
   "AutoCaptureMinimizeToTray": true,
   "AutoCaptureWaitUpload": true,
-  "ScreenRecordRegion": "0, 0, 0, 0",
+  "ScreenRecordRegion": "0, 0, 3763, 2160",
   "ActionsToolbarList": [
     "RectangleRegion",
     "PrintScreen",

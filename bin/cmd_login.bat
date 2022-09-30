@@ -21,4 +21,4 @@ call %UserProfile%\bin\refresh_env.bat
 :: Start ssh-agent
 :: ---------------------------------------
 echo ---------- Starting ssh-agent ----------
-%UserProfile%\bin\start-ssh-agent.cmd
+%UserProfile%\bin\start_ssh_agent.bat
