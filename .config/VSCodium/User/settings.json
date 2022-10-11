@@ -157,15 +157,16 @@
   "terminal.integrated.automationProfile.linux":  {
     "path": "/usr/bin/sh",
     "args": [ "-c" ],
-    "icon": "run-all"
+    "icon": "run-all",
+    "color": "terminal.ansiYellow"
   },
   "terminal.integrated.profiles.linux": {
     "bash": {
-      "path": "bash",
+      "path": "/bin/bash",
       "icon": "terminal-bash"
     },
     "zsh": {
-      "path": "zsh"
+      "path": "/bin/zsh"
     },
     // "fish": {
     //   "path": "fish"
@@ -255,6 +256,7 @@
   "auto-comment-blocks.disabledLanguages": [
     "markdown",
     "plaintext",
+    "restructuredtext",
   ],
 
   "C_Cpp.default.cppStandard":                                  "c++17",
@@ -513,11 +515,14 @@
     "untitled",
   ],
   "todo-tree.general.tags": [
-    "brief", "name", "param",
+    "file", "brief", "name", "param",
     "return", "returns",
+    "defgroup", "addtogroup", "ingroup",
     "copydoc", "copyright",
     "remarks",
+    "private", "cond", "endcond",
 
+    "namespace",
     "<summary>", "</summary>",
     "<c>",  "</c>",
     "<p>",  "</p>",
@@ -533,11 +538,14 @@
   ],
   "todo-tree.general.tagGroups": {
     "DOC": [
-      "brief", "name", "param",
+      "file", "brief", "name", "param",
       "return", "returns",
+      "defgroup", "addtogroup", "ingroup",
       "copydoc", "copyright",
       "remarks",
+      "private", "cond", "endcond",
 
+      "namespace",
       "<summary>", "</summary>",
       "<c>",  "</c>",
       "<p>",  "</p>",
@@ -598,7 +606,7 @@
     },
   },
 
-  "vsicons.customIconFolderPath":      "${env:XDG_CONFIG_HOME}/VSCodium/User",
+  "vsicons.customIconFolderPath":      "~/.config/VSCodium/User",
   "vsicons.dontShowNewVersionMessage": true,
   "vsicons.associations.files":        [
     {
@@ -637,6 +645,17 @@
       [ "(", ")" ],
       [ "{", "}" ],
     ],
+  },
+
+  "[diff]": {
+    "editor.language.colorizedBracketPairs": [],
+    "editor.quickSuggestions":               {
+      "comments": "off",
+      "strings":  "off",
+      "other":    "off"
+    },
+
+    "files.trimTrailingWhitespace": false,
   },
 
   "[html]": {
@@ -707,6 +726,16 @@
     ],
   },
 
+  "[restructuredtext]": {
+    "editor.wordWrap":                      "on",
+    "editor.language.colorizedBracketPairs": [],
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "strings":  "off",
+      "other":    "off"
+    },
+  },
+
   "[scss]": {
     "editor.tabSize": 2,
   },
@@ -725,12 +754,6 @@
   "[yaml]": {
     "editor.tabSize": 2,
   },
-
-  // "[odin]": {
-  //   "alignment.surroundSpace"  : {
-  //     "colon": [ 1, 1 ],
-  //   },
-  // },
 
   // ---------------------------------------------------------------------------------------------
   // Editor colours
