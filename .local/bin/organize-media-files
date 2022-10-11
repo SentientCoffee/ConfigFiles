@@ -1,0 +1,37 @@
+#!/bin/sh
+
+if [ "$(id -u)" != "0" ]; then
+    echo "Error: ${0##*/} must be run as root."
+    exit 1
+fi
+
+echo "${PWD}"
+
+ls -1 | while read filename; do
+    new_name=$(echo "${filename}" | sed -E 's/Screenshot[^0-9]*([0-9]+)[^0-9]*([0-9]+)(.*)/\1_\2\3/')
+    [ "${new_name}" != "${filename}" ] && mv -v "${filename}" "${new_name}"
+done
+
+exiftool -overwrite_original -progress "-alldates<filename" "${PWD}"
+
+ls -1 | while read filename; do
+    [ -f "${filename}" ] || continue
+    date=$(echo "${filename}" | cut -c -15 | sed -E 's/[^0-9_]//g;s/_/ /;s/./&-/4;s/./&-/7;s/./&:/13;s/./&:/16')
+    printf "%s -> " "${filename}"
+    unshare --time sh -Cc "umask 777 && date -s \"${date}\" && : > \"${filename}.new\""
+    cp -aT -- "${filename}" "${filename}.new"
+    mv -f -- "${filename}.new" "${filename}"
+    touch -amd "${date}" "${filename}"
+done
+
+# ------------------------------------------------------------
+#
+# To be run in the shell if for whatever reason shit gets fucked up
+#
+# ls -1 | while read filename; do
+#     [ -f "${filename}" ] || continue
+#     date=$(echo "${filename}" | cut -c -15 | sed -E 's/[^0-9_]//g;s/_/ /;s/./&-/4;s/./&-/7;s/./&:/13;s/./&:/16')
+#     printf "%s -> %s\n" "${filename}" "${date}"
+#     touch -amd "${date}" "${filename}"
+# done
+#
