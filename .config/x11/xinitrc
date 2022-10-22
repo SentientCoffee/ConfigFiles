@@ -38,4 +38,5 @@ run pcmanfm -d                # > "${XDG_CACHE_HOME}/logs/pcmanfm.log"         2
 run picom -b                  # > "${XDG_CACHE_HOME}/logs/picom.log"           2>&1
 
 run lxsession -s "Awesome" -e "Awesome" # > "${XDG_CACHE_HOME}/logs/lxsession.log" 2>&1
+run dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 exec awesome --replace > "${XDG_CACHE_HOME}/logs/awesomewm.log" 2>&1
