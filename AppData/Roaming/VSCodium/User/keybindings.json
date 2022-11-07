@@ -332,5 +332,9 @@
       "key": "ctrl+k ctrl+r",
       "command": "-restructuredtext.showPreviewToSide",
       "when": "editorLangId == 'restructuredtext'"
+    },
+    {
+      "key": "ctrl+shift+j",
+      "command": "workbench.action.toggleMaximizedPanel"
     }
 ]

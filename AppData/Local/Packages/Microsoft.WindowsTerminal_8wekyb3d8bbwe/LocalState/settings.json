@@ -1,10 +1,10 @@
 {
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions": 
+    "actions":
     [
         {
-            "command": 
+            "command":
             {
                 "action": "copy",
                 "singleLine": false
@@ -24,28 +24,20 @@
             "keys": "alt+shift+w"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "closeTab"
             },
             "keys": "ctrl+shift+w"
         },
         {
-            "command": 
+            "command":
             {
                 "action": "splitPane",
                 "split": "auto",
                 "splitMode": "duplicate"
             },
             "keys": "alt+shift+d"
-        },
-        {
-            "command": 
-            {
-                "action": "sendInput",
-                "input": "cls\n\n"
-            },
-            "keys": "ctrl+l"
         }
     ],
     "copyFormatting": "none",
@@ -54,18 +46,20 @@
     "experimental.rendering.forceFullRepaint": true,
     "initialCols": 250,
     "initialRows": 60,
-    "profiles": 
+    "profiles":
     {
-        "defaults": 
+        "defaults":
         {
+            "antialiasingMode": "cleartype",
             "bellStyle": "window",
             "closeOnExit": "never",
             "colorScheme": "Dark Coffee",
-            "font": 
+            "font":
             {
                 "face": "FiraCode NF Retina",
-                "features": 
+                "features":
                 {
+                    "calt": 0,
                     "cv16": 1,
                     "ss01": 1,
                     "ss02": 1,
@@ -74,29 +68,45 @@
                     "ss06": 1,
                     "ss08": 1
                 },
-                "size": 9,
-                "weight": "normal"
+                "size": 9
             },
             "hidden": false,
+            "historySize": 10000,
+            "intenseTextStyle": "bright",
             "startingDirectory": "%UserProfile%",
             "useAcrylic": true
         },
-        "list": 
+        "list":
         [
             {
-                "commandline": "%SystemRoot%\\System32\\cmd.exe",
+                "commandline": "cmd.exe /k \"%UserProfile%\\bin\\cmd_autorun.bat\"",
                 "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
                 "name": "Command Prompt",
                 "useAcrylic": false
             },
             {
                 "background": "#0C260F",
-                "commandline": "C:/Program Files/Git/bin/bash.exe",
+                "commandline": "C:/Program Files/Git/bin/bash.exe --login -i",
                 "guid": "{f979b8bc-4b7b-4299-af09-79c6aaed1a5b}",
                 "icon": "C:/Program Files/Git/mingw64/share/git/git-for-windows.ico",
                 "name": "Git Bash"
             },
             {
+                "background": "#3A0809",
+                "commandline": "cmd.exe /k \"%UserProfile%\\bin\\cmd_autorun.bat & %UserProfile%\\bin\\start_ssh_agent.bat && ssh dbs-mkm-03\"",
+                "guid": "{4795e3a7-dd61-4f7e-b9a1-98f446291fbf}",
+                "icon": "%AppData%/ProgramIcons/amd-red.ico",
+                "name": "AMD Markham DBS"
+            },
+            {
+                "commandline": "cmd.exe /k \"\"C:\\BuildTools\\Common7\\Tools\\VsDevCmd.bat\" -arch=x64 -host_arch=x64 & %UserProfile%\\bin\\cmd_autorun.bat\"",
+                "guid": "{7163fec3-adaa-4658-a06a-8e3a2f0519e6}",
+                "icon": "%AppData%/ProgramIcons/vs11-amd.ico",
+                "name": "VS Dev Cmd (AMD)",
+                "startingDirectory": "W:\\"
+            },
+            {
+                "commandline": "cmd.exe /k \"\"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\Tools\\VsDevCmd.bat\" -arch=x64 -host_arch=x64 & %UserProfile%\\bin\\cmd_autorun.bat\"",
                 "guid": "{7cc284c1-30b6-5f58-b734-375c1b7827b8}",
                 "hidden": false,
                 "icon": "C:\\Users\\dapresas\\AppData\\Roaming\\ProgramIcons\\vs11.ico",
@@ -105,12 +115,13 @@
             },
             {
                 "colorScheme": "Campbell Powershell",
-                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NoLogo",
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "name": "Windows PowerShell"
             },
             {
                 "colorScheme": "Campbell Powershell",
+                "commandline": "powershell.exe -NoLogo -NoExit -Command \"& { Import-Module \"\"\"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\Tools\\Microsoft.VisualStudio.DevShell.dll\"\"\"; Enter-VsDevShell 0d950e69 -SkipAutomaticLocation -DevCmdArguments \"\"\"-arch=x64 -host_arch=x64\"\"\" }\"",
                 "guid": "{edce5b65-3da8-5ef8-a65e-3606608f9d12}",
                 "hidden": true,
                 "name": "VS Dev PowerShell",
@@ -118,7 +129,7 @@
             },
             {
                 "colorScheme": "Campbell Powershell",
-                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NoExit -Command \"&{Import-Module \"\"\"C:\\BuildTools\\Common7\\Tools\\Microsoft.VisualStudio.DevShell.dll\"\"\"; Enter-VsDevShell 0d950e69 -SkipAutomaticLocation -DevCmdArguments \"\"\"-arch=x64 -host_arch=x64\"\"\"}\"",
+                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NoExit -Command \"& { Import-Module \"\"\"C:\\BuildTools\\Common7\\Tools\\Microsoft.VisualStudio.DevShell.dll\"\"\"; Enter-VsDevShell 0d950e69 -SkipAutomaticLocation -DevCmdArguments \"\"\"-arch=x64 -host_arch=x64\"\"\" }\"",
                 "elevate": true,
                 "guid": "{561f6bb2-63b3-4077-a020-0cc21ac70eda}",
                 "hidden": true,
@@ -133,7 +144,7 @@
             }
         ]
     },
-    "schemes": 
+    "schemes":
     [
         {
             "background": "#0C0C0C",
@@ -368,6 +379,8 @@
     ],
     "tabSwitcherMode": "inOrder",
     "tabWidthMode": "equal",
+    "theme": "dark",
+    "useAcrylicInTabRow": true,
     "windowingBehavior": "useExisting",
     "wordDelimiters": " ./\\()\"'-_:,.;<>~!@#$%^&*|+=[]{}~?\u2502"
 }

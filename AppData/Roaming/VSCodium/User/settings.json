@@ -150,7 +150,8 @@
   "terminal.integrated.fontFamily":                "'FiraCode Nerd Font Mono', 'FiraCode NF', Hack, monospace",
   "terminal.integrated.fontSize":                  11,
   "terminal.integrated.fontWeight":                "300",
-  "terminal.integrated.fontWeightBold":            "700",
+  "terminal.integrated.fontWeightBold":            "300",
+  "terminal.integrated.drawBoldTextInBrightColors": true,
   "terminal.integrated.gpuAcceleration":           "on",
   "terminal.integrated.letterSpacing":             0,
   "terminal.integrated.lineHeight":                1.1,
@@ -164,24 +165,40 @@
   "terminal.integrated.profiles.windows": {
     "Command Prompt": {
       "path": [
-        "${env:WinDir}\\Sysnative\\cmd.exe",
         "${env:WinDir}\\System32\\cmd.exe",
+        "${env:WinDir}\\Sysnative\\cmd.exe",
       ],
-      "args":         [],
+      "args": [
+        "/k",
+        "${env:UserProfile}\\bin\\cmd_autorun.bat"
+      ],
       "icon":         "terminal-cmd",
       "color":        "terminal.ansiWhite",
       "overrideName": true
     },
-    "PowerShell": {
-      "source":       "PowerShell",
-      "icon":         "terminal-powershell",
-      "color":        "terminal.ansiBlue",
+    "VS Dev Cmd (AMD)": {
+      "path": [
+        "${env:WinDir}\\System32\\cmd.exe",
+        "${env:WinDir}\\Sysnative\\cmd.exe",
+      ],
+      "args": [
+        "/k",
+        "${env:UserProfile}\\bin\\cmd_autorun.bat & C:\\BuildTools\\Common7\\Tools\\VsDevCmd.bat -arch=x64 -host_arch=x64"
+      ],
+      "icon":         "code",
+      "color":        "terminal.ansiWhite",
       "overrideName": true
     },
     "Git Bash": {
       "source":       "Git Bash",
       "icon":         "git-merge",
       "color":        "terminal.ansiGreen",
+      "overrideName": true
+    },
+    "PowerShell": {
+      "source":       "PowerShell",
+      "icon":         "terminal-powershell",
+      "color":        "terminal.ansiBlue",
       "overrideName": true
     },
   },
@@ -380,6 +397,9 @@
   "discord.lowerDetailsEditing":    "{workspace}",
   "discord.lowerDetailsIdling":     "No workspace",
   "discord.removeRemoteRepository": true,
+
+  "esbonio.server.enabledInPyFiles": false,
+  "esbonio.sphinx.numJobs":          0,
 
   "github.gitAuthentication": true,
   "github.gitProtocol":       "ssh",
