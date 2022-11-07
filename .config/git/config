@@ -10,3 +10,5 @@
 [alias]
     gconf = "config --global --edit"
     lconf = "config --local --edit"
+[color]
+    ui = auto

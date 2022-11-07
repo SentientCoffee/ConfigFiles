@@ -10,6 +10,8 @@ agent_start () {
 agent_add_keys () {
     ssh-add "${HOME}/.ssh/id_ed25519"
     ssh-add "${HOME}/.ssh/id_ed25519_ontariotech"
+    ssh-add "${HOME}/.ssh/id_ed25519_dbs-mkm"
+    ssh-add "${HOME}/.ssh/id_ed25519_gerrit"
 }
 
 agent_load_env

@@ -1,8 +1,5 @@
-alias sudo="sudo -v ; sudo "
-
-alias cat="bat"
-alias chmod="sudo chmod -cR"
-alias chown="sudo chown -cR"
+alias chmod="chmod -cR"
+alias chown="chown -cR"
 alias cls="clear"
 alias code="code -r"
 alias codium="codium -r"
@@ -36,7 +33,7 @@ alias ka="killall -v"
 
 alias lg="lazygit"
 alias lg-dotfiles="lazygit -g \"${HOME}/.dotfiles\" -w \"${HOME}\""
-alias ll="ls -Ahl --color=auto --group-directories-first"
+alias ll="ls -ANhl --color=auto --group-directories-first"
 alias ln="ln -iv"
 alias locate="locate -d ${UPDATEDB_DIR}/locate.db"
 alias ls="ls -F --color=auto --group-directories-first"
@@ -48,9 +45,12 @@ alias rm="rm -iv"
 alias rmdir="rmdir -v"
 
 alias updatedb="mkdir -p ${UPDATEDB_DIR} ; updatedb --output=${UPDATEDB_DIR}/locate.db"
-alias usermod="sudo usermod"
 
 alias xargs-I="xargs -I {} "
 
 [ -n "${ZSH_VERSION}"  ] && alias refresh="source ${XDG_CONFIG_HOME}/zsh/.zshrc ; rehash ; updatedb"
 [ -n "${BASH_VERSION}" ] && alias refresh="source ${HOME}/.bashrc ; updatedb"
+
+# ---------------------------------------------------
+
+mkcd () { mkdir -pv ${1} && cd ${1} || exit 1; }

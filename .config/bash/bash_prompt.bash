@@ -47,7 +47,7 @@ BG_BRIGHT_WHITE="107"
 
 # Symbols
 CURRENT_TTY=$(tty)
-if [[ ${CURRENT_TTY} =~ "/dev/cons" && $EUID -ne 0 ]]; then
+if [[ ${CURRENT_TTY} =~ "/dev/cons" ]]; then
     STARTER=""
     SEPARATOR=""
     ENDER=""
@@ -92,6 +92,7 @@ source "${XDG_CONFIG_HOME}/shell/git_prompt.sh"
 make_ps1_prompt () {
     RETURN_CODE="$?"
     RETURN_CODE="${RETURN_CODE##0}"
+    DIRECTORY=$(dirs -p | sed ':a;N;$!ba;s/\n/ ❯ /g')
 
     echo -n "${START_COLOR_1}${STARTER}"
 
@@ -101,7 +102,7 @@ make_ps1_prompt () {
     echo -n "${TRANSITION_COLOR_1_1}${SEPARATOR}"
     echo -n "${DIRECTORY_COLOR} ${DIRECTORY} "
 
-    get_git_info
+    GIT_INFO=$(get_git_info)
     if [[ -n $GIT_INFO ]]; then
         printf -v TRANSITION_COLOR_1_2 "\[\e[%s;%sm\]" "$FG_GREEN"          "$GIT_COLOR_HINT_BG"
         printf -v GIT_COLOR            "\[\e[%s;%sm\]" "$FG_BRIGHT_WHITE"   "$GIT_COLOR_HINT_BG"
@@ -115,21 +116,19 @@ make_ps1_prompt () {
         echo -n "${RESET}${TRANSITION_COLOR_1_2}${SEPARATOR}"
     fi
 
-    echo -n "${BOLD}${ENDER}${RESET}${NEWLINE}"
+    echo -n "${ENDER}${RESET}${NEWLINE}"
 
-    if [[ -n $RETURN_CODE ]]; then
-        echo -n "${RETURN_CODE_COLOR}${RETURN_CODE} "
-    fi
+    echo -n "${RETURN_CODE:+${RETURN_CODE_COLOR}${RETURN_CODE} }"
 
     echo -n "${RESET}${START_COLOR_2}${STARTER}"
     echo -n "${RESET}${SHELL_COLOR} ${SHELL_PROMPT} "
-    echo -n "${RESET}${TRANSITION_COLOR_2_1}${SEPARATOR}${BOLD}${ENDER}${RESET} "
+    echo -n "${RESET}${TRANSITION_COLOR_2_1}${SEPARATOR}${ENDER}${RESET} "
 }
 
 make_ps2_prompt () {
     echo -n "${RESET}${START_COLOR_2}${STARTER}"
     echo -n "${RESET}${SHELL_COLOR} ${SHELL_PROMPT} "
-    echo -n "${RESET}${TRANSITION_COLOR_2_1}${SEPARATOR}${BOLD}${ENDER}${RESET} "
+    echo -n "${RESET}${TRANSITION_COLOR_2_1}${SEPARATOR}${ENDER}${RESET} "
 }
 
 make_bash_prompt () {
@@ -141,7 +140,7 @@ make_bash_prompt () {
 }
 
 # Final output
-PROMPT_COMMAND=$(echo make_bash_prompt)
+PROMPT_COMMAND=make_bash_prompt
 
 # No sense in reprogramming this with PROMPT_COMMAND
 # If this ends up being dynamic, move inside make_bash_prompt as well
