@@ -43,11 +43,6 @@
         }
     },
     {
-        "key": "ctrl+alt+=",
-        "command": "wwm.aligncode",
-        "when": "editorTextFocus"
-    },
-    {
         "key": "ctrl+-",
         "command": "-workbench.action.navigateBack"
     },
@@ -294,7 +289,10 @@
     },
     {
       "key": "ctrl+,",
-      "command": "-workbench.action.openSettings"
+      "command": "-workbench.action.openSettings",
+      "args": {
+        "openToSide": true
+      }
     },
     {
       "key": "ctrl+shift+,",
@@ -336,5 +334,35 @@
     {
       "key": "ctrl+shift+j",
       "command": "workbench.action.toggleMaximizedPanel"
+    },
+    {
+      "key": "ctrl+alt+=",
+      "command": "vscode-better-align.align",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "alt+a",
+      "command": "-vscode-better-align.align",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "ctrl+c",
+      "command": "-workbench.action.terminal.copySelection",
+      "when": "terminalFocus && terminalHasBeenCreated && terminalTextSelected || terminalFocus && terminalProcessSupported && terminalTextSelected"
+    },
+    {
+      "key": "ctrl+v",
+      "command": "-workbench.action.terminal.paste",
+      "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+    },
+    {
+      "key": "ctrl+shift+w",
+      "command": "workbench.action.terminal.killEditor",
+      "when": "terminalEditorFocus && terminalFocus && terminalHasBeenCreated && resourceScheme == 'vscode-terminal' || terminalEditorFocus && terminalFocus && terminalProcessSupported && resourceScheme == 'vscode-terminal'"
+    },
+    {
+      "key": "ctrl+w",
+      "command": "-workbench.action.terminal.killEditor",
+      "when": "terminalEditorFocus && terminalFocus && terminalHasBeenCreated && resourceScheme == 'vscode-terminal' || terminalEditorFocus && terminalFocus && terminalProcessSupported && resourceScheme == 'vscode-terminal'"
     }
 ]

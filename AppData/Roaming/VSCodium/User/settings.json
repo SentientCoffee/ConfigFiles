@@ -176,6 +176,23 @@
       "color":        "terminal.ansiWhite",
       "overrideName": true
     },
+    "VS Dev Cmd": {
+      "path": [
+        "${env:WinDir}\\System32\\cmd.exe",
+        "${env:WinDir}\\Sysnative\\cmd.exe",
+      ],
+      "args": [
+        "/k",
+        "${env:UserProfile}\\bin\\cmd_autorun.bat",
+        "&",
+        "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\Tools\\VsDevCmd.bat",
+        "-arch=x64",
+        "-host_arch=x64"
+      ],
+      "icon":         "code",
+      "color":        "terminal.ansiWhite",
+      "overrideName": true
+    },
     "VS Dev Cmd (AMD)": {
       "path": [
         "${env:WinDir}\\System32\\cmd.exe",
@@ -183,7 +200,11 @@
       ],
       "args": [
         "/k",
-        "${env:UserProfile}\\bin\\cmd_autorun.bat & C:\\BuildTools\\Common7\\Tools\\VsDevCmd.bat -arch=x64 -host_arch=x64"
+        "${env:UserProfile}\\bin\\cmd_autorun.bat",
+        "&",
+        "C:\\BuildTools\\Common7\\Tools\\VsDevCmd.bat",
+        "-arch=x64",
+        "-host_arch=x64"
       ],
       "icon":         "code",
       "color":        "terminal.ansiWhite",
@@ -207,14 +228,15 @@
 
   "window.confirmBeforeClose": "keyboardOnly",
   "window.title":              "${appName}${separator}${rootName}${separator}${activeFolderMedium}${separator}${activeEditorShort} ${dirty}",
-  "window.titleBarStyle":      "custom",
+  "window.titleBarStyle": "custom",
 
-  "workbench.colorTheme":            "Dark Coffee",
-  "workbench.iconTheme":             "vscode-icons",
-  "workbench.layoutControl.enabled": false,
-  "workbench.startupEditor":         "none",
-  "workbench.sideBar.location":      "right",
-  "workbench.editorAssociations":    {
+  "workbench.colorTheme":                "Dark Coffee",
+  "workbench.editor.splitInGroupLayout": "vertical",
+  "workbench.iconTheme":                 "vscode-icons",
+  "workbench.layoutControl.enabled":     false,
+  "workbench.startupEditor":             "none",
+  "workbench.sideBar.location":          "right",
+  "workbench.editorAssociations":        {
     "*.ipynb": "jupyter-notebook"
   },
 
@@ -227,15 +249,6 @@
   // ---------------------------------------------------------------------------------------------
   // Extensions settings
   // ---------------------------------------------------------------------------------------------
-
-  "alignment.indentBase":      "activeline",
-  "alignment.operatorPadding": "right",
-  "alignment.surroundSpace":   {
-    "colon":      [ -1, 1 ],
-    "assignment": [  1, 1 ],
-    "arrow":      [  1, 1 ],
-    "comment":    2,
-  },
 
   "atlascode.bitbucket.enabled":                  false,
   "atlascode.jira.explorer.enabled":              true,
@@ -281,9 +294,18 @@
     "restructuredtext",
   ],
 
+  "betterAlign.indentBase":      "activeline",
+  "betterAlign.operatorPadding": "right",
+  "betterAlign.surroundSpace":   {
+    "colon":      [ -1, 1 ],
+    "assignment": [  1, 1 ],
+    "arrow":      [  1, 1 ],
+    "comment":    2,
+  },
+
   "C_Cpp.default.cppStandard":                                  "c++17",
   "C_Cpp.dimInactiveRegions":                                   true,
-  "C_Cpp.enhancedColorization":                                 "Enabled",
+  "C_Cpp.enhancedColorization":                                 "enabled",
   "C_Cpp.formatting":                                           "vcFormat",
   "C_Cpp.inactiveRegionOpacity":                                0.55,
   "C_Cpp.vcFormat.indent.accessSpecifiers":                     false,
@@ -401,6 +423,11 @@
   "esbonio.server.enabledInPyFiles": false,
   "esbonio.sphinx.numJobs":          0,
 
+  "fileutils.duplicateFile.typeahead.enabled": false,
+  "fileutils.moveFile.typeahead.enabled":      false,
+  "fileutils.newFile.typeahead.enabled":       true,
+  "fileutils.newFolder.typeahead.enabled":     true,
+
   "github.gitAuthentication": true,
   "github.gitProtocol":       "ssh",
 
@@ -511,6 +538,11 @@
   "omnisharp.enableRoslynAnalyzers":      true,
   "omnisharp.organizeImportsOnFormat":    true,
 
+  "powershell.integratedConsole.showOnStartup":         false,
+  "powershell.integratedConsole.suppressStartupBanner": true,
+  "powershell.promptToUpdatePowerShell":                false,
+  "powershell.enableReferencesCodeLens":                false,
+
   "python.defaultInterpreterPath":        "C:\\Program Files\\Python38\\python.exe",
   "python.diagnostics.sourceMapsEnabled": true,
   "python.languageServer":                "Pylance",
@@ -521,13 +553,18 @@
     "dbs-mkm-03": "linux"
   },
 
+  "restructuredtext.linter.run":                    "onSave",
+  "restructuredtext.preview.fontFamily":            "Scada, Karmina, Roboto, Helvetica, sans-serif",
+  "restructuredtext.preview.fontSize":              14,
+  "restructuredtext.pythonRecommendation.disabled": true,
+
   "todo-tree.filtering.useBuiltInExcludes":        "file and search excludes",
   "todo-tree.general.debug":                       true,
   "todo-tree.general.enableFileWatcher":           true,
   "todo-tree.general.revealBehaviour":             "start of todo",
   "todo-tree.highlights.highlightDelay":           100,
   "todo-tree.regex.enableMultiLine":               false,
-  "todo-tree.regex.regex":                         "(?<!://)(?<=//|/\\*|///|/\\*\\*|#|<!--)[^\\S\\r\\n]*((?:(?:@?($TAGS)[,:;?]?)|(?:@(\\w+|@+)[,:;?]?))([(][^)]*[)][,:;?]?)?)(.*)",
+  "todo-tree.regex.regex":                         "(?<!://)(?<=//|/\\*|///|/\\*\\*|#|<!--)[^\\S\\r\\n]*((?:(?:(?:@|\\\\)?($TAGS)\\b[,:;?]?)|(?:@(\\w+|@+)[,:;?]?))([(][^)]*[)][,:;?]?)?)(.*)",
   "todo-tree.regex.regexCaseSensitive":            false,
   "todo-tree.ripgrep.ripgrepArgs":                 "--max-columns=300 --no-config --pcre2",
   "todo-tree.tree.autoRefresh":                    true,
@@ -557,46 +594,41 @@
     "untitled",
   ],
   "todo-tree.general.tags": [
-    "file", "brief", "name", "param",
-    "return", "returns",
-    "defgroup", "addtogroup", "ingroup",
-    "copydoc", "copyright",
-    "remarks",
-    "private", "cond", "endcond",
-
-    "namespace",
+    "Note",
+    "file", "brief", "name", "param", "enum", "namespace", "return", "returns",
+    "remarks", "see", "private", "cond", "endcond",
+    "defgroup", "addtogroup", "ingroup", "copydoc", "copyright",
     "<summary>", "</summary>",
     "<c>",  "</c>",
     "<p>",  "</p>",
     "<br>", "</br>",
-
-    "Note",
-    "Reference",
-    "Temporary", "Temp", "Hack",
-    "Test", "Testing", "Robustness",
-    "Todo", "Cleanup", "Incomplete", "Volatile", "Refactor",
+    "@c",
 
     "NoCommit", "NoCheckIn",
+
+    "Reference",
+
+    "Temporary", "Temp", "Temporarily", "Hack",
+
+    "Test", "Testing", "Robustness",
+
+    "Todo", "Cleanup", "Incomplete", "Volatile", "Refactor",
   ],
   "todo-tree.general.tagGroups": {
     "DOC": [
-      "file", "brief", "name", "param",
-      "return", "returns",
-      "defgroup", "addtogroup", "ingroup",
-      "copydoc", "copyright",
-      "remarks",
-      "private", "cond", "endcond",
-
-      "namespace",
+      "Note",
+      "file", "brief", "name", "param", "enum", "namespace", "return", "returns",
+      "remarks", "see", "private", "cond", "endcond",
+      "defgroup", "addtogroup", "ingroup", "copydoc", "copyright",
       "<summary>", "</summary>",
       "<c>",  "</c>",
       "<p>",  "</p>",
       "<br>", "</br>",
-
-      "Note",
+      "@c",
     ],
+    "NOCOMMIT":  [ "NoCommit", "NoCheckIn", ],
     "REFERENCE": [ "Reference", ],
-    "TEMPORARY": [ "Temporary", "Temp", "Hack", "NoCommit", "NoCheckIn", ],
+    "TEMPORARY": [ "Temporary", "Temp", "Temporarily", "Hack", ],
     "TEST":      [ "Test", "Testing", "Robustness", ],
     "TODO":      [ "Todo", "Cleanup", "Incomplete", "Volatile", "Refactor", ],
   },
@@ -619,6 +651,14 @@
       "hideFromTree":      true,
       "hideFromStatusBar": true,
       "rulerColor":        "#5BD35F",
+    },
+    "NOCOMMIT": {
+      "type":              "capture-groups:1,4",
+      "foreground":        "#DD3636",
+      "icon":              "stop",
+      "iconColour":        "#DD3636",
+      "textDecoration":    "underline double",
+      "rulerColor":        "#DD3636",
     },
     "REFERENCE": {
       "type":              "capture-groups:1,4,5",
