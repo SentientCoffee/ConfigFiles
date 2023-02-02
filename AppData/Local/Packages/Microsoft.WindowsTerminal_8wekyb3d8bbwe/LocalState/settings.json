@@ -85,13 +85,6 @@
                 "useAcrylic": false
             },
             {
-                "background": "#0C260F",
-                "commandline": "C:/Program Files/Git/bin/bash.exe --login -i",
-                "guid": "{f979b8bc-4b7b-4299-af09-79c6aaed1a5b}",
-                "icon": "C:/Program Files/Git/mingw64/share/git/git-for-windows.ico",
-                "name": "Git Bash"
-            },
-            {
                 "background": "#3A0809",
                 "commandline": "cmd.exe /k \"%UserProfile%\\bin\\cmd_autorun.bat & %UserProfile%\\bin\\start_ssh_agent.bat && ssh dbs-mkm-03\"",
                 "guid": "{4795e3a7-dd61-4f7e-b9a1-98f446291fbf}",
@@ -114,10 +107,17 @@
                 "source": "Windows.Terminal.VisualStudio"
             },
             {
-                "colorScheme": "Campbell Powershell",
+                "background": "#0f223d",
                 "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NoLogo",
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "name": "Windows PowerShell"
+            },
+            {
+                "background": "#0C260F",
+                "commandline": "C:/Program Files/Git/bin/bash.exe --login -i",
+                "guid": "{f979b8bc-4b7b-4299-af09-79c6aaed1a5b}",
+                "icon": "C:/Program Files/Git/mingw64/share/git/git-for-windows.ico",
+                "name": "Git Bash"
             },
             {
                 "colorScheme": "Campbell Powershell",
