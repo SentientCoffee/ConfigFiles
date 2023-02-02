@@ -165,7 +165,7 @@
         "ShowInfo": true,
         "ShowMagnifier": true,
         "UseSquareMagnifier": false,
-        "MagnifierPixelCount": 5,
+        "MagnifierPixelCount": 15,
         "MagnifierPixelSize": 10,
         "ShowCrosshair": false,
         "UseLightResizeNodes": false,
@@ -204,10 +204,10 @@
           "LineCenterPointCount": 1,
           "ArrowHeadDirection": "End",
           "TextOutlineOptions": {
-            "Font": "Arial",
-            "Size": 25,
+            "Font": "Consolas",
+            "Size": 7,
             "Color": "White",
-            "Bold": true,
+            "Bold": false,
             "Italic": false,
             "Underline": false,
             "AlignmentHorizontal": "Center",
@@ -220,8 +220,8 @@
           "TextOutlineBorderColor": "242, 60, 60",
           "TextOutlineBorderSize": 5,
           "TextOptions": {
-            "Font": "Arial",
-            "Size": 18,
+            "Font": "FiraCode NFM",
+            "Size": 7,
             "Color": "White",
             "Bold": false,
             "Italic": false,
@@ -245,13 +245,15 @@
           "MagnifyStrength": 200,
           "StickerSize": 64,
           "LastStickerPath": null,
-          "BlurRadius": 35,
+          "BlurRadius": 57,
           "PixelateSize": 15,
-          "HighlightColor": "Yellow"
+          "HighlightColor": "Yellow",
+          "CutOutEffectType": "None",
+          "CutOutEffectSize": 10
         },
         "LastRegionTool": "RegionRectangle",
-        "LastAnnotationTool": "ToolSelect",
-        "LastEditorTool": "EffectHighlight",
+        "LastAnnotationTool": "EffectHighlight",
+        "LastEditorTool": "DrawingEllipse",
         "ImageEditorStartMode": "AutoSize",
         "ImageEditorWindowState": {
           "Location": "0, 0",
@@ -432,6 +434,7 @@
         "Orientation": "Vertical",
         "Alignment": "LeftOrTop",
         "Space": 0,
+        "WrapAfter": 0,
         "AutoFillBackground": false
       },
       "VideoConverterOptions": {
@@ -609,9 +612,9 @@
   "TaskbarProgressEnabled": true,
   "UseWhiteShareXIcon": false,
   "RememberMainFormPosition": false,
-  "MainFormPosition": "699, 370",
+  "MainFormPosition": "1428, 876",
   "RememberMainFormSize": false,
-  "MainFormSize": "2133, 1324",
+  "MainFormSize": "1143, 642",
   "TrayLeftClickAction": "OpenMainWindow",
   "TrayLeftDoubleClickAction": "OpenImageHistory",
   "TrayMiddleClickAction": "RectangleRegion",
@@ -621,24 +624,24 @@
   "Themes": [
     {
       "Name": "Dark",
-      "BackgroundColor": "42, 47, 56",
-      "LightBackgroundColor": "52, 57, 65",
-      "DarkBackgroundColor": "28, 32, 38",
-      "TextColor": "235, 235, 235",
-      "BorderColor": "28, 32, 38",
-      "CheckerColor": "60, 60, 60",
-      "CheckerColor2": "50, 50, 50",
+      "BackgroundColor": "39, 39, 39",
+      "LightBackgroundColor": "46, 46, 46",
+      "DarkBackgroundColor": "34, 34, 34",
+      "TextColor": "231, 233, 234",
+      "BorderColor": "31, 31, 31",
+      "CheckerColor": "46, 46, 46",
+      "CheckerColor2": "39, 39, 39",
       "CheckerSize": 15,
       "LinkColor": "166, 212, 255",
-      "MenuHighlightColor": "30, 34, 40",
-      "MenuHighlightBorderColor": "116, 129, 152",
-      "MenuBorderColor": "22, 26, 31",
-      "MenuCheckBackgroundColor": "56, 64, 75",
+      "MenuHighlightColor": "46, 46, 46",
+      "MenuHighlightBorderColor": "63, 63, 63",
+      "MenuBorderColor": "63, 63, 63",
+      "MenuCheckBackgroundColor": "51, 51, 51",
       "MenuFont": "Segoe UI, 9.75pt",
       "ContextMenuFont": "Segoe UI, 9.75pt",
       "ContextMenuOpacity": 100,
-      "SeparatorLightColor": "56, 64, 75",
-      "SeparatorDarkColor": "22, 26, 31"
+      "SeparatorLightColor": "44, 44, 44",
+      "SeparatorDarkColor": "31, 31, 31"
     },
     {
       "Name": "Light",
@@ -660,6 +663,27 @@
       "ContextMenuOpacity": 100,
       "SeparatorLightColor": "253, 253, 253",
       "SeparatorDarkColor": "189, 189, 189"
+    },
+    {
+      "Name": "Night",
+      "BackgroundColor": "42, 47, 56",
+      "LightBackgroundColor": "52, 57, 65",
+      "DarkBackgroundColor": "28, 32, 38",
+      "TextColor": "235, 235, 235",
+      "BorderColor": "28, 32, 38",
+      "CheckerColor": "60, 60, 60",
+      "CheckerColor2": "50, 50, 50",
+      "CheckerSize": 15,
+      "LinkColor": "166, 212, 255",
+      "MenuHighlightColor": "30, 34, 40",
+      "MenuHighlightBorderColor": "116, 129, 152",
+      "MenuBorderColor": "22, 26, 31",
+      "MenuCheckBackgroundColor": "56, 64, 75",
+      "MenuFont": "Segoe UI, 9.75pt",
+      "ContextMenuFont": "Segoe UI, 9.75pt",
+      "ContextMenuOpacity": 100,
+      "SeparatorLightColor": "56, 64, 75",
+      "SeparatorDarkColor": "22, 26, 31"
     },
     {
       "Name": "Nord Dark",
@@ -725,7 +749,7 @@
       "SeparatorDarkColor": "33, 35, 43"
     }
   ],
-  "SelectedTheme": 4,
+  "SelectedTheme": 5,
   "UseCustomScreenshotsPath": true,
   "CustomScreenshotsPath": "%MyPictures%\\Screenshots",
   "SaveImageSubFolderPattern": "",
@@ -819,84 +843,84 @@
   "HistoryCheckURL": false,
   "RecentTasks": [
     {
-      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\WindowsTerminal_1shBIrBaqe.png",
+      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\brave_htLWBmIyrz.jpg",
       "URL": null,
       "ThumbnailURL": null,
       "DeletionURL": null,
       "ShortenedURL": null,
-      "Time": "2022-09-26T20:17:04.4497812Z"
+      "Time": "2023-01-24T04:01:36.1233862Z"
     },
     {
-      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\WindowsTerminal_PxFL3diAjI.png",
+      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\brave_pJYftGGpPH.jpg",
       "URL": null,
       "ThumbnailURL": null,
       "DeletionURL": null,
       "ShortenedURL": null,
-      "Time": "2022-09-26T20:25:08.1691048Z"
+      "Time": "2023-01-24T04:12:29.5410871Z"
     },
     {
-      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\brave_oM5RJoZ5mP.png",
+      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\brave_FBepSwXVhi.png",
       "URL": null,
       "ThumbnailURL": null,
       "DeletionURL": null,
       "ShortenedURL": null,
-      "Time": "2022-09-28T20:08:53.5635881Z"
+      "Time": "2023-01-24T16:30:53.7410837Z"
     },
     {
-      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\brave_4sHeEb2sE3.png",
+      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\remedybg_oHNHJwPdHT.png",
       "URL": null,
       "ThumbnailURL": null,
       "DeletionURL": null,
       "ShortenedURL": null,
-      "Time": "2022-09-28T20:09:35.5273496Z"
+      "Time": "2023-01-24T18:58:05.7807398Z"
     },
     {
-      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\brave_HjBk3g5U3A.png",
+      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\brave_bFX4fgAav6.png",
       "URL": null,
       "ThumbnailURL": null,
       "DeletionURL": null,
       "ShortenedURL": null,
-      "Time": "2022-09-29T03:37:05.2245536Z"
+      "Time": "2023-01-24T21:37:24.3360548Z"
     },
     {
-      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\Code_Ma9wJMaQ0s.png",
+      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\WindowsTerminal_7orCpWPiC3.png",
       "URL": null,
       "ThumbnailURL": null,
       "DeletionURL": null,
       "ShortenedURL": null,
-      "Time": "2022-09-29T03:58:25.9928731Z"
+      "Time": "2023-01-26T01:15:00.4186802Z"
     },
     {
-      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\Code_emtEbl0d70.png",
+      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\WindowsTerminal_FjXyYkCYBM.png",
       "URL": null,
       "ThumbnailURL": null,
       "DeletionURL": null,
       "ShortenedURL": null,
-      "Time": "2022-09-29T03:59:49.2346071Z"
+      "Time": "2023-01-26T02:19:55.3881502Z"
     },
     {
-      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\brave_g6js5nDxGe.png",
+      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\WindowsTerminal_Aybg7uFfLp.png",
       "URL": null,
       "ThumbnailURL": null,
       "DeletionURL": null,
       "ShortenedURL": null,
-      "Time": "2022-09-29T16:26:22.7094122Z"
+      "Time": "2023-01-26T02:32:49.2582092Z"
     },
     {
-      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\brave_GbmT6dJeiZ.png",
+      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\WindowsTerminal_5ZJgg0vLSI.png",
       "URL": null,
       "ThumbnailURL": null,
       "DeletionURL": null,
       "ShortenedURL": null,
-      "Time": "2022-09-29T16:28:32.6798231Z"
+      "Time": "2023-01-26T04:19:10.4166384Z"
     },
     {
-      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\dark_coffee_demo.gif",
+      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\Code_TdNGWepUf8.png",
       "URL": null,
       "ThumbnailURL": null,
       "DeletionURL": null,
       "ShortenedURL": null,
-      "Time": "2022-09-29T20:53:24.1088081Z"
+      "Time": "2023-01-27T10:17:21.5783933Z"
     }
   ],
   "RecentTasksSave": true,
@@ -948,7 +972,7 @@
   "AutoCaptureRepeatTime": 60.0,
   "AutoCaptureMinimizeToTray": true,
   "AutoCaptureWaitUpload": true,
-  "ScreenRecordRegion": "0, 0, 3763, 2160",
+  "ScreenRecordRegion": "1068, 324, 1663, 1836",
   "ActionsToolbarList": [
     "RectangleRegion",
     "PrintScreen",
@@ -995,5 +1019,5 @@
   "DropAlignment": "BottomRight",
   "DropOpacity": 100,
   "DropHoverOpacity": 255,
-  "ApplicationVersion": "14.1.0"
+  "ApplicationVersion": "15.0.0"
 }
