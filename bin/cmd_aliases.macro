@@ -1,0 +1,18 @@
+cat=%UserProfile%\bin\bat\bat.exe $*
+cd=cd /d $*
+
+git-dotfiles=git --git-dir %UserProfile%\.dotfiles --work-tree %UserProfile% $*
+
+lg=%UserProfile%\bin\lazygit\lazygit $*
+lg-dotfiles=%UserProfile%\bin\lazygit\lazygit -g %UserProfile%\.dotfiles -w %UserProfile% $*
+ll=dir /n /oG $*
+ls=dir /w /oG $*
+ls1=dir /b /oG $*
+
+ka=for /f "tokens=2" %%p in ('tasklist /nh ^^^| findstr /i "$*"') do @(taskkill /f /pid %%p)
+
+mkcd=mkdir $1 $T chdir /d $1
+
+refresh=%UserProfile%\bin\refresh_env.bat $T %UserProfile%\bin\cmd_autorun.bat
+
+ssh-dbs="C:\Program Files\Git\usr\bin\ssh" dbs-mkm-03
