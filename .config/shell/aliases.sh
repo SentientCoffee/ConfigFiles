@@ -36,9 +36,9 @@ alias nft="sudo nft"
 alias nvidia-settings="nvidia-settings --config=\"${XDG_CONFIG_HOME}/nvidia/settings\""
 
 # alias reboot="sudo reboot"
-alias rm="rm -iv"
+alias rm="/bin/rm -iv"
 alias rmdir="rmdir -v"
-alias rmrf="rm -rf"
+alias rmrf="/bin/rm -rf"
 
 alias shutdown="sudo shutdown now"
 

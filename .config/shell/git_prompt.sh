@@ -1,30 +1,40 @@
-BRANCH_ICON="שׂ"
+#!/bin/sh
+
+BRANCH_ICON=""
 STATUS_CLEAN=""
 STATUS_SEPARATOR="❯"
 
-UNTRACKED_SYMBOL=""
-UNSTAGED_SYMBOL=""
-STAGED_SYMBOL=""
+UNTRACKED_SYMBOL="?"
+UNSTAGED_SYMBOL=""
+STAGED_SYMBOL="⟰"
+
+AHEAD_SYMBOL=""
+BEHIND_SYMBOL=""
 
 get_git_info () {
-    BRANCH=$(git branch --no-color 2>/dev/null | grep '*' | awk '{print $2}')
-    STATUS=$(git status --porcelain 2>/dev/null)
+    STATUS=$(git status --porcelain --branch 2>/dev/null)
+    [ -z "${STATUS}" ] && return
+
+    BRANCH=$(echo "${STATUS}" | grep -e '##' | sed -r 's/^##\s([^.]+).*/\1/')
+    AHEAD=$(echo "${STATUS}" | grep -E '##.*ahead' | sed -r 's/.*ahead ([0-9]+).*/\1/')
+    BEHIND=$(echo "${STATUS}" | grep -E '##.*behind' | sed -r 's/.*behind ([0-9]+).*/\1/')
+
+    [ -n "${AHEAD}"  ] && BRANCH="${BRANCH} ${AHEAD_SYMBOL} ${AHEAD}"
+    [ -n "${BEHIND}" ] && BRANCH="${BRANCH} ${BEHIND_SYMBOL} ${BEHIND}"
 
     OUT="${BRANCH_ICON} ${BRANCH}"
 
     SYMBOLS=""
 
-    STAGED=$(grep -E "^[ACDMR]" <<< "$STATUS" | wc -l)
-    UNSTAGED=$(grep -E "^.[DM]" <<< "$STATUS" | wc -l)
-    UNTRACKED=$(grep -E "^\?"   <<< "$STATUS" | wc -l)
+    STAGED=$(echo "${STATUS}" | grep -c -E "^[ACDMR]")
+    UNSTAGED=$(echo "${STATUS}" | grep -c -E "^.[DM]")
+    UNTRACKED=$(echo "${STATUS}" | grep -c -E "^\?")
 
-    [[ STAGED    -gt 0 ]] && SYMBOLS+=" ${STAGED_SYMBOL} ${STAGED}"
-    [[ UNSTAGED  -gt 0 ]] && SYMBOLS+=" ${UNSTAGED_SYMBOL} ${UNSTAGED}"
-    [[ UNTRACKED -gt 0 ]] && SYMBOLS+=" ${UNTRACKED_SYMBOL} ${UNTRACKED}"
+    [ "${STAGED}"    -gt 0 ] && SYMBOLS="${SYMBOLS} ${STAGED_SYMBOL} ${STAGED}"
+    [ "${UNSTAGED}"  -gt 0 ] && SYMBOLS="${SYMBOLS} ${UNSTAGED_SYMBOL} ${UNSTAGED}"
+    [ "${UNTRACKED}" -gt 0 ] && SYMBOLS="${SYMBOLS} ${UNTRACKED_SYMBOL} ${UNTRACKED}"
 
     SYMBOLS="${SYMBOLS:- ${STATUS_CLEAN}}"
-    OUT+="${SYMBOLS:+ ${STATUS_SEPARATOR}${SYMBOLS}}"
-    GIT_INFO="${BRANCH:+${OUT}}"
+    OUT="${OUT}${SYMBOLS:+ ${STATUS_SEPARATOR}${SYMBOLS}}"
+    echo "${BRANCH:+${OUT}}"
 }
-
-export GIT_INFO=""

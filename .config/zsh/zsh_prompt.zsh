@@ -78,7 +78,7 @@ make_top_ps1_prompt () {
 make_top_rps1_prompt () {
     print -n "${TRANSITION_COLOR_1_3}${ENDER_R}${SEPARATOR_R}"
 
-    get_git_info
+    GIT_INFO=$(get_git_info)
     if [[ -n ${GIT_INFO} ]]; then
         print -n "${GIT_COLOR} ${GIT_INFO}"
     else
