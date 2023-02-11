@@ -1,0 +1,41 @@
+{
+    "currentVersionInfo": {
+        "version": "2.1.1",
+        "hasShownChangelog": true
+    },
+    "settings": {
+        "categoryPresets": {
+            "enablePresets": false,
+            "theme": "onedark"
+        },
+        "categoryEditor": {
+            "enableEditor": true,
+            "background": "#151515",
+            "defaultColor": "#b4b4b4",
+            "stringColor": "#b8e272",
+            "commentColor": "#627373",
+            "color1": "#df75df",
+            "color2": "#82b7e1",
+            "color3": "#82b7e1",
+            "color4": "#ffeb60",
+            "color5": "#268bd2",
+            "color6": "#ff9f40",
+            "color7": "#b58900",
+            "color8": "#cb4b16",
+            "color9": "#ff9f40",
+            "color10": "#cb4b16",
+            "other": "#b4b4b4"
+        },
+        "categoryLink": {
+            "enableLink": false,
+            "link": ""
+        },
+        "categoryFile": {
+            "enableFile": false,
+            "filePath": ""
+        },
+        "fontName": "FiraCode Nerd Font",
+        "fontImport": "",
+        "fontSize": "0.875rem"
+    }
+}

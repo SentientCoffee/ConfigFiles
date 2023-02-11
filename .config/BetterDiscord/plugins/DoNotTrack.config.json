@@ -2,5 +2,8 @@
     "currentVersionInfo": {
         "version": "0.0.8",
         "hasShownChangelog": true
+    },
+    "settings": {
+        "stopProcessMonitor": false
     }
 }

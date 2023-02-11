@@ -2,7 +2,7 @@
  * @name MessageUtilities
  * @author DevilBro
  * @authorId 278543574059057154
- * @version 1.9.4
+ * @version 1.9.6
  * @description Adds several Quick Actions for Messages (Delete, Edit, Pin, etc.)
  * @invite Jx3TjNS
  * @donate https://www.paypal.me/MircoWittrien
@@ -13,25 +13,18 @@
  */
 
 module.exports = (_ => {
-	const config = {
-		"info": {
-			"name": "MessageUtilities",
-			"author": "DevilBro",
-			"version": "1.9.4",
-			"description": "Adds several Quick Actions for Messages (Delete, Edit, Pin, etc.)"
-		},
-		"changeLog": {
-			"fixed": {
-				"Reply auto Mention off": "No longer auto disables mentions for the reply action if the hotkey uses shift"
-			}
+	const changeLog = {
+		fixed: {
+			"ESC": "Works again"
 		}
 	};
 
 	return !window.BDFDB_Global || (!window.BDFDB_Global.loaded && !window.BDFDB_Global.started) ? class {
-		getName () {return config.info.name;}
-		getAuthor () {return config.info.author;}
-		getVersion () {return config.info.version;}
-		getDescription () {return `The Library Plugin needed for ${config.info.name} is missing. Open the Plugin Settings to download it. \n\n${config.info.description}`;}
+		constructor (meta) {for (let key in meta) this[key] = meta[key];}
+		getName () {return this.name;}
+		getAuthor () {return this.author;}
+		getVersion () {return this.version;}
+		getDescription () {return `The Library Plugin needed for ${this.name} is missing. Open the Plugin Settings to download it. \n\n${this.description}`;}
 		
 		downloadLibrary () {
 			require("request").get("https://mwittrien.github.io/BetterDiscordAddons/Library/0BDFDB.plugin.js", (e, r, b) => {
@@ -44,7 +37,7 @@ module.exports = (_ => {
 			if (!window.BDFDB_Global || !Array.isArray(window.BDFDB_Global.pluginQueue)) window.BDFDB_Global = Object.assign({}, window.BDFDB_Global, {pluginQueue: []});
 			if (!window.BDFDB_Global.downloadModal) {
 				window.BDFDB_Global.downloadModal = true;
-				BdApi.showConfirmationModal("Library Missing", `The Library Plugin needed for ${config.info.name} is missing. Please click "Download Now" to install it.`, {
+				BdApi.showConfirmationModal("Library Missing", `The Library Plugin needed for ${this.name} is missing. Please click "Download Now" to install it.`, {
 					confirmText: "Download Now",
 					cancelText: "Cancel",
 					onCancel: _ => {delete window.BDFDB_Global.downloadModal;},
@@ -54,13 +47,13 @@ module.exports = (_ => {
 					}
 				});
 			}
-			if (!window.BDFDB_Global.pluginQueue.includes(config.info.name)) window.BDFDB_Global.pluginQueue.push(config.info.name);
+			if (!window.BDFDB_Global.pluginQueue.includes(this.name)) window.BDFDB_Global.pluginQueue.push(this.name);
 		}
 		start () {this.load();}
 		stop () {}
 		getSettingsPanel () {
 			let template = document.createElement("template");
-			template.innerHTML = `<div style="color: var(--header-primary); font-size: 16px; font-weight: 300; white-space: pre; line-height: 22px;">The Library Plugin needed for ${config.info.name} is missing.\nPlease click <a style="font-weight: 500;">Download Now</a> to install it.</div>`;
+			template.innerHTML = `<div style="color: var(--header-primary); font-size: 16px; font-weight: 300; white-space: pre; line-height: 22px;">The Library Plugin needed for ${this.name} is missing.\nPlease click <a style="font-weight: 500;">Download Now</a> to install it.</div>`;
 			template.content.firstElementChild.querySelector("a").addEventListener("click", this.downloadLibrary);
 			return template.content.firstElementChild;
 		}
@@ -97,12 +90,14 @@ module.exports = (_ => {
 					}
 				};
 				
-				this.patchedModules = {
-					before: {
-						Menu: "default",
-						Message: "default",
-						ChannelTextAreaForm: "render"
-					}
+				this.modulePatches = {
+					before: [
+						"Menu",
+						"Message"
+					],
+					after: [
+						"ChannelTextAreaForm"
+					]
 				};
 				
 				for (let type in this.defaults.bindings) {
@@ -364,8 +359,8 @@ module.exports = (_ => {
 			doDelete ({messageDiv, message}, action, event) {
 				let deleteLink = messageDiv.parentElement.querySelector(BDFDB.dotCNS.messagelocalbotoperations + BDFDB.dotCN.anchor);
 				if (deleteLink) deleteLink.click();
-				else if (BDFDB.DiscordConstants.MessageTypesDeletable[message.type]) {
-					let channel = BDFDB.LibraryModules.ChannelStore.getChannel(message.channel_id);
+				else if (BDFDB.DiscordConstants.MessageTypeGroups.DELETABLE.has(message.type)) {
+					let channel = BDFDB.LibraryStores.ChannelStore.getChannel(message.channel_id);
 					if (channel && (BDFDB.UserUtils.can("MANAGE_MESSAGES") || message.author.id == BDFDB.UserUtils.me.id)) {
 						BDFDB.LibraryModules.MessageUtils.deleteMessage(message.channel_id, message.id, message.state != BDFDB.DiscordConstants.MessageStates.SENT);
 						if (this.settings.toasts[action]) BDFDB.NotificationUtils.toast(this.formatToast(this.labels.toast_message_deleted), {type: "success"});
@@ -390,8 +385,8 @@ module.exports = (_ => {
 
 			doPinUnPin ({messageDiv, message}, action, event) {
 				if (message.state == BDFDB.DiscordConstants.MessageStates.SENT) {
-					let channel = BDFDB.LibraryModules.ChannelStore.getChannel(message.channel_id);
-					if (channel && (BDFDB.DMUtils.isDMChannel(channel.id) || BDFDB.UserUtils.can("MANAGE_MESSAGES")) && (message.type == BDFDB.DiscordConstants.MessageTypes.DEFAULT || message.type == BDFDB.DiscordConstants.MessageTypes.REPLY)) {
+					let channel = BDFDB.LibraryStores.ChannelStore.getChannel(message.channel_id);
+					if (channel && (BDFDB.DMUtils.isDMChannel(channel.id) || BDFDB.UserUtils.can("MANAGE_MESSAGES")) && BDFDB.DiscordConstants.MessageTypeGroups.USER_MESSAGE.has(message.type)) {
 						if (message.pinned) {
 							BDFDB.LibraryModules.MessagePinUtils.unpinMessage(channel, message.id);
 							if (this.settings.toasts[action]) BDFDB.NotificationUtils.toast(this.formatToast(BDFDB.LanguageUtils.LanguageStrings.MESSAGE_UNPINNED), {type: "danger"});
@@ -406,8 +401,8 @@ module.exports = (_ => {
 			
 			doReply ({messageDiv, message}, action, event) {
 				if (message.state == BDFDB.DiscordConstants.MessageStates.SENT) {
-					let channel = BDFDB.LibraryModules.ChannelStore.getChannel(message.channel_id);
-					if (channel && (BDFDB.DMUtils.isDMChannel(channel.id) || BDFDB.UserUtils.can("SEND_MESSAGES")) && (message.type == BDFDB.DiscordConstants.MessageTypes.DEFAULT || message.type == BDFDB.DiscordConstants.MessageTypes.REPLY)) {
+					let channel = BDFDB.LibraryStores.ChannelStore.getChannel(message.channel_id);
+					if (channel && (BDFDB.DMUtils.isDMChannel(channel.id) || BDFDB.UserUtils.can("SEND_MESSAGES")) && BDFDB.DiscordConstants.MessageTypeGroups.USER_MESSAGE.has(message.type)) {
 						BDFDB.LibraryModules.MessageManageUtils.replyToMessage(channel, message, {});
 						if (this.settings.toasts[action]) BDFDB.NotificationUtils.toast(this.formatToast(BDFDB.LanguageUtils.LanguageStrings.NOTIFICATION_REPLY), {type: "success"});
 					}
@@ -416,13 +411,13 @@ module.exports = (_ => {
 
 			doCopyRaw ({messageDiv, message}, action, event) {
 				if (message.content) {
-					BDFDB.LibraryRequires.electron.clipboard.write({text: message.content});
+					BDFDB.LibraryModules.WindowUtils.copy(message.content);
 					if (this.settings.toasts[action]) BDFDB.NotificationUtils.toast(this.formatToast(BDFDB.LanguageUtils.LanguageStrings.COPIED_TEXT), {type: "success"});
 				}
 			}
 
 			doCopyLink ({messageDiv, message}, action, event) {
-				let channel = BDFDB.LibraryModules.ChannelStore.getChannel(message.channel_id);
+				let channel = BDFDB.LibraryStores.ChannelStore.getChannel(message.channel_id);
 				if (channel) {
 					BDFDB.LibraryModules.MessageManageUtils.copyLink(channel, message);
 					if (this.settings.toasts[action]) BDFDB.NotificationUtils.toast(this.formatToast(BDFDB.LanguageUtils.LanguageStrings.LINK_COPIED), {type: "success"});
@@ -431,21 +426,21 @@ module.exports = (_ => {
 
 			doQuote ({messageDiv, message}, action, event) {
 				if (BDFDB.BDUtils.isPluginEnabled(this.defaults.bindings.__Quote_Message.plugin)) {
-					let channel = BDFDB.LibraryModules.ChannelStore.getChannel(message.channel_id);
+					let channel = BDFDB.LibraryStores.ChannelStore.getChannel(message.channel_id);
 					if (channel) BDFDB.BDUtils.getPlugin(this.defaults.bindings.__Quote_Message.plugin).quote(channel, message);
 				}
 			}
 
 			doNote ({messageDiv, message}, action, event) {
 				if (BDFDB.BDUtils.isPluginEnabled(this.defaults.bindings.__Note_Message.plugin)) {
-					let channel = BDFDB.LibraryModules.ChannelStore.getChannel(message.channel_id);
+					let channel = BDFDB.LibraryStores.ChannelStore.getChannel(message.channel_id);
 					if (channel) BDFDB.BDUtils.getPlugin(this.defaults.bindings.__Note_Message.plugin).addMessageToNotes(message, channel);
 				}
 			}
 
 			doTranslate ({messageDiv, message}, action, event) {
 				if (BDFDB.BDUtils.isPluginEnabled(this.defaults.bindings.__Translate_Message.plugin)) {
-					let channel = BDFDB.LibraryModules.ChannelStore.getChannel(message.channel_id);
+					let channel = BDFDB.LibraryStores.ChannelStore.getChannel(message.channel_id);
 					if (channel) BDFDB.BDUtils.getPlugin(this.defaults.bindings.__Translate_Message.plugin).translateMessage(message, channel);
 				}
 			}
@@ -457,7 +452,7 @@ module.exports = (_ => {
 			getActiveShortcutString (action) {
 				if (!action) return null;
 				let str = [];
-				if (this.settings.general.addHints && this.settings.bindingsState[action] && enabledBindings[action]) {
+				if (this.settings.general.addHints && enabledBindings[action]) {
 					if (enabledBindings[action].keycombo.length) str.push(BDFDB.LibraryModules.KeyCodeUtils.getString(enabledBindings[action].keycombo));
 					str.push(Object.keys(clickMap).find(type => clickMap[type] == enabledBindings[action].click));
 				}
@@ -585,5 +580,5 @@ module.exports = (_ => {
 				}
 			}
 		};
-	})(window.BDFDB_Global.PluginUtils.buildPlugin(config));
+	})(window.BDFDB_Global.PluginUtils.buildPlugin(changeLog));
 })();

@@ -2,7 +2,7 @@
  * @name StaffTag
  * @author DevilBro
  * @authorId 278543574059057154
- * @version 1.5.7
+ * @version 1.5.9
  * @description Adds a Crown/Tag to Server Owners (or Admins/Management)
  * @invite Jx3TjNS
  * @donate https://www.paypal.me/MircoWittrien
@@ -90,12 +90,13 @@ module.exports = (_ => {
 			onLoad () {
 				
 				this.modulePatches = {
+					before: [
+						"MessageHeader"
+					],
 					after: [
 						"MemberListItem",
-						"MessageUsername",
 						"NameTag",
 						"UsernameSection",
-						"UserPopoutInfo",
 						"VoiceUser"
 					]
 				};
@@ -269,9 +270,9 @@ module.exports = (_ => {
 				}
 			}
 
-			processMessageUsername (e) {
+			processMessageHeader (e) {
 				if (!e.instance.props.message || !this.settings.tagPlaces.chat) return;
-				let [children, index] = BDFDB.ReactUtils.findParent(e.returnvalue, {filter: n => n && n.props && typeof n.props.renderPopout == "function"});
+				let [children, index] = BDFDB.ReactUtils.findParent(e.instance.props.username, {filter: n => n && n.props && typeof n.props.renderPopout == "function"});
 				if (index == -1) return;
 				const author = e.instance.props.userOverride || e.instance.props.message.author;
 				let userType = this.getUserType(author, e.instance.props.message.channel_id);
@@ -303,13 +304,9 @@ module.exports = (_ => {
 							inject = this.settings.tagPlaces.userPopout;
 							tagClass = BDFDB.disCNS.userpopoutheaderbottag + BDFDB.disCN.bottagnametag;
 						}
-						else if (e.instance.props.className.indexOf(BDFDB.disCN.userpopoutusernametagnonickname) > -1) {
-							inject = this.settings.tagPlaces.userPopout;
-							tagClass = BDFDB.disCNS.userpopoutusernamebottag + BDFDB.disCN.bottagnametag;
-						}
 						else if (e.instance.props.className.indexOf(BDFDB.disCN.userprofilenametag) > -1) {
 							inject = this.settings.tagPlaces.userProfile;
-							tagClass = BDFDB.disCNS.userprofilebottag + BDFDB.disCN.bottagnametag;
+							tagClass = BDFDB.disCN.bottagnametag;
 						}
 						if (inject) this.injectStaffTag(e.returnvalue.props.children, e.instance.props.user, userType, 2, {
 							tagClass: tagClass,
@@ -321,22 +318,6 @@ module.exports = (_ => {
 			}
 			
 			processUsernameSection (e) {
-				if (e.instance.props.user && this.settings.tagPlaces.userPopout) {
-					let userType = this.getUserType(e.instance.props.user, e.instance.props.channel && e.instance.props.channel.id);
-					if (userType) {
-						let [children, index] = BDFDB.ReactUtils.findParent(e.returnvalue, {props: [["className", BDFDB.disCN.userpopoutusernamenickname]]});
-						if (index > -1) {
-							if (!BDFDB.ArrayUtils.is(children[index].props.children)) children[index].props.children = [children[index].props.children].flat(10);
-							this.injectStaffTag(children[index].props.children, e.instance.props.user, userType, 2, {
-								tagClass: BDFDB.disCNS.userpopoutheaderbottag + BDFDB.disCN.bottagnametag,
-								inverted: typeof e.instance.getMode == "function" && e.instance.getMode() !== "Normal"
-							});
-						}
-					}
-				}
-			}
-			
-			processUserPopoutInfo (e) {
 				if (e.instance.props.user && this.settings.tagPlaces.userPopout) {
 					let userType = this.getUserType(e.instance.props.user, e.instance.props.channel && e.instance.props.channel.id);
 					if (userType) {

@@ -19,6 +19,17 @@
 			"showInChat": true,
 			"showInEmbed": true,
 			"showInMarkup": true
+		},
+		"places": {
+			"chat": true,
+			"embed": true,
+			"markup": true,
+			"auditLogs": true
+		},
+		"tooltips": {
+			"chat": true,
+			"edit": true,
+			"markup": true
 		}
 	}
 }
