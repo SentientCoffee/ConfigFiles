@@ -1520,17 +1520,33 @@ awful.rules.rules = {
         rule_any = {
             instance = {
                 "pcsx2-qt",
-                "Steam"
             },
             class = {
                 "pcsx2-qt",
-                "Steam"
             }
         },
         properties = {
             tag         = all_screens[screen2].tags[8],
             switchtotag = true,
             focus       = true,
+        }
+    },
+    {
+        rule_any = {
+            instance = {
+                "Steam"
+            },
+            class = {
+                "Steam"
+            }
+        },
+        properties = {
+            tag               = all_screens[screen1].tags[8],
+            switchtotag       = true,
+            focus             = true,
+            titlebars_enabled = false,
+            border_width      = 0,
+            size_hints_honor  = false
         }
     },
     {
