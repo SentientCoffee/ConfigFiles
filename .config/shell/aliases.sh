@@ -7,7 +7,7 @@ alias chmod="sudo chmod -cR"
 alias chown="sudo chown -cR"
 alias cls="clear"
 alias codium="codium -r"
-alias cp="cp -iv"
+alias cp="/bin/cp -iv"
 
 alias df="df -h"
 alias dmesg="sudo dmesg"
@@ -30,8 +30,8 @@ alias ln="ln -iv"
 alias locate="locate -d ${UPDATEDB_DIR}/plocate.db"
 alias ls="lsd -F --color=auto --group-directories-first"
 
-alias mv="mv -iv"
-alias mkdir="mkdir -pv"
+alias mv="/bin/mv -iv"
+alias mkdir="/bin/mkdir -pv"
 alias mkinitcpio="sudo mkinitcpio"
 
 alias nft="sudo nft"
@@ -39,7 +39,7 @@ alias nvidia-settings="nvidia-settings --config=\"${XDG_CONFIG_HOME}/nvidia/sett
 
 # alias reboot="sudo reboot"
 alias rm="/bin/rm -iv"
-alias rmdir="rmdir -v"
+alias rmdir="/bin/rmdir -v"
 alias rmrf="/bin/rm -rf"
 
 alias shutdown="sudo shutdown now"

@@ -8,9 +8,12 @@
     defaultBranch = master
     templatedir = ~/.config/git/templates
 [protocol "file"]
-	allow = always
+    allow = always
 [alias]
     gconf = "config --global --edit"
     lconf = "config --local --edit"
+
+    fork-sync = "!sync() { git pull --rebase; git push; }; sync"
+
 [color]
     ui = auto

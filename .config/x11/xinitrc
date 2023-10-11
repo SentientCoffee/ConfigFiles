@@ -17,9 +17,9 @@ run () {
 DP_MONITORS=$(xrandr | grep -v "eDP1" | grep "DP" | grep -e "\bconnected\b"),
 HDMI_MONITORS=$(xrandr | grep "HDMI" | grep -e "\bconnected\b")
 if [ -n "${DP_MONITORS}" ] ; then
-    source "${XDG_CONFIG_HOME}/arandr/3_monitors_dp.sh"
+    source "${XDG_CONFIG_HOME}/arandr/2_monitors_dp.sh"
 elif [ -n "${HDMI_MONITORS}" ] ; then
-    source "${XDG_CONFIG_HOME}/arandr/3_monitors_hdmi.sh"
+    source "${XDG_CONFIG_HOME}/arandr/2_monitors_hdmi.sh"
 else
     source "${XDG_CONFIG_HOME}/arandr/laptop_monitor.sh"
 fi
