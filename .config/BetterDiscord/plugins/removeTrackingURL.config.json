@@ -1,0 +1,15 @@
+{
+    "currentVersionInfo": {
+        "version": "1.0.6",
+        "hasShownChangelog": true
+    },
+    "settings": {
+        "twitter": true,
+        "reddit": true,
+        "spotify": true,
+        "showToasts": false,
+        "project": true,
+        "FXtwitter": false,
+        "VXtwitter": true
+    }
+}

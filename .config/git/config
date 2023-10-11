@@ -8,7 +8,7 @@
     defaultBranch = master
     templatedir = ~/.config/git/templates
 [protocol "file"]
-    allow = always
+	allow = always
 [alias]
     gconf = "config --global --edit"
     lconf = "config --local --edit"

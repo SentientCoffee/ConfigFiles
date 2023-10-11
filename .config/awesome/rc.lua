@@ -65,9 +65,8 @@ menubar.utils.terminal = terminal
 ----------------------------------------------------------------------------
 
 local screen1 = "DP1"
--- local screen1 = "HDMI2"
-local screen2 = "eDP1"
-local screen3 = "HDMI1"
+local screen2 = "HDMI1"
+local screen3 = "eDP1"
 
 local all_screens = {}
 for s in screen do
@@ -77,29 +76,19 @@ for s in screen do
 end
 
 if all_screens[screen1] == nil then
-    naughty.notification({ title = screen1 .. " mapped to eDP1." })
-    screen1 = "eDP1"
+    screen1 = screen3
+    naughty.notification({ title = screen1 .. " mapped to " .. screen3 .. "." })
 end
 
 if all_screens[screen2] == nil then
-    naughty.notification({ title = screen2 .. " mapped to eDP1." })
-    screen2 = "eDP1"
+    screen2 = screen3
+    naughty.notification({ title = screen2 .. " mapped to " .. screen3 .. "." })
 end
 
 if all_screens[screen3] == nil then
-    naughty.notification({ title = screen3 .. " mapped to eDP1." })
-    screen3 = "eDP1"
+    screen3 = screen1
+    naughty.notification({ title = screen3 .. " mapped to " .. screen1 .. "." })
 end
-
--- if all_screens["HDMI1"] == nil then
---     naughty.notification({ title = "HDMI1 mapped to eDP1." })
---     all_screens["HDMI1"] = all_screens["eDP1"]
--- end
-
--- if all_screens["HDMI2"] == nil then
---     naughty.notification({ title = "HDMI2 mapped to eDP1." })
---     all_screens["HDMI2"] = all_screens["eDP1"]
--- end
 
 ----------------------------------------------------------------------------
 
@@ -542,18 +531,14 @@ local function make_sys_info_widget(s)
                     or (s.geometry.height == 1920) and beautiful.font_size - 1
                     or beautiful.font_size
 
-    local package_updates = awful.widget.watch(--[[ "paru -Sy", 900,
-        function(widget, sync_out)
-            awful.spawn.easy_async_with_shell( ]]"paru -Qqu", 900,
-                function(widget, paru_out)
-                    local lines = string_split(paru_out, '\n')
-                    widget.text = "  " .. #lines
-                -- end
-            -- )
+    local package_updates = awful.widget.watch("paru -Qqu", 900,
+        function(widget, paru_out)
+            local lines = string_split(paru_out, '\n')
+            widget.text = "  " .. #lines
         end,
         wibox.widget {
             widget = wibox.widget.textbox,
-            text = "  --",
+            text = "  --",
             font = beautiful.font_family .. " " .. font_size,
             align  = "center",
             valign = "center"
@@ -563,7 +548,7 @@ local function make_sys_info_widget(s)
     -- local battery_level = awful.widget.watch("acpi -b", 60,
     local battery_level = awful.widget.watch("cat /sys/class/power_supply/BAT1/capacity", 60,
         function(widget, acpi_out)
-            local level_icons = { "", "", "", "", "", "", "", "", "", "" }
+            local level_icons = { "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹" }
             local level = string.sub(acpi_out, 1, -2)
             -- local level = string.sub(acpi_out:sub(acpi_out:find("%d+%%")), 1, -2)
             local icon_idx = math.ceil(level / 100 * #level_icons)
@@ -697,7 +682,7 @@ screen.connect_signal("property::geometry", set_wallpaper)
 awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
-    local tag_names = { "", "爵", "", "", "", "" , "", "", "" }
+    local tag_names = { "", "", "", "", "", "󰅺" , "", "", "" }
 
     if s.geometry.height == 1920 then
         awful.tag(tag_names, s, awful.layout.layouts[3])
@@ -1182,7 +1167,7 @@ client_keys = gears.table.join(
     awful.key(
         { modkey, "Control", "Shift" }, "Left", function (c)
             local s = awful.screen.focused():get_next_in_direction("left")
-            if s == nil then s = all_screens[screen3] end
+            if s == nil then s = all_screens[screen2] end
             c:move_to_screen(s)
         end,
         { group = "client", description = "Move to screen on the left" }
@@ -1447,7 +1432,7 @@ awful.rules.rules = {
             }
         },
         properties = {
-            tag         = all_screens[screen3].tags[2],
+            tag         = all_screens[screen2].tags[2],
             switchtotag = true,
             focus       = true,
         }
@@ -1458,7 +1443,7 @@ awful.rules.rules = {
             class    = "Mailspring",
         },
         properties = {
-            tag         = all_screens[screen2].tags[3],
+            tag         = all_screens[screen3].tags[3],
             switchtotag = true,
             focus       = true,
         }
@@ -1469,7 +1454,7 @@ awful.rules.rules = {
             class    = "obsidian",
         },
         properties = {
-            tag         = all_screens[screen3].tags[4],
+            tag         = all_screens[screen2].tags[4],
             switchtotag = true,
             focus       = true,
         }
@@ -1486,7 +1471,7 @@ awful.rules.rules = {
             }
         },
         properties = {
-            tag         = all_screens[screen3].tags[6],
+            tag         = all_screens[screen2].tags[6],
             switchtotag = false,
             focus       = false,
         }
@@ -1526,7 +1511,7 @@ awful.rules.rules = {
             }
         },
         properties = {
-            tag         = all_screens[screen2].tags[8],
+            tag         = all_screens[screen3].tags[8],
             switchtotag = true,
             focus       = true,
         }

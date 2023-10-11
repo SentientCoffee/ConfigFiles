@@ -4,6 +4,7 @@
         "hasShownChangelog": true
     },
     "settings": {
-        "showAlways": true
+        "showAlways": true,
+        "latestUsedVersion": "1.1.0"
     }
 }

@@ -1,11 +1,14 @@
 [Added Associations]
 inode/symlink=pcmanfm.desktop;
-application/x-shellscript=codium.desktop;
-text/plain=codium.desktop;
+application/x-shellscript=userapp-micro-6WH1A2.desktop;codium.desktop;
+text/plain=userapp-micro-YFCVA2.desktop:codium.desktop;
 image/x-xcursor=codium.desktop;
 image/png=userapp-nsxiv-A0AEQ1.desktop;
 image/jpeg=nsxiv.desktop;
 application/json=codium.desktop;
+application/octet-stream=wine-Programs-Image-Line-FL Studio 20.desktop;
+application/pdf=librewolf.desktop;
+application/xml=userapp-micro-YFCVA2.desktop;
 
 [Default Applications]
 x-scheme-handler/mailspring=Mailspring.desktop

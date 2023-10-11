@@ -4,7 +4,7 @@
  * @description Remove annoying stuff from your Discord clients.
  * @author Qb
  * @authorId 133659541198864384
- * @version 1.4.1
+ * @version 1.6.0
  * @invite gj7JFa6mF8
  * @source https://github.com/BleedingBD/plugin-RemoveChatButtons
  * @updateUrl https://raw.githubusercontent.com/BleedingBD/plugin-RemoveChatButtons/main/RemoveChatButtons.plugin.js
@@ -77,7 +77,7 @@ module.exports = (() => {
                     github_username: 'QbDesu',
                 },
             ],
-            version: '1.4.1',
+            version: '1.6.0',
             description: 'Hide annoying stuff from your Discord client.',
             github: 'https://github.com/BleedingBD/plugin-RemoveChatButtons',
             github_raw: 'https://raw.githubusercontent.com/BleedingBD/plugin-RemoveChatButtons/main/RemoveChatButtons.plugin.js',
@@ -114,9 +114,44 @@ module.exports = (() => {
             {
                 type: 'switch',
                 id: 'attachButton',
-                name: 'Attach Button',
+                name: 'Remove Attach Button',
                 note: 'Removes the Attach button from the chat.',
                 value: false,
+            },
+            {
+                type: 'category',
+                name: 'Message Actions',
+                id: 'messageActions',
+                settings: [
+                    {
+                        type: 'switch',
+                        id: 'reactionButton',
+                        name: 'Remove Reaction Button',
+                        note: 'Removes the "Add Reaction" button from messages.',
+                        value: false,
+                    },
+                    {
+                        type: 'switch',
+                        id: 'superReactionButton',
+                        name: 'Remove Super Reaction Button',
+                        note: 'Removes the "Add Super Reaction" button from messages.',
+                        value: false,
+                    },
+                    {
+                        type: 'switch',
+                        id: 'editButton',
+                        name: 'Remove Edit Button',
+                        note: 'Removes the "Edit" button from messages.',
+                        value: false,
+                    },
+                    {
+                        type: 'switch',
+                        id: 'replyButton',
+                        name: 'Remove Reply Button',
+                        note: 'Removes the "Reply" button from messages.',
+                        value: false,
+                    },
+                ],
             },
             {
                 type: 'category',
@@ -125,24 +160,31 @@ module.exports = (() => {
                 settings: [
                     {
                         type: 'switch',
-                        name: 'Friends Tab',
-                        note: 'Removes the friends tab button from the DM list.',
                         id: 'friendsTab',
+                        name: 'Remove Friends Tab',
+                        note: 'Removes the friends tab button from the DM list.',
                         value: false,
                     },
                     {
                         type: 'switch',
-                        name: 'Nitro Tab',
-                        note: 'Removes the nitro tab button from the DM list.',
                         id: 'premiumTab',
+                        name: 'Remove Nitro Tab',
+                        note: 'Removes the nitro tab button from the DM list.',
                         value: true,
                     },
                     {
                         type: 'switch',
-                        name: 'Snowsgiving Tab',
-                        note: 'Removes the seasonal Snowsgiving tab button from the DM list.',
                         id: 'snowsgivingTab',
+                        name: 'Remove Snowsgiving Tab',
+                        note: 'Removes the seasonal "Snowsgiving" tab button from the DM list.',
                         value: false,
+                    },
+                    {
+                        type: 'switch',
+                        id: 'discordBirthdayTab',
+                        name: 'Remove Discord\'s Birthday Tab',
+                        note: 'Removes the seasonal "Discord\'s Birthday" tab button from the DM list.',
+                        value: true,
                     },
                 ],
             },
@@ -154,16 +196,51 @@ module.exports = (() => {
                     {
                         type: 'switch',
                         id: 'publicBadge',
-                        name: 'Public Badge',
+                        name: 'Remove Public Badge',
                         note: 'Removes the "public" badge that covers part of server\'s banner.',
                         value: false,
                     },
                     {
                         type: 'switch',
                         id: 'boostBar',
-                        name: 'Boost Bar',
+                        name: 'Remove Boost Bar',
                         note: 'Removes the boost progress bar from the channel list.',
                         value: true,
+                    },
+                    {
+                        type: 'switch',
+                        id: 'inviteButton',
+                        name: 'Remove Invite Button',
+                        note: "Removes the invite button from the channel list entries. (It's also available in the context menu and the server settings anyway.)",
+                        value: false,
+                    },
+                ],
+            },
+            {
+                type: 'category',
+                name: 'Voice',
+                id: 'voice',
+                settings: [
+                    {
+                        type: 'switch',
+                        id: 'cameraPanelButton',
+                        name: 'Remove Camera Panel Button',
+                        note: 'Removes the camera button from the voice chat panel in the bottom left.',
+                        value: false,
+                    },
+                    {
+                        type: 'switch',
+                        id: 'screensharePanelButton',
+                        name: 'Remove Screenshare Panel Button',
+                        note: 'Removes the screenshare button from the voice chat panel in the bottom left.',
+                        value: false,
+                    },
+                    {
+                        type: 'switch',
+                        id: 'activityPanelButton',
+                        name: 'Remove Activity Panel Button',
+                        note: 'Removes the activity button from the voice chat panel in the bottom left.',
+                        value: false,
                     },
                 ],
             },
@@ -184,16 +261,9 @@ module.exports = (() => {
         ],
         changelog: [
             {
-                title: 'Fixes',
-                type: 'fixed',
-                items: ['Fixed invisible typing button removal.'],
-            },
-            {
-                title: 'Features',
-                type: 'features',
-                items: [
-                    'Added support for the "public" badge that covers part of server\'s banner.',
-                ],
+                title: 'Added',
+                type: 'added',
+                items: ['Added support for message action buttons like the super reaction button. Also added support for the seasonal Discord\'s Birthday tab. Unfortunately you will have to modify the settings manually in the JSON file because settings are currently broken in ZLibrary.'],
             },
         ],
     };
@@ -234,25 +304,61 @@ module.exports = (() => {
         const plugin = (Plugin, Api) => {
             const {
                 DiscordModules: { LocaleManager },
-                DOMTools,
                 Logger,
-                PluginUtilities,
-                WebpackModules,
             } = Api;
+            const {
+                Webpack: { Filters, getModule },
+            } = new BdApi(config.info.name);
 
-            const Messages = WebpackModules.getByProps('PREMIUM_GIFT_BUTTON_LABEL');
+            const toSelector = (classString) => {
+                return classString ? '.' + classString.replace(/ /g, '.') : '';
+            };
 
-            const buttonClasses = WebpackModules.getByProps('emojiButton', 'stickerButton');
-            const channelTextAreaSelector = new DOMTools.Selector(buttonClasses.channelTextArea);
-            const emojiButtonSelector = new DOMTools.Selector(buttonClasses.emojiButton);
-            const stickerButtonSelector = new DOMTools.Selector(buttonClasses.stickerButton);
-            const attachButtonSelector = new DOMTools.Selector(buttonClasses.attachButton);
+            const buttonClasses = getModule(Filters.byProps('emojiButton', 'stickerButton'));
+            const channelTextAreaSelector = toSelector(buttonClasses.channelTextArea);
+            const emojiButtonSelector = toSelector(buttonClasses.emojiButton);
+            const stickerButtonSelector = toSelector(buttonClasses.stickerButton);
+            const attachButtonSelector = toSelector(buttonClasses.attachButton);
 
-            const privateChannelsClass = WebpackModules.getByProps('privateChannels')?.privateChannels;
-            const communityInfoPillClass = WebpackModules.getByProps('communityInfoPill')?.communityInfoPill;
+            const messageActionButtonsClass = getModule(Filters.byProps('buttons', 'cozyMessage'))?.buttons;
+            const messageActionButtonsSelector = toSelector(messageActionButtonsClass);
+
+            const privateChannelsClass = getModule(Filters.byProps('privateChannels'))?.privateChannels;
+            const privateChannelsSelector = toSelector(privateChannelsClass);
+            const communityInfoPillClass = getModule(Filters.byProps('communityInfoPill'))?.communityInfoPill;
+            const communityInfoPillSelector = toSelector(communityInfoPillClass);
+            const iconItemClass = getModule(Filters.byProps('iconBase', 'iconItem'))?.iconItem;
+            const iconItemSelector = toSelector(iconItemClass);
+
+            const voiceActionButtonsClass = getModule(Filters.byProps('actionButtons', 'voiceUsers'))?.actionButtons;
+            const voiceActionButtonsSelector = toSelector(voiceActionButtonsClass);
 
             const getCssRule = (selector) => `${selector} { display: none !important; }`;
-            const getTextAreaCssRule = (child) => `${channelTextAreaSelector || ''} ${child} { display: none; }`;
+            const getTextAreaCssRule = (child) => getCssRule(`${channelTextAreaSelector} ${child}`);
+            const getAriaLabelSelector = (label) => `[aria-label="${label}"]`;
+            const getAriaLabelRule = (pre, ...labels) =>
+                getCssRule(labels.map((label) => `${pre || ''}${getAriaLabelSelector(label)}`).join(', '));
+
+            const createMessagesProxy = () => {
+                if (!LocaleManager) {
+                    Logger.warn('LocaleManager not found!');
+                    return {};
+                }
+                if (!LocaleManager.Messages) {
+                    Logger.warn('Messages not found!');
+                    return {};
+                }
+
+                return new Proxy(LocaleManager.Messages, {
+                    get: (target, prop) => {
+                        const message = target[prop];
+                        if (typeof message === 'string') return message;
+                        if (message?.message) return message.message;
+                        Logger.error(`Translation not found: ${prop}`);
+                        return prop;
+                    },
+                });
+            }
 
             return class RemoveChatButtons extends Plugin {
                 styler = new Styler(config.info.name);
@@ -263,39 +369,44 @@ module.exports = (() => {
                 }
 
                 addStyles() {
+                    const Messages = createMessagesProxy();
+
                     // Chat Buttons
                     if (Messages) {
                         const { PREMIUM_GIFT_BUTTON_LABEL, GIF_BUTTON_LABEL, PREMIUM_GUILD_BOOST_THIS_SERVER } = Messages;
 
-                        if (this.settings.giftButton) {
+                        if (this.settings.giftButton)
                             this.styler.add(
-                                `
-                                    ${getTextAreaCssRule(`[aria-label="${PREMIUM_GIFT_BUTTON_LABEL}"]`)}
-                                    ${getTextAreaCssRule(`[aria-label="${PREMIUM_GUILD_BOOST_THIS_SERVER}"]`)}
-                                `,
+                                getAriaLabelRule(channelTextAreaSelector + ' ', PREMIUM_GIFT_BUTTON_LABEL, PREMIUM_GUILD_BOOST_THIS_SERVER),
                             );
-                        }
-                        if (this.settings.gifButton) this.styler.add(getTextAreaCssRule(`[aria-label="${GIF_BUTTON_LABEL}"]`));
-                    } else {
-                        Logger.warn('Messages not found!');
+                        if (this.settings.gifButton) this.styler.add(getAriaLabelRule(channelTextAreaSelector + ' ', GIF_BUTTON_LABEL));
                     }
                     if (this.settings.emojiButton) this.styler.add(getTextAreaCssRule(emojiButtonSelector));
                     if (this.settings.stickerButton) this.styler.add(getTextAreaCssRule(stickerButtonSelector));
                     if (this.settings.attachButton) this.styler.add(getTextAreaCssRule(attachButtonSelector));
 
+                    // Message Actions
+                    if (Messages) {
+                        const { ADD_REACTION, ADD_BURST_REACTION, EDIT, MESSAGE_ACTION_REPLY } = Messages;
+                        if (this.settings.messageActions.reactionButton) this.styler.add(getAriaLabelRule(messageActionButtonsSelector + ' ', ADD_REACTION));
+                        if (this.settings.messageActions.superReactionButton) this.styler.add(getAriaLabelRule(messageActionButtonsSelector + ' ', ADD_BURST_REACTION));
+                        if (this.settings.messageActions.editButton) this.styler.add(getAriaLabelRule(messageActionButtonsSelector + ' ', EDIT));
+                        if (this.settings.messageActions.replyButton) this.styler.add(getAriaLabelRule(messageActionButtonsSelector + ' ', MESSAGE_ACTION_REPLY));
+                    }
+
                     // DMs
-                    if (this.settings.dms.friendsTab) this.styler.add(getCssRule(`.${privateChannelsClass} [href="/channels/@me"]`));
-                    if (this.settings.dms.premiumTab) this.styler.add(getCssRule(`.${privateChannelsClass} [href="/store"]`));
+                    if (this.settings.dms.friendsTab) this.styler.add(getCssRule(`${privateChannelsSelector} [href="/channels/@me"]`));
+                    if (this.settings.dms.premiumTab) this.styler.add(getCssRule(`${privateChannelsSelector} [href="/store"]`));
                     if (this.settings.dms.snowsgivingTab)
-                        this.styler.add(getCssRule(`.${privateChannelsClass} [href="//discord.com/snowsgiving"]`));
+                        this.styler.add(getCssRule(`${privateChannelsSelector} [href="//discord.com/snowsgiving"]`));
+                    if (this.settings.dms.discordBirthdayTab)
+                        this.styler.add(getCssRule(`${privateChannelsSelector} [href="/activities"]`));
 
                     // Channels
                     if (Messages) {
                         if (this.settings.channels.publicBadge) {
                             const { DISCOVERABLE_GUILD_HEADER_PUBLIC_INFO } = Messages;
-                            this.styler.add(
-                                getCssRule(`.${communityInfoPillClass}[aria-label="${DISCOVERABLE_GUILD_HEADER_PUBLIC_INFO}"]`),
-                            );
+                            this.styler.add(getAriaLabelRule(communityInfoPillSelector, DISCOVERABLE_GUILD_HEADER_PUBLIC_INFO));
                         }
 
                         if (this.settings.channels.boostBar) {
@@ -308,25 +419,35 @@ module.exports = (() => {
                             } = Messages;
 
                             const selectors = [
-                                `[aria-label="${PREMIUM_GUILD_SUBSCRIPTIONS_NUDGE_TOOLTIP_COMPLETE}"]`,
-                                `[aria-label="${PREMIUM_GUILD_SUBSCRIPTIONS_NUDGE_TOOLTIP.replace('{levelName}', PREMIUM_GUILD_TIER_1)}"]`,
-                                `[aria-label="${PREMIUM_GUILD_SUBSCRIPTIONS_NUDGE_TOOLTIP.replace('{levelName}', PREMIUM_GUILD_TIER_2)}"]`,
-                                `[aria-label="${PREMIUM_GUILD_SUBSCRIPTIONS_NUDGE_TOOLTIP.replace('{levelName}', PREMIUM_GUILD_TIER_3)}"]`,
+                                PREMIUM_GUILD_SUBSCRIPTIONS_NUDGE_TOOLTIP_COMPLETE,
+                                PREMIUM_GUILD_SUBSCRIPTIONS_NUDGE_TOOLTIP.replace('{levelName}', PREMIUM_GUILD_TIER_1),
+                                PREMIUM_GUILD_SUBSCRIPTIONS_NUDGE_TOOLTIP.replace('{levelName}', PREMIUM_GUILD_TIER_2),
+                                PREMIUM_GUILD_SUBSCRIPTIONS_NUDGE_TOOLTIP.replace('{levelName}', PREMIUM_GUILD_TIER_3),
                             ];
-                            this.styler.add(getCssRule(selectors.join(', ')));
+                            this.styler.add(getAriaLabelRule('', ...selectors));
                         }
+
+                        if (this.settings.channels.inviteButton) {
+                            const { CREATE_INSTANT_INVITE } = Messages;
+
+                            this.styler.add(getAriaLabelRule(iconItemSelector, CREATE_INSTANT_INVITE));
+                        }
+                    }
+
+                    // Voice
+                    if (Messages) {
+                        const { CAMERA_ON, CAMERA_OFF, SHARE_YOUR_SCREEN, EMBEDDED_ACTIVITIES_ROCKET_BUTTON_A11Y_LABEL, EMBEDDED_ACTIVITIES_INVALID_PERMISSIONS } = Messages;
+
+                        const actionButtons = voiceActionButtonsSelector + ' ';
+
+                        if (this.settings.voice.cameraPanelButton) this.styler.add(getAriaLabelRule(actionButtons, CAMERA_ON, CAMERA_OFF));
+                        if (this.settings.voice.screensharePanelButton) this.styler.add(getAriaLabelRule(actionButtons, SHARE_YOUR_SCREEN));
+                        if (this.settings.voice.activityPanelButton)
+                            this.styler.add(getAriaLabelRule(actionButtons, EMBEDDED_ACTIVITIES_ROCKET_BUTTON_A11Y_LABEL, EMBEDDED_ACTIVITIES_INVALID_PERMISSIONS));
                     }
 
                     // Compatibility
                     if (this.settings.compatibility.invisibleTypingButton) this.styler.add(getTextAreaCssRule('.invisible-typing-button'));
-                }
-
-                removeStyles() {
-                    PluginUtilities.removeStyle(this.hideGiftKey);
-                    PluginUtilities.removeStyle(this.hideGifKey);
-                    PluginUtilities.removeStyle(this.hideEmojiKey);
-                    PluginUtilities.removeStyle(this.hideStickerKey);
-                    PluginUtilities.removeStyle(this.hideAttachKey);
                 }
 
                 refreshStyles() {
@@ -343,12 +464,12 @@ module.exports = (() => {
 
                 onStart() {
                     this.addStyles();
-                    LocaleManager.on('locale', this.refreshLocaleFn);
+                    if (LocaleManager) LocaleManager.on('locale', this.refreshLocaleFn);
                 }
 
                 onStop() {
                     this.styler.removeAll();
-                    LocaleManager.off('locale', this.refreshLocaleFn);
+                    if (LocaleManager) LocaleManager.off('locale', this.refreshLocaleFn);
                 }
 
                 getSettingsPanel() {

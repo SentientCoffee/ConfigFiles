@@ -1,5 +1,5 @@
 {
-    "BasicBackground": true,
+    "BasicBackground": false,
     "Discord+": false,
     "DiscordRecolor": false,
     "RadialStatus": true,

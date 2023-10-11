@@ -1,5 +1,7 @@
 alias sudo="sudo -v ; sudo "
 
+alias adb="'HOME=${XDG_DATA_HOME}'/android adb"
+
 alias cat="bat"
 alias chmod="sudo chmod -cR"
 alias chown="sudo chown -cR"
@@ -46,6 +48,7 @@ alias updatedb="mkdir -p ${UPDATEDB_DIR} ; updatedb -l 0 -o ${UPDATEDB_DIR}/ploc
 alias usermod="sudo usermod"
 
 alias winetricks="winetricks -q"
+alias wget="wget --hists-file=\"${XDG_DATA_HOME}/wget-hsts\""
 
 alias xargs-I="xargs -I {} "
 
@@ -54,4 +57,4 @@ alias yarn="yarn --use-yarnrc \"${XDG_CONFIG_HOME}/yarn/config\""
 [ -n "${ZSH_VERSION}"  ] && alias refresh="source ${XDG_CONFIG_HOME}/zsh/.zshrc ; rehash ; updatedb"
 [ -n "${BASH_VERSION}" ] && alias refresh="source ${HOME}/.bashrc ; updatedb"
 
-mkcd () { mkdir -pv ${1} && cd ${1} || exit 1; }
+mkcd () { mkdir -pv "${1}" && cd "${1}" || exit 1; }

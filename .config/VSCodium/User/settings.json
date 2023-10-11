@@ -23,7 +23,7 @@
   "editor.colorDecorators":                   true,
   "editor.cursorBlinking":                    "blink",
   "editor.cursorStyle":                       "line",
-  "editor.cursorSmoothCaretAnimation":        false,
+  "editor.cursorSmoothCaretAnimation":        "off",
   "editor.cursorSurroundingLines":            10,
   "editor.cursorSurroundingLinesStyle":       "default",
   "editor.cursorWidth":                       1,

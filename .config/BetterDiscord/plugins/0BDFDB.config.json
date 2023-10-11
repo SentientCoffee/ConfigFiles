@@ -1,20 +1,20 @@
 {
 	"all": {
 		"changeLogs": {
-			"BDFDB": "3.0.7",
+			"BDFDB": "3.3.6",
 			"ChatAliases": "2.3.8",
 			"CompleteTimestamps": "1.6.4",
-			"CopyRawMessage": "1.1.4",
-			"GameActivityToggle": "1.1.8",
+			"CopyRawMessage": "1.1.5",
+			"GameActivityToggle": "1.2.0",
 			"ImageUtilities": "4.7.1",
-			"MessageUtilities": "1.9.6",
-			"PluginRepo": "2.4.5",
+			"MessageUtilities": "1.9.7",
+			"PluginRepo": "2.5.1",
 			"SendLargeMessages": "1.6.8",
-			"ShowBadgesInChat": "1.9.6",
+			"ShowBadgesInChat": "2.0.1",
 			"ShowHiddenChannels": "9.9.9",
 			"SplitLargeMessages": "1.8.0",
 			"StaffTag": "1.5.9",
-			"ThemeRepo": "2.4.8",
+			"ThemeRepo": "2.5.0",
 			"ThemeSettings": "9.9.9"
 		},
 		"choices": {
@@ -27,8 +27,8 @@
 			"shareData": true
 		},
 		"hashes": {
-			"0BDFDB.data.json": "27f7e5c6a1d60b913a0b39b89d7668cc23acbae2",
-			"0BDFDB.raw.css": "a1c4a8b6f28c4765c6af2853ddf13a35922a2b9e"
+			"0BDFDB.data.json": "d0aa66b1161fe02ff20a0d0d390ec659ce25a401",
+			"0BDFDB.raw.css": "6b9da96e121eb6dc70477f21e35a467a73e8d250"
 		}
 	}
 }

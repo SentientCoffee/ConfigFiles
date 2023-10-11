@@ -1,13 +1,13 @@
 {
-    "version": "1.8.2",
+    "version": "1.9.3",
     "emoteVersion": "v1.5.3",
     "drawerStates": {
         "settings": {
-            "addons": false,
-            "customcss": false,
-            "editor": false,
-            "window": false,
-            "developer": false
+            "addons": true,
+            "customcss": true,
+            "editor": true,
+            "window": true,
+            "developer": true
         }
     },
     "addonlistControls": {
