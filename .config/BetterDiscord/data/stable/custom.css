@@ -112,10 +112,10 @@ code
 , .inlineCode-ERyvy_ *
 {
   font-size             : 12px !important;
-  font-weight           : 500 !important;
+  font-weight           : 400 !important;
   font-variant-ligatures: no-contextual !important;
   font-feature-settings : "ss01", "ss02", "ss03", "ss05", "ss06", "ss08" !important;
-  letter-spacing        : 0.4px !important;
+  /* letter-spacing        : -0.px !important; */
   line-height           : 1.1rem !important;
   font-family:
     "FiraCode Nerd Font Mono",

@@ -1505,6 +1505,7 @@ awful.rules.rules = {
         rule_any = {
             instance = {
                 "pcsx2-qt",
+                "lutris",
             },
             class = {
                 "pcsx2-qt",
