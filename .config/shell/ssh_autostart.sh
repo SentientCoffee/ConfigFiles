@@ -4,7 +4,7 @@ agent_load_env () { test -f "${ENV}" && . "${ENV}" >| /dev/null ; }
 
 agent_start () {
     (umask 077; ssh-agent >| "${ENV}")
-    . "${ENV}" >| /dev/null ;
+    source "${ENV}" >| /dev/null
 }
 
 agent_add_keys () {
@@ -24,10 +24,10 @@ if [ ! "${SSH_AUTH_SOCK}" ] || [ ${AGENT_RUN_STATE} = 2 ]; then
     agent_start
 
     echo -e "Agent started. Setting Windows SSH environment variables..."
-    echo -e "--> PID:    ${SSH_AGENT_PID}"
-    echo -e "--> Socket: ${SSH_AUTH_SOCK}"
     setx SSH_AGENT_PID ${SSH_AGENT_PID} > /dev/null
     setx SSH_AUTH_SOCK ${SSH_AUTH_SOCK} > /dev/null
+    echo -e "--> PID:    ${SSH_AGENT_PID}"
+    echo -e "--> Socket: ${SSH_AUTH_SOCK}"
 
     echo -e "\nAdding keys..."
     agent_add_keys

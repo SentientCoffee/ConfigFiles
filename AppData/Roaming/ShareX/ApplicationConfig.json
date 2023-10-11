@@ -165,7 +165,7 @@
         "ShowInfo": true,
         "ShowMagnifier": true,
         "UseSquareMagnifier": false,
-        "MagnifierPixelCount": 15,
+        "MagnifierPixelCount": 35,
         "MagnifierPixelSize": 10,
         "ShowCrosshair": false,
         "UseLightResizeNodes": false,
@@ -196,16 +196,16 @@
           "BorderColor": "242, 60, 60",
           "BorderSize": 2,
           "BorderStyle": "Solid",
-          "FillColor": "0, 0, 0, 0",
+          "FillColor": "0, 242, 60, 60",
           "DrawingCornerRadius": 0,
-          "Shadow": true,
+          "Shadow": false,
           "ShadowColor": "125, 0, 0, 0",
           "ShadowOffset": "0, 1",
           "LineCenterPointCount": 1,
           "ArrowHeadDirection": "End",
           "TextOutlineOptions": {
             "Font": "Consolas",
-            "Size": 7,
+            "Size": 30,
             "Color": "White",
             "Bold": false,
             "Italic": false,
@@ -221,7 +221,7 @@
           "TextOutlineBorderSize": 5,
           "TextOptions": {
             "Font": "FiraCode NFM",
-            "Size": 7,
+            "Size": 48,
             "Color": "White",
             "Bold": false,
             "Italic": false,
@@ -253,7 +253,7 @@
         },
         "LastRegionTool": "RegionRectangle",
         "LastAnnotationTool": "EffectHighlight",
-        "LastEditorTool": "DrawingEllipse",
+        "LastEditorTool": "EffectBlur",
         "ImageEditorStartMode": "AutoSize",
         "ImageEditorWindowState": {
           "Location": "0, 0",
@@ -612,7 +612,7 @@
   "TaskbarProgressEnabled": true,
   "UseWhiteShareXIcon": false,
   "RememberMainFormPosition": false,
-  "MainFormPosition": "1428, 876",
+  "MainFormPosition": "-1265, 385",
   "RememberMainFormSize": false,
   "MainFormSize": "1143, 642",
   "TrayLeftClickAction": "OpenMainWindow",
@@ -843,84 +843,84 @@
   "HistoryCheckURL": false,
   "RecentTasks": [
     {
-      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\brave_htLWBmIyrz.jpg",
+      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\focus_X0QffqZL5A.png",
       "URL": null,
       "ThumbnailURL": null,
       "DeletionURL": null,
       "ShortenedURL": null,
-      "Time": "2023-01-24T04:01:36.1233862Z"
+      "Time": "2023-09-27T22:13:33.9449649Z"
     },
     {
-      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\brave_pJYftGGpPH.jpg",
+      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\brave_cdSKx8FVzd.png",
       "URL": null,
       "ThumbnailURL": null,
       "DeletionURL": null,
       "ShortenedURL": null,
-      "Time": "2023-01-24T04:12:29.5410871Z"
+      "Time": "2023-09-28T17:10:39.541372Z"
     },
     {
-      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\brave_FBepSwXVhi.png",
+      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\brave_DRqqxI0NaX.png",
       "URL": null,
       "ThumbnailURL": null,
       "DeletionURL": null,
       "ShortenedURL": null,
-      "Time": "2023-01-24T16:30:53.7410837Z"
+      "Time": "2023-09-28T17:42:18.3258386Z"
     },
     {
-      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\remedybg_oHNHJwPdHT.png",
+      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\focus_MHTUHK2jg7.png",
       "URL": null,
       "ThumbnailURL": null,
       "DeletionURL": null,
       "ShortenedURL": null,
-      "Time": "2023-01-24T18:58:05.7807398Z"
+      "Time": "2023-09-30T03:14:01.941337Z"
     },
     {
-      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\brave_bFX4fgAav6.png",
+      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\MO64TsFCuv.png",
       "URL": null,
       "ThumbnailURL": null,
       "DeletionURL": null,
       "ShortenedURL": null,
-      "Time": "2023-01-24T21:37:24.3360548Z"
+      "Time": "2023-10-03T15:11:50.8585066Z"
     },
     {
-      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\WindowsTerminal_7orCpWPiC3.png",
+      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\focus-wine-build_NuV8ByWyhK.png",
       "URL": null,
       "ThumbnailURL": null,
       "DeletionURL": null,
       "ShortenedURL": null,
-      "Time": "2023-01-26T01:15:00.4186802Z"
+      "Time": "2023-10-03T15:14:22.1451676Z"
     },
     {
-      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\WindowsTerminal_FjXyYkCYBM.png",
+      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\focus-wine-build_a4Lhbxbl1P.png",
       "URL": null,
       "ThumbnailURL": null,
       "DeletionURL": null,
       "ShortenedURL": null,
-      "Time": "2023-01-26T02:19:55.3881502Z"
+      "Time": "2023-10-03T15:15:12.6157085Z"
     },
     {
-      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\WindowsTerminal_Aybg7uFfLp.png",
+      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\focus-wine-build_FdM290bmpy.png",
       "URL": null,
       "ThumbnailURL": null,
       "DeletionURL": null,
       "ShortenedURL": null,
-      "Time": "2023-01-26T02:32:49.2582092Z"
+      "Time": "2023-10-03T15:17:44.7282151Z"
     },
     {
-      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\WindowsTerminal_5ZJgg0vLSI.png",
+      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\Code_qeZzRbXR4Q.png",
       "URL": null,
       "ThumbnailURL": null,
       "DeletionURL": null,
       "ShortenedURL": null,
-      "Time": "2023-01-26T04:19:10.4166384Z"
+      "Time": "2023-10-06T18:54:39.4879631Z"
     },
     {
-      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\Code_TdNGWepUf8.png",
+      "FilePath": "C:\\Users\\dapresas\\Pictures\\Screenshots\\brave_JZwSiRcicQ.png",
       "URL": null,
       "ThumbnailURL": null,
       "DeletionURL": null,
       "ShortenedURL": null,
-      "Time": "2023-01-27T10:17:21.5783933Z"
+      "Time": "2023-10-06T20:29:54.5102716Z"
     }
   ],
   "RecentTasksSave": true,
@@ -972,7 +972,7 @@
   "AutoCaptureRepeatTime": 60.0,
   "AutoCaptureMinimizeToTray": true,
   "AutoCaptureWaitUpload": true,
-  "ScreenRecordRegion": "1068, 324, 1663, 1836",
+  "ScreenRecordRegion": "53, 83, 3706, 2076",
   "ActionsToolbarList": [
     "RectangleRegion",
     "PrintScreen",
@@ -985,7 +985,11 @@
   "ActionsToolbarPosition": "0, 0",
   "ActionsToolbarLockPosition": false,
   "ActionsToolbarStayTopMost": true,
-  "RecentColors": [],
+  "RecentColors": [
+    "0, 242, 60, 60",
+    "242, 60, 60",
+    "49, 51, 56"
+  ],
   "AutoCheckUpdate": true,
   "BinaryUnits": false,
   "ShowMostRecentTaskFirst": false,

@@ -21,7 +21,7 @@ function output() {
 export GREP_COLORS="ms=37:mc=37:sl=31:cx=37:fn=32:ln=32:bn=32:se=37"
 export -f output
 
-nocommits=$(git status --porcelain | sed "/^D\|^[ ]D\|^??\|\/$/d" | sed "s/^.*[ ]//" | xargs -I {} /bin/bash -c 'output "$@"' _ {})
+nocommits=$(git status --porcelain | sed "/^D\|^[ ][DM]\|^??\|\/$/d" | sed "s/^.*[ ]//" | xargs -I {} bash -c 'output "$@"' _ {})
 
 if [[ -n "${nocommits}" ]]; then
     printf "Pre-commit hook failed. You left \`\x1b[91mnocommit\x1b[0m\`s or \`\x1b[91mnocheckin\x1b[0m\`s here:\n"

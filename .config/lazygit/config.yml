@@ -6,20 +6,28 @@ gui:
   expandFocusedSidePanel: true
   mainPanelSplitMode: 'flexible' # one of 'horizontal' | 'flexible' | 'vertical'
   theme:
-    lightTheme: false # For terminals with a light background
     activeBorderColor:
-      - white
+      - green
       - bold
     inactiveBorderColor:
-      - green
-    optionsTextColor:
+      - white
+    searchingActiveBorderColor:
       - cyan
+      - bold
+    optionsTextColor:
+      - blue
     selectedLineBgColor:
-      - bold
-      - underline
+      - blue # set to `default` to have no background colour
     selectedRangeBgColor:
-      - bold
-      - reverse
+      - blue
+    cherryPickedCommitBgColor:
+      - cyan
+    cherryPickedCommitFgColor:
+      - blue
+    unstagedChangesColor:
+      - red
+    defaultFgColor:
+      - default
   commitLength:
     show: true
   mouseEvents: true

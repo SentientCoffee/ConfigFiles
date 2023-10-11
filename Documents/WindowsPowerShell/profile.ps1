@@ -13,7 +13,7 @@ function Prompt {
         $Unstaged  = 0
         $Untracked = 0
         foreach ($line in $Status) {
-            if ($line -match "##\s(?<Branch>[^.]+)[\S]+\s*(?:\[(?:ahead (?<Ahead>\d+))?(?:,\s)?(?:behind (?<Behind>\d+))?[^]]*\])?") {
+            if ($line -match "##\s(?<Branch>[^.]+(?:\(no branch\))?)(?:(?:\.\.\.)(?<Remote>[\w/]+))?\s*(?:\[(?:ahead (?<Ahead>\d+))?(?:,\s)?(?:behind (?<Behind>\d+))?[^]]*\])?") {
                 $Output = "{0} {1}" -f $BRANCH_ICON, $Matches.Branch
                 if ($Matches.ContainsKey("Ahead")) {
                     $Output += " {0} {1}" -f $AHEAD_SYMBOL, $Matches.Ahead
@@ -189,3 +189,33 @@ function Prompt {
 
     return $prompt_string
 }
+
+function Refresh-Profile {
+    . $PROFILE.CurrentUserAllHosts
+    . $PROFILE.CurrentUserCurrentHost
+}
+
+function Kill-All {
+    param (
+        [string]$name
+    )
+
+    $tl = & { tasklist }
+    $exename = $name
+    if ($name -notlike "*.exe") {
+        $exename = "{0}.exe" -f $name
+    }
+    $regex = "{0}[^\d]*(?<PID>\d+).*" -f $exename
+
+    foreach($t in $tl) {
+        if ($t -match $regex) {
+            $filter = "PID eq {0}" -f $Matches.PID
+            taskkill /f /fi $filter
+            break
+        }
+    }
+}
+
+New-Alias -Force -Name "lg"      -Value "lazygit.exe"
+New-Alias -Force -Name "refresh" -Value "Refresh-Profile"
+New-Alias -Force -Name "ka"      -Value "Kill-All"

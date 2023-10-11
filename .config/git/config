@@ -10,5 +10,7 @@
 [alias]
     gconf = "config --global --edit"
     lconf = "config --local --edit"
+
+    fork-sync = "!sync() { git pull --rebase; git push; }; sync"
 [color]
     ui = auto

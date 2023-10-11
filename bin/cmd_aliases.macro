@@ -9,7 +9,7 @@ ll=dir /n /oG $*
 ls=dir /w /oG $*
 ls1=dir /b /oG $*
 
-ka=for /f "tokens=2" %%p in ('tasklist /nh ^^^| findstr /i "$*"') do @(taskkill /f /pid %%p)
+ka=for /f "usebackq tokens=2" %p in (`tasklist /nh ^| findstr /i "$*"`) do @(taskkill /f /pid %p)
 
 mkcd=mkdir $1 $T chdir /d $1
 

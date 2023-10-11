@@ -169,7 +169,7 @@
 		"pageSize": 500
 	},
 	"audio": {
-		"volume": 0.3,
+		"volume": 0.18,
 		"volumeStep": 0.01,
 		"maxVolume": 1,
 		"lastVolume": 1,
@@ -398,7 +398,7 @@
 	},
 	"__internal__": {
 		"migrations": {
-			"version": "1.5.7"
+			"version": "1.5.9"
 		}
 	},
 	"cc_authURL": "https://connect.cidercollective.dev/callback/discord?app=cider&appPort=9000"
