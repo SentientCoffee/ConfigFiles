@@ -1,0 +1,311 @@
+[1]  # Version number. Do not delete.
+
+[[workspace]]
+
+[workspace dirs]
+# These directories will be scanned when a workspace is opened so that search etc. works.
+# /home/daniel/.local/share/jai/modules
+# /home/daniel/.local/share/odin/core
+# /home/daniel/.local/share/odin/vendor
+
+[ignore dirs]
+# The workspace scanner will not descend into the dirs that match these names.
+.svn
+.git
+.github
+__pycache__
+
+[allow file extensions]
+# These files are explicitly allowed so that the editor doesn't waste time figuring out
+# whether it should ignore these or not (if a file is not explicitly allowed or ignored,
+# it will be read to determine if it's binary or not).
+.jai .c .cpp .h .hpp .cc .cs .py .js .ts
+.focus-* .txt .md .yml .yaml .ini .toml
+.gitattributes .gitignore
+.csv .log .sql .html .xml .plist
+
+[ignore file extensions]
+# Files with the following extensions will not appear in the file open dialog and won't be indexed.
+# It makes sense to add all known binary file extensions here.
+.exe .pdb .ttf .otf .eot .woff *woff? .dll .lib .dylib .so *so.* .a .o .pdf
+.jpg .png .gif .jpeg .ico .tif .tiff .tga .bmp .webp  # maybe someday we'll support opening images
+.mp3 .wav .ogg .wma
+.blend .obj .fbx .dae .3ds .dat .spv
+.mpg .mpeg .psd .codex .webm .wma
+.zip .rar .7z
+.bin .sys .iso
+.nib .exp
+.pyc .rpyc
+.DS_Store .dmg
+
+[[settings]]
+# NOTE: please copy the whole block when overriding settings, otherwise defaults will be used
+#       for any settings you haven't listed here explicitly
+
+auto_surround_with_brackets_and_quotes: true
+can_cancel_go_to_line:                  true
+copy_whole_line_without_selection:      true
+cursor_as_block:                        false
+dark_titlebar:                          true
+disable_that_annoying_paste_effect:     false
+disable_file_open_close_animations:     false
+double_shift_to_search_in_workspace:    false
+draw_indent_guides:                     true
+hide_mouse_when_typing:                 true
+highlight_selection_occurrences:        true
+highlight_line_with_cursor:             true
+insert_spaces_when_pressing_tab:        true
+line_wrap_is_on_by_default:             false
+maximize_on_start:                      false
+open_on_the_biggest_monitor:            false
+prefer_system_file_dialogs:             false
+show_line_numbers:                      true
+smooth_scrolling:                       true
+strip_trailing_whitespace_on_save:      true
+
+cursor_blink_time_in_seconds:           5
+editor_history_size:                    1024
+line_height_scale_percent:              110
+max_editor_width:                       -1
+max_entries_in_open_file_dialog:        2000
+tab_size:                               4
+
+[[keymap]]
+
+# - The first matching combination will be used, so order matters
+# - E.g. [open file dialog] means the keys in this section will only be used when the open file dialog is open
+# - If you want to disable a particular combination, use a do_nothing action for it
+
+# {Shift}- means shift is optional, the key combination will still be matched.
+
+[editors]   # <- this means that the following key combos will apply only when editing text
+
+# Key combination           Action
+Ctrl-Shift-D                select_word_or_create_another_cursor
+Ctrl-K Ctrl-D               select_all_occurrences
+
+Ctrl-D                      duplicate_lines
+
+# These shortcuts can be annoying to accidentally use, so they are commented out by default
+# Shift-Backspace             delete_line_and_go_up
+# Shift-Delete                delete_line
+
+Ctrl-Backspace              delete_word_left_no_underscore
+Ctrl-Delete                 delete_word_right_no_underscore
+
+Ctrl-Shift-Delete           delete_to_end_of_line
+Ctrl-Shift-Backspace        delete_to_start_of_line
+
+Alt-ArrowUp                 move_selected_lines_up
+Alt-ArrowDown               move_selected_lines_down
+
+Ctrl-J                      join_lines
+Ctrl-Shift-J                join_lines_no_spaces_in_between
+
+Tab                         indent_or_go_to_next_tabstop
+Shift-Tab                   unindent
+
+Ctrl-]                      indent
+Ctrl-[                      unindent
+
+Ctrl-S                      save
+Ctrl-Shift-S                save_as
+Ctrl-K Ctrl-S               save_all
+
+Alt-Minus                   move_to_previous_buffer
+Alt-Plus                    move_to_next_buffer
+Shift-Alt-Minus             move_to_previous_editor_history
+Shift-Alt-Plus              move_to_next_editor_history
+
+Ctrl-/                      toggle_comment
+Ctrl-Shift-/                toggle_block_comment
+
+Alt-C                       move_cursor_to_viewport_center
+
+Ctrl-{Shift}-ArrowUp        move_up_to_empty_line
+Ctrl-{Shift}-ArrowDown      move_down_to_empty_line
+
+Escape                      remove_additional_cursors
+
+Enter                       break_line
+Ctrl-Enter                  new_line_below_without_breaking
+Ctrl-Shift-Enter            new_line_above_without_breaking
+
+Alt-ArrowLeft               switch_to_left_editor
+Alt-ArrowRight              switch_to_right_editor
+Alt-.                       switch_to_other_editor
+Shift-Alt-.                 duplicate_editor
+
+Shift-Alt-ArrowLeft         move_editor_to_the_left
+Shift-Alt-ArrowRight        move_editor_to_the_right
+
+Ctrl-Alt-ArrowLeft          scroll_viewport_left
+Ctrl-Alt-ArrowRight         scroll_viewport_right
+Ctrl-Alt-ArrowUp            scroll_viewport_up_fast
+Ctrl-Alt-ArrowDown          scroll_viewport_down_fast
+
+Ctrl-N                      create_new_file
+Ctrl-Shift-N                create_new_file_on_the_side
+
+Shift-Alt-ArrowUp           create_cursor_above
+Shift-Alt-ArrowDown         create_cursor_below
+Ctrl-Alt-Plus               align_cursors
+
+Ctrl-K Ctrl-L               toggle_line_wrap
+
+[open file dialog]
+
+Escape                      close_dialog
+
+Enter                       open_entry_in_place
+Ctrl-Enter                  open_entry_on_the_side
+Alt-ArrowLeft               open_entry_on_the_left
+Alt-ArrowRight              open_entry_on_the_right
+Shift-Enter                 open_entry_in_explorer
+
+Tab                         open_directory
+ArrowRight                  open_directory
+
+Backspace                   pop_directory
+ArrowLeft                   pop_directory
+
+[search dialog]
+
+Escape                      close_dialog
+
+Enter                       open_entry_in_place
+Ctrl-Enter                  open_entry_on_the_side
+Alt-ArrowLeft               open_entry_on_the_left
+Alt-ArrowRight              open_entry_on_the_right
+
+Alt-C                       toggle_case_sensitive
+Alt-W                       toggle_whole_word
+
+[common]
+
+# Common key combos may be used as a fallback if they are not defined in more specific sections.
+# For example, if "move_up" is not defined in [editors], the one in the [common] section will be matched.
+Alt-F4                      quit
+
+Ctrl-,                      open_global_config
+Ctrl-Shift-,                open_project_config
+
+Ctrl-Shift-P                show_commands
+Ctrl-Alt-P                  open_project
+Ctrl-K Ctrl-W               close_project
+
+Alt-F                       search_in_buffer
+Ctrl-F                      search_in_buffer_dropdown_mode
+Ctrl-Shift-F                search_in_project
+
+Ctrl-P                      show_open_file_dialog_in_search_mode
+Ctrl-O                      show_open_file_dialog_in_navigate_mode_from_root
+Ctrl-Shift-O                show_open_file_dialog_in_navigate_mode
+
+Ctrl-L                      go_to_line
+
+Ctrl-X                      cut
+Ctrl-C                      copy
+Ctrl-V                      paste
+
+Ctrl-Z                      undo
+Ctrl-Shift-Z                redo
+
+Ctrl-Shift-D                select_word
+Ctrl-A                      select_all
+
+Ctrl-W                      close_current_editor
+Ctrl-Shift-W                close_other_editor
+
+Ctrl-Shift-E                toggle_expand
+
+{Shift}-ArrowUp             move_up
+{Shift}-PageUp              move_up_one_page
+Ctrl-Alt-ArrowUp            move_up_fast
+
+{Shift}-ArrowDown           move_down
+{Shift}-PageDown            move_down_one_page
+Ctrl-Alt-ArrowDown          move_down_fast
+
+{Shift}-ArrowLeft           move_left
+Ctrl-{Shift}-ArrowLeft      move_left_by_word
+
+{Shift}-ArrowRight          move_right
+Ctrl-{Shift}-ArrowRight     move_right_by_word
+
+{Shift}-Home                jump_to_line_start
+{Shift}-End                 jump_to_line_end
+Ctrl-{Shift}-Home           jump_to_file_start
+Ctrl-{Shift}-End            jump_to_file_end
+
+{Shift}-Backspace           delete_left_char
+{Shift}-Delete              delete_right_char
+{Shift}-Alt-Backspace       delete_word_left_no_underscore
+{Shift}-Alt-Delete          delete_word_right_no_underscore
+Ctrl-{Shift}-Backspace      delete_word_left
+Ctrl-{Shift}-Delete         delete_word_right
+
+Ctrl-Plus                   increase_font_size
+Ctrl-Minus                  decrease_font_size
+Ctrl-0                      reset_font_size_to_default
+Ctrl-MouseMiddle            reset_font_size_to_default
+
+
+[[style]]
+
+[user interface]
+font:       default
+font_size:  9
+
+[colors]
+background:                     151515ff
+background_dark:                151515ff
+background_highlight:           757575ff
+background_light:               2b2b2bff
+background_bright:              3c3c3cff
+
+selection_active:               343d41ff
+selection_highlight:            292f32ff
+selection_inactive:             80a3b34a
+
+search_result_active:           c5944b81
+search_result_inactive:         c5944b3c
+
+scrollbar:                      4a4a4a75
+scrollbar_hover:                75757575
+scrollbar_background:           2b2b2bff
+splitter:                       4a4a4aff
+splitter_hover:                 757575ff
+
+cursor:                         d4d4d4ff
+cursor_inactive:                757575ff
+
+paste_animation:                4a4a4a4a
+
+text_input_label:               757575ff
+letter_highlight:               ff9f40ff
+list_cursor_lite:               4a4a4a2b
+list_cursor:                    4a4a4aaa
+shadow_dark:                    0000004a
+shadow_transparent:             00000000
+
+ui_default:                     d4d4d4ff
+ui_dim:                         757575ff
+ui_neutral:                     eeeeeeff
+ui_warning:                     ffcc44ff
+ui_warning_dim:                 997000ff
+ui_error:                       dd3636ff
+ui_error_bright:                ff00ffff
+ui_success:                     1b7e30ff
+
+code_default:                   b4b4b4ff
+code_comment:                   627373ff
+code_type:                      ffeb60ff
+code_function:                  86b5e3ff
+code_punctuation:               d4d4d4ff
+code_operation:                 d6ab80ff
+code_string:                    b8e272ff
+code_value:                     ff9f40ff
+code_highlight:                 D89B75FF
+code_error:                     dd3636ff
+code_keyword:                   df75dfff
