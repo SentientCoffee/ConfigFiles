@@ -133,16 +133,16 @@ function Prompt {
     $SEPARATOR        = ""
     $ENDER            = ""
 
-    $BRANCH_ICON      = ""
+    $BRANCH_ICON      = "󰘬"
     $STATUS_CLEAN     = ""
     $STATUS_SEPARATOR = "❯"
 
-    $UNTRACKED_SYMBOL = "?"
-    $UNSTAGED_SYMBOL  = ""
-    $STAGED_SYMBOL    = "⟰"
+    $UNTRACKED_SYMBOL = ""
+    $UNSTAGED_SYMBOL  = ""
+    $STAGED_SYMBOL    = ""
 
-    $AHEAD_SYMBOL     = ""
-    $BEHIND_SYMBOL    = ""
+    $AHEAD_SYMBOL     = ""
+    $BEHIND_SYMBOL    = ""
 
     $STARTER_COLOR_1   = [PromptColor]::new("DarkRed"    , ""          , $true)
     $USER_HOST_COLOR   = [PromptColor]::new("White"      , "DarkRed"          )
@@ -216,6 +216,14 @@ function Kill-All {
     }
 }
 
-New-Alias -Force -Name "lg"      -Value "lazygit.exe"
-New-Alias -Force -Name "refresh" -Value "Refresh-Profile"
-New-Alias -Force -Name "ka"      -Value "Kill-All"
+function Lazygit-Dotfiles {
+    lazygit.exe -g "${env:UserProfile}\\.dotfiles" -w "${env:UserProfile}"
+}
+
+
+New-Alias -Force -Name "ka"          -Value "Kill-All"
+
+New-Alias -Force -Name "lg"          -Value "lazygit.exe"
+New-Alias -Force -Name "lg-dotfiles" -Value "Lazygit-Dotfiles"
+
+New-Alias -Force -Name "refresh"     -Value "Refresh-Profile"
