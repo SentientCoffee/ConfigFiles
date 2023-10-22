@@ -1,15 +1,31 @@
 {
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions":
+    "actions": 
     [
         {
-            "command":
+            "command": 
+            {
+                "action": "sendInput",
+                "input": "\u001b[1;4A"
+            },
+            "keys": "alt+shift+up"
+        },
+        {
+            "command": 
             {
                 "action": "copy",
                 "singleLine": false
             },
             "keys": "ctrl+shift+c"
+        },
+        {
+            "command": 
+            {
+                "action": "sendInput",
+                "input": "\u001b[1;4B"
+            },
+            "keys": "alt+shift+down"
         },
         {
             "command": "paste",
@@ -20,24 +36,40 @@
             "keys": "ctrl+shift+f"
         },
         {
-            "command": "closePane",
-            "keys": "alt+shift+w"
-        },
-        {
-            "command":
-            {
-                "action": "closeTab"
-            },
-            "keys": "ctrl+shift+w"
-        },
-        {
-            "command":
+            "command": 
             {
                 "action": "splitPane",
                 "split": "auto",
                 "splitMode": "duplicate"
             },
             "keys": "alt+shift+d"
+        },
+        {
+            "command": "closePane",
+            "keys": "alt+shift+w"
+        },
+        {
+            "command": 
+            {
+                "action": "closeTab"
+            },
+            "keys": "ctrl+shift+w"
+        },
+        {
+            "command": 
+            {
+                "action": "sendInput",
+                "input": "\u001b[1;4D"
+            },
+            "keys": "alt+shift+left"
+        },
+        {
+            "command": 
+            {
+                "action": "sendInput",
+                "input": "\u001b[1;4C"
+            },
+            "keys": "alt+shift+right"
         }
     ],
     "copyFormatting": "none",
@@ -46,24 +78,24 @@
     "experimental.rendering.forceFullRepaint": true,
     "initialCols": 250,
     "initialRows": 60,
-    "newTabMenu":
+    "newTabMenu": 
     [
         {
             "type": "remainingProfiles"
         }
     ],
-    "profiles":
+    "profiles": 
     {
-        "defaults":
+        "defaults": 
         {
             "antialiasingMode": "cleartype",
             "bellStyle": "window",
             "closeOnExit": "graceful",
             "colorScheme": "Dark Coffee",
-            "font":
+            "font": 
             {
-                "face": "FiraCode NF Retina",
-                "features":
+                "face": "FiraCode Nerd Font",
+                "features": 
                 {
                     "calt": 0,
                     "cv16": 1,
@@ -83,7 +115,7 @@
             "useAcrylic": true,
             "useAtlasEngine": true
         },
-        "list":
+        "list": 
         [
             {
                 "commandline": "cmd.exe /k \"%UserProfile%\\bin\\cmd_autorun.bat\"",
@@ -151,7 +183,7 @@
             }
         ]
     },
-    "schemes":
+    "schemes": 
     [
         {
             "background": "#0C0C0C",
@@ -386,52 +418,7 @@
     ],
     "tabSwitcherMode": "inOrder",
     "tabWidthMode": "equal",
-    "theme": "dark",
-    "themes":
-    [
-        {
-            "name": "legacyDark",
-            "tab":
-            {
-                "background": null,
-                "showCloseButton": "always",
-                "unfocusedBackground": null
-            },
-            "window":
-            {
-                "applicationTheme": "dark",
-                "useMica": false
-            }
-        },
-        {
-            "name": "legacyLight",
-            "tab":
-            {
-                "background": null,
-                "showCloseButton": "always",
-                "unfocusedBackground": null
-            },
-            "window":
-            {
-                "applicationTheme": "light",
-                "useMica": false
-            }
-        },
-        {
-            "name": "legacySystem",
-            "tab":
-            {
-                "background": null,
-                "showCloseButton": "always",
-                "unfocusedBackground": null
-            },
-            "window":
-            {
-                "applicationTheme": "system",
-                "useMica": false
-            }
-        }
-    ],
+    "themes": [],
     "useAcrylicInTabRow": false,
     "windowingBehavior": "useExisting",
     "wordDelimiters": " ./\\()\"'-_:,.;<>~!@#$%^&*|+=[]{}~?\u2502"
