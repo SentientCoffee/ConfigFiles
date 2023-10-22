@@ -1,7 +1,6 @@
 {
     "Alt-.": "NextSplit",
     "Alt-/": "lua:comment.comment",
-    "Alt-T": "HSplit",
     "Alt-d": "command:definition",
     "Alt-f": "command:format",
     "Alt-k": "command:hover",
@@ -11,5 +10,6 @@
     "Ctrl-.": "NextTab",
     "Ctrl-/": "lua:comment.comment",
     "CtrlSpace": "command:lspcompletion",
-    "CtrlUnderscore": "lua:comment.comment"
+    "CtrlUnderscore": "lua:comment.comment",
+    "Shift-Alt-T": "HSplit"
 }

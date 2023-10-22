@@ -1,5 +1,5 @@
 {
-    "backups": "~/.local/share/micro/backups",
+    "backupdir": "~/AppData/LocalLow/micro/backups",
     "basename": true,
     "colorscheme": "dark-coffee-tc",
     "diffgutter": true,
