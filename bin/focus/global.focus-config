@@ -22,7 +22,7 @@ __pycache__
 .jai .c .cpp .h .hpp .cc .cs .py .js .ts
 .focus-* .txt .md .yml .yaml .ini .toml
 .gitattributes .gitignore
-.csv .log .sql .html .xml .plist
+.csv .log .sql .html .xml .plist .json
 
 [ignore file extensions]
 # Files with the following extensions will not appear in the file open dialog and won't be indexed.
