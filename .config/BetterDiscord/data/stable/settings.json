@@ -11,14 +11,14 @@
     "customcss": {
         "customcss": true,
         "liveUpdate": true,
-        "openAction": "settings"
+        "openAction": "detached"
     },
     "editor": {
         "lineNumbers": true,
         "minimap": true,
         "hover": true,
-        "quickSuggestions": true,
-        "fontSize": "14",
+        "quickSuggestions": false,
+        "fontSize": "12",
         "renderWhitespace": "all"
     },
     "window": {
