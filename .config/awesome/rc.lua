@@ -36,7 +36,7 @@ end
 
 ----------------------------------------------------------------------------
 
-beautiful.init("~/.config/awesome/themes/default.lua")
+beautiful.init(os.getenv("XDG_CONFIG_HOME") .. "/awesome/themes/default.lua")
 -- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 ----------------------------------------------------------------------------
@@ -76,29 +76,31 @@ for s in screen do
 end
 
 if all_screens[screen1] == nil then
-    screen1 = screen3
     naughty.notification({ title = screen1 .. " mapped to " .. screen3 .. "." })
+    screen1 = screen3
 end
 
 if all_screens[screen2] == nil then
-    screen2 = screen3
     naughty.notification({ title = screen2 .. " mapped to " .. screen3 .. "." })
+    screen2 = screen3
 end
 
 if all_screens[screen3] == nil then
-    screen3 = screen1
     naughty.notification({ title = screen3 .. " mapped to " .. screen1 .. "." })
+    screen3 = screen1
 end
 
 ----------------------------------------------------------------------------
 
 modkey          = "Mod4"
+
 terminal        = "alacritty"
+file_manager    = "pcmanfm"
 process_viewers = { "btop", "htop" }
 
-browser        = os.getenv("BROWSER")    or "librewolf"
-calculator     = os.getenv("CALCULATOR") or "speedcrunch"
-editor         = os.getenv("EDITOR")     or terminal .. " --class=micro," .. terminal .. " -e micro"
+browser    = os.getenv("BROWSER")    or "librewolf"
+calculator = os.getenv("CALCULATOR") or "speedcrunch"
+editor     = os.getenv("EDITOR")     or terminal .. " --class=micro," .. terminal .. " -e micro"
 
 menubar_options =
     -- Height of run prompt
@@ -231,8 +233,12 @@ end
 ----------------------------------------------------------------------------
 
 local hotkeys_popup = hotkeys_popup_widget.new({
+    width  = awful.screen.focused().geometry.width  * 0.6,
+    height = awful.screen.focused().geometry.height * 0.6,
+
     hide_without_description = true,
     merge_duplicates = true,
+
     labels = {
         Mod1    = "Alt",
         Mod4    = "Super",
@@ -253,16 +259,16 @@ local hotkeys_popup = hotkeys_popup_widget.new({
         Right = "→",
         Down  = "↓",
 
-        XF86AudioRaiseVolume  = "",                 -- "Volume Up"
-        XF86AudioLowerVolume  = "",                 -- "Volume Down"
-        XF86AudioMute         = "Fn+F1 ",          -- "" "Audio Mute"
-        XF86Calculator        = "Fn+Numpad Enter ", -- "Calculator"
-        XF86DisplayOff        = "Fn+F6 ",           -- "Display Off"
-        XF86KbdBrightnessDown = "Fn+↑ ",           -- "Keyboard Brightness Down"
-        XF86KbdBrightnessUp   = "Fn+↓ ",           -- "Keyboard Brightness Up"
-        XF86MonBrightnessDown = "Fn+F7 益",           -- "Display Brightness Down"
-        XF86MonBrightnessUp   = "Fn+F8 盛",           -- "Display Brightness Up"
-        XF86TouchpadToggle    = "Fn+F10 ",          -- "Touchpad Toggle"
+        XF86AudioRaiseVolume  = "",                   -- "Volume Up"
+        XF86AudioLowerVolume  = "",                   -- "Volume Down"
+        XF86AudioMute         = " (Fn+F1)",          -- "Audio Mute" ""
+        XF86Calculator        = " (Fn+Numpad Enter)", -- "Calculator"
+        XF86DisplayOff        = " (Fn+F6)",           -- "Display Off"
+        XF86KbdBrightnessDown = "󰌌  (Fn+↑)",          -- "Keyboard Brightness Down"
+        XF86KbdBrightnessUp   = "󰌌  (Fn+↓)",          -- "Keyboard Brightness Up"
+        XF86MonBrightnessDown = " (Fn+F7)",           -- "Display Brightness Down"
+        XF86MonBrightnessUp   = " (Fn+F8)",           -- "Display Brightness Up"
+        XF86TouchpadToggle    = "󰍾 (Fn+F10)",          -- "Touchpad Toggle"
 
         ['#10']  = "1",
         ['#11']  = "2",
@@ -682,7 +688,7 @@ screen.connect_signal("property::geometry", set_wallpaper)
 awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
-    local tag_names = { "", "", "", "", "", "󰅺" , "", "", "" }
+    local tag_names = { "󰅩", "", "", "", "", "󰅺", "󰝚", "󰊴", "" }
 
     if s.geometry.height == 1920 then
         awful.tag(tag_names, s, awful.layout.layouts[3])
@@ -883,8 +889,8 @@ globalkeys = gears.table.join(
             awful.spawn.easy_async_with_shell("sleep 0.1 ; xset q | grep \"Caps Lock\" | awk '{ print $4 }'",
             function(capslock_out)
                 capslock_out = capslock_out:sub(1, -2)
-                    local c = ""
-                    if capslock_out == "on" then c = "" end
+                    local c = "󰧇"
+                    if capslock_out == "on" then c = "󰁞" end
 
                     local notif_text = c .. "  Caps Lock " .. capslock_out
                     if capslock_notif.is_expired then
@@ -1068,6 +1074,10 @@ globalkeys = gears.table.join(
         { group = "launchers", description = "Open editor (" .. editor .. ")" }
     ),
     awful.key(
+        { modkey, "Control" }, "f", function() awful.spawn(file_manager) end,
+        { group = "launchers", description = "Open file manager (" .. file_manager .. ")" }
+    ),
+    awful.key(
         {}, "XF86Calculator", function() awful.spawn(calculator) end,
         { group = "launchers", description = "Open calculator (" .. calculator .. ")" }
     ),
@@ -1193,7 +1203,7 @@ for i = 1, 9 do
                 local tag = screen.tags[i]
                 if tag then tag:view_only() end
             end,
-            { group = "tag", description = "Swtich to tag " .. tag_name }
+            { group = "tag", description = "Swtich to tag " .. tag_name .. " " }
         ),
 
         -- Toggle tag display.
@@ -1216,7 +1226,7 @@ for i = 1, 9 do
                     if tag then client.focus:move_to_tag(tag) end
                 end
             end,
-            { group = "tag", description = "Move focused client to tag " .. tag_name }
+            { group = "tag", description = "Move focused client to tag " .. tag_name .. " " }
         ),
 
         -- Toggle tag on focused client.
@@ -1228,7 +1238,7 @@ for i = 1, 9 do
                     if tag then client.focus:toggle_tag(tag) end
                 end
             end,
-            { group = "tag", description = "Toggle showing focused client on tag " .. tag_name }
+            { group = "tag", description = "Toggle showing focused client on tag " .. tag_name .. " " }
         )
     )
 end
@@ -1331,7 +1341,8 @@ awful.rules.rules = {
         rule_any = {
             instance = {
                 "btop",
-                "htop"
+                "htop",
+                "Focus (debug mode)"
             },
             class = {
                 "Arandr",
@@ -1370,7 +1381,7 @@ awful.rules.rules = {
 
     -- Add titlebars to normal clients and dialogs
     {
-        rule_any   = {
+        rule_any = {
             type = { "dialog" }
         },
         properties = {
@@ -1381,10 +1392,23 @@ awful.rules.rules = {
         }
     },
     {
-        rule_any   = {
+        rule_any = {
             type = { "dock" }
         },
         properties = {
+            focusable    = false,
+            skip_taskbar = true,
+            tag          = nil,
+            border_width = 0
+        }
+    },
+    {
+        rule = {
+            instance = "stalonetray",
+            class    = "stalonetray",
+        },
+        properties = {
+            floating     = true,
             focusable    = false,
             skip_taskbar = true,
             tag          = nil,
@@ -1404,18 +1428,35 @@ awful.rules.rules = {
     },
 
     {
-        rule_any = {
-            instance = {
-                "vscodium",
-                "unityhub"
-            },
-            class = {
-                "VSCodium",
-                "unityhub"
-            }
+        rule = {
+            instance = "vscodium",
+            class    = "VSCodium"
         },
         properties = {
             tag         = all_screens[screen1].tags[1],
+            switchtotag = true,
+            focus       = true,
+            maximized   = true
+        }
+    },
+    {
+        rule = {
+            instance = "Focus",
+            class    = "dev.focus-editor.focus"
+        },
+        properties = {
+            tag         = all_screens[screen1].tags[1],
+            switchtotag = true,
+            focus       = true
+            -- maximized   = true
+        }
+    },
+    {
+        rule = {
+            name = "gf2"
+        },
+        properties = {
+            tag         = all_screens[screen1].tags[2],
             switchtotag = true,
             focus       = true,
         }
@@ -1513,8 +1554,8 @@ awful.rules.rules = {
         },
         properties = {
             tag         = all_screens[screen3].tags[8],
-            switchtotag = true,
-            focus       = true,
+            switchtotag = false,
+            focus       = false,
         }
     },
     {

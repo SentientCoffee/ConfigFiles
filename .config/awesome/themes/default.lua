@@ -54,7 +54,7 @@ theme.status_bar_factor = 32 / 1000
 
 ----------------------------------------------------------------------------
 
-theme.taglist_font_family = "FiraCode Nerd Font Mono"
+theme.taglist_font_family = "FiraCode Nerd Font Propo"
 theme.taglist_font_size   = dpi(global_font_size + 9)
 theme.taglist_font        = theme.taglist_font_family .. " " .. theme.taglist_font_size
 
@@ -109,8 +109,15 @@ theme.menubar_height = dpi(28)
 
 ----------------------------------------------------------------------------
 
-theme.hotkeys_font             = "FiraCode Nerd Font Mono 10"
-theme.hotkeys_description_font = "Scada 10"
+local hotkey_font_size = 14
+
+theme.hotkeys_font_family      = "FiraCode Nerd Font Propo"
+theme.hotkeys_font_size        = dpi(hotkey_font_size)
+theme.hotkeys_font             = theme.hotkeys_font_family .. " " .. theme.hotkeys_font_size
+
+theme.hotkeys_description_font_family = "Scada"
+theme.hotkeys_description_font_size   = dpi(hotkey_font_size)
+theme.hotkeys_description_font        = theme.hotkeys_description_font_family .. " " .. theme.hotkeys_description_font_size
 
 theme.hotkeys_bg               = "#1a1a1a"
 theme.hotkeys_fg               = "#b4b4b4"
