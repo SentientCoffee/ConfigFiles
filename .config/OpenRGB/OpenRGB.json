@@ -3,6 +3,7 @@
         "client": "localhost:6742",
         "custom": "",
         "enabled": false,
+        "host": "0.0.0.0",
         "port": "6742",
         "profile": "CPU Temp + Wave",
         "setclient": false,
@@ -10,6 +11,7 @@
         "setminimized": true,
         "setprofile": false,
         "setserver": false,
+        "setserverhost": false,
         "setserverport": false
     },
     "Client": {
@@ -1311,10 +1313,13 @@
             }
         ]
     },
+    "Theme": {
+        "theme": "dark"
+    },
     "UserInterface": {
         "exit_profile": {
-            "profile_name": "",
-            "set_on_exit": false
+            "profile_name": "G910",
+            "set_on_exit": true
         },
         "geometry": {
             "height": 0,
