@@ -41,6 +41,18 @@ zstyle ":completion::complete:*" gain-privileges 1
 
 # ----------------------------------------------------------------------------
 
+# `bindkey` to show commands, `showkey` -a to show key combos
+
+bindkey "^[[3~"   delete-char         # Delete
+bindkey "^[[H"    beginning-of-line   # Home
+bindkey "^[[F"    end-of-line         # End
+bindkey "^[[1;5D" backward-word       # Ctrl-Left
+bindkey "^[[1;5C" forward-word        # Ctrl-Right
+bindkey "^H"      backward-kill-word  # Ctrl-Backspace / Ctrl+H
+bindkey "^[[3;5~" kill-word           # Ctrl-Delete
+
+# ----------------------------------------------------------------------------
+
 source "${XDG_CONFIG_HOME}/shell/aliases.sh"
 
 source "${XDG_CONFIG_HOME}/zsh/zsh_prompt.zsh"
