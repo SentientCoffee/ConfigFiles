@@ -70,6 +70,10 @@ max_editor_width:                       -1
 max_entries_in_open_file_dialog:        2000
 tab_size:                               4
 
+[[linux]]
+
+scaling_factor:                         1.0
+
 [[keymap]]
 
 # - The first matching combination will be used, so order matters
@@ -113,8 +117,8 @@ Ctrl-Shift-S                save_as
 Ctrl-K Ctrl-S               save_all
 
 Alt-Minus                   move_to_previous_buffer
-Alt-Plus                    move_to_next_buffer
-Shift-Alt-Minus             move_to_previous_editor_history
+Alt-=                       move_to_next_buffer
+{Shift}-Alt-_               move_to_previous_editor_history
 Shift-Alt-Plus              move_to_next_editor_history
 
 Ctrl-/                      toggle_comment
@@ -188,7 +192,7 @@ Alt-W                       toggle_whole_word
 Alt-F4                      quit
 
 Ctrl-,                      open_global_config
-Ctrl-Shift-,                open_project_config
+Ctrl-{Shift}-<              open_project_config
 
 Ctrl-Shift-P                show_commands
 Ctrl-Alt-P                  open_project
@@ -254,8 +258,8 @@ Ctrl-MouseMiddle            reset_font_size_to_default
 [[style]]
 
 [user interface]
-font:       default
-font_size:  9
+font:       FiraCode Nerd Font Propo
+font_size:  14
 
 [colors]
 background:                     151515ff
