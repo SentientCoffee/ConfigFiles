@@ -31,6 +31,7 @@ run clipmenud                 # > "${XDG_CACHE_HOME}/logs/clipmenu.log"        2
 run discord --start-minimized # > "${XDG_CACHE_HOME}/logs/discord.log"         2>&1
 run keepassxc                 # > "${XDG_CACHE_HOME}/logs/keepassxc.log"       2>&1
 run keyboard-center           # > "${XDG_CACHE_HOME}/logs/keyboard-center.log" 2>&1
+run lutris                    # > "${XDG_CACHE_HOME}/logs/lutris.log"          2>&1
 run mailspring -b             # > "${XDG_CACHE_HOME}/logs/mailspring.log"      2>&1
 run nm-applet                 # > "${XDG_CACHE_HOME}/logs/nm-applet.log"       2>&1
 run openrgb --startminimized  # > "${XDG_CACHE_HOME}/logs/openrgb.log"         2>&1
