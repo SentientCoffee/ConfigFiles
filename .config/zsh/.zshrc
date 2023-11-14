@@ -1,5 +1,3 @@
-bindkey -e                     # Emacs bindings in the shell
-
 stty -ixon                     # Disable Ctrl+S/Ctrl+Q
 
 setopt autocd                  # `cd` into directory without typing `cd`
@@ -40,6 +38,8 @@ zstyle ":completion:*" menu select
 zstyle ":completion::complete:*" gain-privileges 1
 
 # ----------------------------------------------------------------------------
+
+bindkey -e                     # Emacs bindings in the shell
 
 # `bindkey` to show commands, `showkey` -a to show key combos
 
