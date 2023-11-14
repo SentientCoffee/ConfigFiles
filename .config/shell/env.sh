@@ -38,6 +38,6 @@ export XINITRC="${XDG_CONFIG_HOME}/x11/xinitrc"
 # ----------------------------------------------------------------------------
 
 export BROWSER="librewolf"
-export EDITOR="codium"
+export EDITOR="focus"
 
 export PATH="${PATH}:${HOME}/.local/bin:${HOME}/desktop"
