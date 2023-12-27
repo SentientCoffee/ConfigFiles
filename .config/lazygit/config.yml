@@ -33,6 +33,7 @@ gui:
     mouseEvents: true
     skipDiscardChangeWarning: false
     skipStashWarning: true
+    nerdFontsVersion: "3"
 git:
     paging:
         colorArg: always
@@ -50,9 +51,12 @@ git:
     branchLogCmd: "git log --color=always --graph --date=format:'%a %b %d %G %H:%M' --decorate --pretty=format:'%C(yellow)%h %C(green)%ad %Creset%s %C(red)%d %C(cyan)[%an]%Creset' --"
     overrideGpg: false # prevents lazygit from spawning a separate process when using GPG
     disableForcePushing: false
+os:
+  editPreset: 'micro' # see 'Configuring File Editing' section
 update:
     method: prompt # can be: prompt | background | never
     days: 14 # how often an update is checked for
+notARepository: 'quit' # one of: 'prompt' | 'create' | 'skip' | 'quit'
 reporting: 'undetermined' # one of: 'on' | 'off' | 'undetermined'
 confirmOnQuit: false
 # determines whether hitting 'esc' will quit the application when there is nothing to cancel/close
