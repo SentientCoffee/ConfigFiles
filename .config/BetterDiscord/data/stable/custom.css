@@ -10,8 +10,8 @@ body
   font-size  : 100% !important;
   font-family:
     Scada,
-    Cuprum,
     Roboto Condensed,
+    Noto Sans,
     sans-serif
     !important;
 }
@@ -26,8 +26,8 @@ h1
   /* letter-spacing: -0.2px !important; */
   font-family:
     Scada,
-    Cuprum,
     Roboto Condensed,
+    Noto Sans,
     sans-serif
     !important;
 }
@@ -105,7 +105,7 @@ header
 }
 
 code
-, span.inlineCode-2auMQi *
+, span.inlineCode_d702a4 *
 , .bd-codeblock-language
 , .codeBlockText-311wOq
 , .codeLine-3a3dbd
@@ -118,14 +118,14 @@ code
   /* letter-spacing        : -0.px !important; */
   line-height           : 1.1rem !important;
   font-family:
-    "FiraCode Nerd Font Mono",
-    "FuraMono Nerd Font Mono",
-    "Hack",
+    FiraCode Nerd Font Propo,
+    Hack,
     monospace
     !important;
 }
 
-#bd-customcss-editor *
+div.durationTimeWrapper_d1de6b *
+, #bd-customcss-editor *
 , #bd-editor-panel *
 , #bd-floating-editor *
 {
@@ -133,9 +133,8 @@ code
   font-variant-ligatures: no-contextual !important;
   font-feature-settings : "ss01", "ss02", "ss03", "ss05", "ss06", "ss08" !important;
   font-family:
-    "FiraCode Nerd Font Mono",
-    "FuraMono Nerd Font Mono",
-    "Hack",
+    FiraCode Nerd Font Propo,
+    Hack,
     monospace
     !important;
 }
@@ -148,7 +147,7 @@ pre code
 }
 
 code.inline
-, span.inlineCode-2auMQi
+, span.inlineCode_d702a4
 {
   font-size: 85% !important;
   border   : 0.2px solid white !important;
