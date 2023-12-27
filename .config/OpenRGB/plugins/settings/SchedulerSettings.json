@@ -3,6 +3,7 @@
         "action": 2,
         "cron_line": "0 * * * * ?",
         "name": "nice",
+        "next_run": 1703719380297020853,
         "run": true,
         "sub_action": "Load profile: Purple-Orange-Wave"
     },
@@ -10,6 +11,7 @@
         "action": 2,
         "cron_line": "0 * * * * ?",
         "name": "nice2",
+        "next_run": 1703719380368313119,
         "run": true,
         "sub_action": "Start all effects"
     }
