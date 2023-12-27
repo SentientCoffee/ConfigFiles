@@ -1,15 +1,15 @@
 #!/bin/sh
 
-BRANCH_ICON=""
+BRANCH_ICON="󰘬"
 STATUS_CLEAN=""
 STATUS_SEPARATOR="❯"
 
-UNTRACKED_SYMBOL="?"
-UNSTAGED_SYMBOL=""
-STAGED_SYMBOL="⟰"
+UNTRACKED_SYMBOL=""
+UNSTAGED_SYMBOL=""
+STAGED_SYMBOL=""
 
-AHEAD_SYMBOL=""
-BEHIND_SYMBOL=""
+AHEAD_SYMBOL=""
+BEHIND_SYMBOL=""
 
 get_git_info () {
     STATUS=$(git status --porcelain --branch 2>/dev/null)

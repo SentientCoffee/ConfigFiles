@@ -1,6 +1,6 @@
 alias sudo="sudo -v ; sudo "
 
-alias adb="'HOME=${XDG_DATA_HOME}'/android adb"
+alias adb="HOME=\"${XDG_DATA_HOME}/android\" adb"
 
 alias cat="bat"
 alias chmod="sudo chmod -cR"

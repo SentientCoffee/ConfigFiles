@@ -1,6 +1,8 @@
 ENV="${HOME}/.ssh/agent.env"
 
-agent_load_env () { test -f "${ENV}" && . "${ENV}" >| /dev/null ; }
+agent_load_env () {
+    test -f "${ENV}" && source "${ENV}" >| /dev/null;
+}
 
 agent_start () {
     (umask 077; ssh-agent >| "${ENV}")
@@ -12,9 +14,13 @@ agent_add_keys () {
     ssh-add "${HOME}/.ssh/id_ed25519_ontariotech"
 }
 
+# ---------------------------------------------------
+
 agent_load_env
 
-# AGENT_RUN_STATE: 0=agent running w/ key; 1=agent w/o key; 2= agent not running
+# 0 = agent running w/ key
+# 1 = agent w/o key
+# 2 = agent not running
 AGENT_RUN_STATE=$(ssh-add -l >| /dev/null 2>&1; echo $?)
 
 echo "---------- Starting ssh-agent ----------"
