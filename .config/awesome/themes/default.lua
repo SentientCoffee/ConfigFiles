@@ -100,12 +100,19 @@ theme.menu_width        = dpi(175)
 
 ----------------------------------------------------------------------------
 
+local menubar_font_size = 9
+local menubar_height    = 28
+
+theme.menubar_font_family         = "FiraCode Nerd Font Propo"
+theme.menubar_font_size           = dpi(menubar_font_size)
+theme.menubar_font                = theme.menubar_font_family .. " " .. theme.menubar_font_size
+
 theme.menubar_bg                  = theme.bg_normal
 theme.menubar_fg                  = theme.fg_normal
 theme.menubar_highlight_normal_fg = "#e69933"
 theme.menubar_highlight_sel_bg    = "#e6cc4d"
 
-theme.menubar_height = dpi(28)
+theme.menubar_height = dpi(menubar_height)
 
 ----------------------------------------------------------------------------
 

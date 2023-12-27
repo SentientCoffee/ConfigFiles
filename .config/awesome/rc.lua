@@ -39,6 +39,8 @@ end
 beautiful.init(os.getenv("XDG_CONFIG_HOME") .. "/awesome/themes/default.lua")
 -- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
+naughty.config.presets.critical.font = beautiful.font_family .. " 12"
+
 ----------------------------------------------------------------------------
 
 awful.layout.layouts = {
@@ -64,11 +66,17 @@ menubar.utils.terminal = terminal
 
 ----------------------------------------------------------------------------
 
+local device_notif_preset = {
+    font    = beautiful.font_family .. " 12",
+    timeout = 5,
+    margin  = 8,
+}
+
+local all_screens = {}
 local screen1 = "DP1"
 local screen2 = "HDMI1"
 local screen3 = "eDP1"
 
-local all_screens = {}
 for s in screen do
     for name, _ in pairs(s.outputs) do
         all_screens[name] = s
@@ -76,48 +84,58 @@ for s in screen do
 end
 
 if all_screens[screen1] == nil then
-    naughty.notification({ title = screen1 .. " mapped to " .. screen3 .. "." })
+    naughty.notification({ preset = device_notif_preset, title = screen1 .. " mapped to " .. screen3 .. "." })
     screen1 = screen3
 end
 
 if all_screens[screen2] == nil then
-    naughty.notification({ title = screen2 .. " mapped to " .. screen3 .. "." })
+    naughty.notification({ preset = device_notif_preset, title = screen2 .. " mapped to " .. screen3 .. "." })
     screen2 = screen3
 end
 
 if all_screens[screen3] == nil then
-    naughty.notification({ title = screen3 .. " mapped to " .. screen1 .. "." })
+    naughty.notification({ preset = device_notif_preset, title = screen3 .. " mapped to " .. screen1 .. "." })
     screen3 = screen1
 end
 
 ----------------------------------------------------------------------------
 
-modkey          = "Mod4"
+modkey = "Mod4"
 
-terminal        = "alacritty"
-file_manager    = "pcmanfm"
-process_viewers = { "btop", "htop" }
+terminal     = "alacritty"
+file_manager = "pcmanfm"
+mail_client  = { name = "mailspring", exec = "gtk-launch Mailspring.desktop" }  -- Using this for the libsecret exec
 
 browser    = os.getenv("BROWSER")    or "librewolf"
 calculator = os.getenv("CALCULATOR") or "speedcrunch"
-editor     = os.getenv("EDITOR")     or terminal .. " --class=micro," .. terminal .. " -e micro"
+editor     = os.getenv("EDITOR")     or "focus"
+
+process_viewers = { "btop", "htop" }
 
 menubar_options =
     -- Height of run prompt
     "-h " .. beautiful.menubar_height .. " " ..
     -- Font family and size
-    "-fn \""  .. beautiful.font_family .. ":size=" .. beautiful.font_size .. "\" " ..
+    "-fn \""  .. beautiful.menubar_font_family .. ":size=" .. beautiful.menubar_font_size + 1 .. "\" " ..
     -- Normal (non-selected) item theme
-    "-nb \""  .. string.sub(beautiful.menubar_bg, 1, 7) .. "\" -nf \""  .. string.sub(beautiful.menubar_fg,                  1, 7) .. "\" " ..
+    "-nb \""  .. beautiful.menubar_bg:sub(1, 7) .. "\" -nf \""  .. beautiful.menubar_fg:sub(1, 7) .. "\" " ..
     -- Selected item theme
-    "-sb \""  .. string.sub(beautiful.bg_focus,   1, 7) .. "\" -sf \""  .. string.sub(beautiful.menubar_fg,                  1, 7) .. "\" " ..
+    "-sb \""  .. beautiful.bg_focus:sub(1, 7)   .. "\" -sf \""  .. beautiful.menubar_fg:sub(1, 7) .. "\" " ..
     -- Normal (non-selected) item highlighted substring theme
-    "-nhb \"" .. string.sub(beautiful.menubar_bg, 1, 7) .. "\" -nhf \"" .. string.sub(beautiful.menubar_highlight_normal_fg, 1, 7) .. "\" " ..
+    "-nhb \"" .. beautiful.menubar_bg:sub(1, 7) .. "\" -nhf \"" .. beautiful.menubar_highlight_normal_fg:sub(1, 7) .. "\" " ..
     -- Selected item highlighted substring theme
-    "-shb \"" .. string.sub(beautiful.bg_focus,   1, 7) .. "\" -shf \"" .. string.sub(beautiful.menubar_highlight_sel_bg,    1, 7) .. "\" "
+    "-shb \"" .. beautiful.bg_focus:sub(1, 7)   .. "\" -shf \"" .. beautiful.menubar_highlight_sel_bg:sub(1, 7) .. "\" "
 
-local function menubar_global_options(s)
-    return "-z " .. tostring(s.geometry.width - ((beautiful.status_bar_factor / 1000) * s.geometry.width))
+local function menubar_screen_options(s)
+    if s.status_bar == nil then
+        return ""
+    end
+
+    if s.status_bar.position == "top" then
+        return "-y " .. tostring(s.status_bar.height)
+    end
+
+    return "-z " .. tostring(s.geometry.width - beautiful.status_bar_factor * s.geometry.width)
 end
 
 mouse_button = {
@@ -127,6 +145,27 @@ mouse_button = {
     scrollup   = 4,
     scrolldown = 5
 }
+
+local icon_volume_up       = ""    -- Volume Up
+local icon_volume_down     = ""    -- Volume Down
+local icon_volume_mute     = ""   -- Volume Mute 
+local icon_calculator      = ""    -- Calculator
+local icon_kb_br_up        = "󰌌 "  -- Keyboard Brightness Up
+local icon_kb_br_down      = "󰌌 "  -- Keyboard Brightness Down
+local icon_display_off     = ""    -- Display Off
+local icon_display_br_up   = ""    -- Display Brightness Up
+local icon_display_br_down = ""    -- Display Brightness Down
+local icon_touchpad_on     = "󰍽"    -- Touchpad Toggle On
+local icon_touchpad_off    = "󰍾"    -- Touchpad Toggle Off
+
+local icon_capslock_on     = "󰁞"
+local icon_capslock_off    = "󰧇"
+local icon_numlock_on      = ""
+local icon_numlock_off     = ""
+
+local icon_updates         = ""
+local icon_battery_levels  = { "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹" }
+local icon_battery_alert   = "󰂃"
 
 ----------------------------------------------------------------------------
 
@@ -144,12 +183,6 @@ local function cycle_layout(relative)
     s.layout_widget:emit_signal("widget::redraw_needed")
 end
 
-local device_notif_preset = {
-    font    = beautiful.font_family .. " 10",
-    timeout = 5,
-    margin  = 8,
-}
-
 local volume_notif        = { is_expired = true }
 local backlight_notif     = { is_expired = true }
 local kbd_backlight_notif = { is_expired = true }
@@ -157,6 +190,7 @@ local battery_notif       = { is_expired = true }
 local touchpad_notif      = { is_expired = true }
 local numlock_notif       = { is_expired = true }
 local capslock_notif      = { is_expired = true }
+local update_notif        = { is_expired = true }
 
 local function notify_current_volume()
     awful.spawn.easy_async_with_shell(
@@ -164,8 +198,8 @@ local function notify_current_volume()
         function(stdout)
             local volume = math.floor(stdout:sub(stdout:find("%d.%d+")) * 100)
             local muted  = stdout:find("%[MUTED%]") and stdout:sub(stdout:find("%[MUTED%]")) or ""
-            local icon   = ""
-            if muted ~= "" then icon = "" end
+            local icon   = icon_volume_up
+            if muted ~= "" then icon = icon_volume_mute end
             local notif_text = icon .. "  Volume: " .. volume .. "% " .. muted
 
             if volume_notif.is_expired then
@@ -174,8 +208,8 @@ local function notify_current_volume()
                     title = notif_text,
                 })
             else
-                volume_notif.title = notif_text
                 volume_notif:reset_timeout(5)
+                volume_notif.title = notif_text
             end
 
         end
@@ -186,7 +220,7 @@ local function notify_current_display_brightness()
     awful.spawn.easy_async_with_shell(
         "xbacklight -ctrl intel_backlight -get",
         function(stdout)
-            local notif_text = "盛 Backlight: " .. stdout:sub(1, -2) .. "%"
+            local notif_text = icon_display_br_up .. " Backlight: " .. stdout:sub(1, -2) .. "%"
 
             if backlight_notif.is_expired then
                 backlight_notif = naughty.notification({
@@ -202,7 +236,7 @@ local function notify_current_keyboard_brightness()
     awful.spawn.easy_async_with_shell(
         "xbacklight -ctrl asus::kbd_backlight -get",
         function(stdout)
-            local notif_text = "  Keyboard backlight: " .. stdout:sub(1, -2) .. "%"
+            local notif_text = icon_kb_br_up .. "  Keyboard backlight: " .. stdout:sub(1, -2) .. "%"
 
             if kbd_backlight_notif.is_expired then
                 kbd_backlight_notif = naughty.notification({
@@ -210,24 +244,71 @@ local function notify_current_keyboard_brightness()
                     title = notif_text,
                 })
             else
-                kbd_backlight_notif.title = notif_text
                 kbd_backlight_notif:reset_timeout(5)
+                kbd_backlight_notif.title = notif_text
             end
         end
     )
 end
 
 local function notify_current_touchpad_status(command)
-    local notif_text = "  Touchpad " .. command .. "d"
+    local icon = icon_touchpad_on
+    if command == "disable" then icon = icon_touchpad_off end
+
+    local notif_text = icon .. "  Touchpad " .. command .. "d"
     if touchpad_notif.is_expired then
         touchpad_notif = naughty.notification({
             preset = device_notif_preset,
             title = notif_text,
         })
     else
-        touchpad_notif.title = notif_text
         touchpad_notif:reset_timeout(5)
+        touchpad_notif.title = notif_text
     end
+end
+
+local function notify_current_capslock_status()
+    awful.spawn.easy_async_with_shell("sleep 0.2 ; xset q | grep \"Caps Lock\" | awk '{ print $4 }'",
+        function(capslock_out)
+            local icon = icon_capslock_off
+            if capslock_out:sub(1, -2) == "on" then
+                icon = icon_capslock_on
+            end
+
+            local notif_text = icon .. "  Caps Lock " .. capslock_out:sub(1, -2)
+            if capslock_notif.is_expired then
+                capslock_notif = naughty.notification({
+                    preset = device_notif_preset,
+                    title = notif_text,
+                })
+            else
+                capslock_notif:reset_timeout(5)
+                capslock_notif.title = notif_text
+            end
+        end
+    )
+end
+
+local function notify_current_numlock_status()
+    awful.spawn.easy_async_with_shell("sleep 0.2 ; xset q | grep \"Num Lock\" | awk '{ print $8 }'",
+        function(numlock_out)
+            local icon = icon_numlock_off
+            if numlock_out:sub(1, -2) == "on" then
+                icon = icon_numlock_on
+            end
+
+            local notif_text = icon .. "  Num Lock " .. numlock_out:sub(1, -2)
+            if numlock_notif.is_expired then
+                numlock_notif = naughty.notification({
+                    preset = device_notif_preset,
+                    title = notif_text,
+                })
+            else
+                numlock_notif:reset_timeout(5)
+                numlock_notif.title = notif_text
+            end
+        end
+    )
 end
 
 ----------------------------------------------------------------------------
@@ -253,22 +334,23 @@ local hotkeys_popup = hotkeys_popup_widget.new({
         Return    = "Enter",
         Next      = "PgDn",
         Prior     = "PgUp",
+        Print     = "PrintScrn",
 
         Left  = "←",
         Up    = "↑",
         Right = "→",
         Down  = "↓",
 
-        XF86AudioRaiseVolume  = "",                   -- "Volume Up"
-        XF86AudioLowerVolume  = "",                   -- "Volume Down"
-        XF86AudioMute         = " (Fn+F1)",          -- "Audio Mute" ""
-        XF86Calculator        = " (Fn+Numpad Enter)", -- "Calculator"
-        XF86DisplayOff        = " (Fn+F6)",           -- "Display Off"
-        XF86KbdBrightnessDown = "󰌌  (Fn+↑)",          -- "Keyboard Brightness Down"
-        XF86KbdBrightnessUp   = "󰌌  (Fn+↓)",          -- "Keyboard Brightness Up"
-        XF86MonBrightnessDown = " (Fn+F7)",           -- "Display Brightness Down"
-        XF86MonBrightnessUp   = " (Fn+F8)",           -- "Display Brightness Up"
-        XF86TouchpadToggle    = "󰍾 (Fn+F10)",          -- "Touchpad Toggle"
+        XF86AudioRaiseVolume  = icon_volume_up,                               -- Volume Up
+        XF86AudioLowerVolume  = icon_volume_down,                             -- Volume Down
+        XF86AudioMute         = icon_volume_mute     .. " (Fn+F1)",           -- Volume Mute
+        XF86Calculator        = icon_calculator      .. " (Fn+Numpad Enter)", -- Calculator
+        XF86DisplayOff        = icon_display_off     .. " (Fn+F6)",           -- Display Off
+        XF86KbdBrightnessDown = icon_kb_br_up        .. " (Fn+↑)",            -- Keyboard Brightness Down
+        XF86KbdBrightnessUp   = icon_kb_br_down      .. " (Fn+↓)",            -- Keyboard Brightness Up
+        XF86MonBrightnessDown = icon_display_br_up   .. " (Fn+F7)",           -- Display Brightness Down
+        XF86MonBrightnessUp   = icon_display_br_down .. " (Fn+F8)",           -- Display Brightness Up
+        XF86TouchpadToggle    = icon_touchpad_off    .. " (Fn+F10)",          -- Touchpad Toggle
 
         ['#10']  = "1",
         ['#11']  = "2",
@@ -356,8 +438,7 @@ local function make_taglist_widget(s, dir)
                     or (s.geometry.height == 1920) and beautiful.taglist_font_size - 2
                     or beautiful.taglist_font_size - 1
 
-    local taglist_name_margin = (s.geometry.height == 2160) and beautiful.taglist_name_margin * 2
-                    or beautiful.taglist_name_margin
+    local taglist_name_margin = (s.geometry.height == 2160) and beautiful.taglist_name_margin * 2 or beautiful.taglist_name_margin
 
     local taglist_widget_template = {
         id     = "background_role",
@@ -531,41 +612,65 @@ end
 
 ----------------------------------------------------------------------------
 
-
 local function make_sys_info_widget(s)
-    local font_size = (s.geometry.height == 2160) and beautiful.font_size * 1.5
+    local font_size = (s.geometry.height == 2160) and beautiful.font_size * 1.25
                     or (s.geometry.height == 1920) and beautiful.font_size - 1
                     or beautiful.font_size
 
-    local package_updates = awful.widget.watch("paru -Qqu", 900,
+    local package_updates = awful.widget.watch("check-updates", 600,
         function(widget, paru_out)
             local lines = string_split(paru_out, '\n')
-            widget.text = "  " .. #lines
+            widget.text = icon_updates .. "  " .. #lines
+
+            for i, l in ipairs(lines) do
+                -- `-` is a special pattern character, escaped with `%`
+                if l:find("linux%-zen") then
+                    widget.text = widget.text .. " !"
+
+                    version = l:gsub("linux%-zen ", "")
+                    version = version:gsub("%->", "")
+
+                    local title   = "Linux kernel update available."
+                    local subtext = version
+
+
+                    if update_notif.is_expired then
+                        update_notif = naughty.notification({
+                            preset  = device_notif_preset,
+                            title   = title,
+                            text    = subtext,
+                            timeout = 0,
+                        })
+                    else
+                        update_notif.title = title
+                        update_notif.text  = subtext
+                    end
+
+                    break
+                end
+            end
         end,
         wibox.widget {
             widget = wibox.widget.textbox,
-            text = "  --",
+            text = icon_updates .. "  --",
             font = beautiful.font_family .. " " .. font_size,
             align  = "center",
             valign = "center"
         }
     )
 
-    -- local battery_level = awful.widget.watch("acpi -b", 60,
     local battery_level = awful.widget.watch("cat /sys/class/power_supply/BAT1/capacity", 60,
-        function(widget, acpi_out)
-            local level_icons = { "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹" }
-            local level = string.sub(acpi_out, 1, -2)
-            -- local level = string.sub(acpi_out:sub(acpi_out:find("%d+%%")), 1, -2)
-            local icon_idx = math.ceil(level / 100 * #level_icons)
-            widget:set_text(level_icons[icon_idx] .. " " .. level .. "%")
+        function(widget, battery_level_out)
+            local level = string.sub(battery_level_out, 1, -2)
+            local icon_idx = math.ceil(level / 100 * #icon_battery_levels)
+            widget:set_text(icon_battery_levels[icon_idx] .. " " .. level .. "%")
 
             if icon_idx == 1 then
-                local warning = "LOW BATTERY: " .. level .. "% remaining"
+                local warning = icon_battery_alert .. "  LOW BATTERY: " .. level .. "% remaining"
 
                 if battery_notif.is_expired then
                     battery_notif = naughty.notification({
-                        preset = naughty.config.presets.critical,
+                        preset = critical_notif_preset,
                         title = warning,
                         margin = 8,
                     })
@@ -625,7 +730,7 @@ end
 ----------------------------------------------------------------------------
 
 local function make_layout_widget(s)
-    local font_size = (s.geometry.height == 2160) and beautiful.font_size * 1.5
+    local font_size = (s.geometry.height == 2160) and beautiful.font_size * 1.25
                     or (s.geometry.height == 1920) and beautiful.font_size - 2
                     or beautiful.font_size - 1
 
@@ -883,50 +988,20 @@ globalkeys = gears.table.join(
         end,
         { group = "device", description = "Touchpad toggle" }
     ),
+    awful.key(
+        {}, "XF86Calculator", function() awful.spawn(calculator) end,
+        { group = "device", description = "Open calculator (" .. calculator .. ")" }
+    ),
 
     awful.key(
         {}, "Caps_Lock", function()
-            awful.spawn.easy_async_with_shell("sleep 0.1 ; xset q | grep \"Caps Lock\" | awk '{ print $4 }'",
-            function(capslock_out)
-                capslock_out = capslock_out:sub(1, -2)
-                    local c = "󰧇"
-                    if capslock_out == "on" then c = "󰁞" end
-
-                    local notif_text = c .. "  Caps Lock " .. capslock_out
-                    if capslock_notif.is_expired then
-                        capslock_notif = naughty.notification({
-                            preset = device_notif_preset,
-                            title = notif_text,
-                        })
-                    else
-                        capslock_notif.title = notif_text
-                        capslock_notif:reset_timeout(5)
-                    end
-                end
-            )
+            notify_current_capslock_status()
         end
         -- { group = "device", description = "Caps lock toggle (notification)" }
     ),
     awful.key(
         {}, "Num_Lock", function()
-            awful.spawn.easy_async_with_shell("sleep 0.1 ; xset q | grep \"Num Lock\" | awk '{ print $8 }'",
-                function(numlock_out)
-                    numlock_out = numlock_out:sub(1, -2)
-                    local n = ""
-                    if numlock_out == "on" then n = "" end
-
-                    local notif_text = n .. "  Num Lock " .. numlock_out
-                    if numlock_notif.is_expired then
-                        numlock_notif = naughty.notification({
-                            preset = device_notif_preset,
-                            title = notif_text,
-                        })
-                    else
-                        numlock_notif.title = notif_text
-                        numlock_notif:reset_timeout(5)
-                    end
-                end
-            )
+            notify_current_numlock_status()
         end
         -- { group = "device", description = "Num lock toggle (notification)" }
     ),
@@ -978,7 +1053,7 @@ globalkeys = gears.table.join(
         { group = "client", description = "Swap with next client by index" }
     ),
     awful.key(
-        { modkey,  }, "u", awful.client.urgent.jumpto,
+        { modkey }, "u", awful.client.urgent.jumpto,
         { group = "client", description = "Jump to urgent client" }
     ),
     awful.key(
@@ -1007,7 +1082,7 @@ globalkeys = gears.table.join(
     -- Launchers
     awful.key(
         { modkey, "Control" }, "Return", function()
-            awful.spawn.with_shell("dmenu_run -p 'Run:' " .. menubar_options .. menubar_global_options(awful.screen.focused()))
+            awful.spawn.with_shell("dmenu_run -p 'Run:' " .. menubar_options .. menubar_screen_options(awful.screen.focused()))
         end,
         { group = "launchers", description = "Open run prompt (dmenu)" }
     ),
@@ -1023,10 +1098,10 @@ globalkeys = gears.table.join(
             end
 
             awful.spawn.easy_async_with_shell(
-                "echo -n \"" .. opts .. "\"" .. " | dmenu -p 'Process viewer:' -l 1 -g " .. #process_viewers .. " " .. menubar_options .. menubar_global_options(awful.screen.focused()),
+                "echo -n \"" .. opts .. "\"" .. " | dmenu -p 'Process viewer:' -l 1 -g " .. #process_viewers .. " " .. menubar_options .. menubar_screen_options(awful.screen.focused()),
                 function(stdout)
                     p = string.sub(stdout, 1, -2)
-                    awful.spawn.with_shell(terminal .. " --class=" .. p .. "," .. terminal .. " -e " .. p)
+                    awful.spawn(terminal .. " --class=\"" .. terminal .. "," .. p .. "\" --title \"" .. p  .. "\" -e " .. p)
                 end
             )
         end,
@@ -1034,29 +1109,38 @@ globalkeys = gears.table.join(
     ),
     awful.key(
         { modkey, "Control" }, "Escape", function()
-            awful.spawn.with_shell(terminal .. " --class=" .. process_viewers[1] .. "," .. terminal .. " -e " .. process_viewers[1])
+            awful.spawn(terminal .. " --class=\"" .. terminal .. "," .. process_viewers[1] .. "\" --title \"" .. process_viewers[1]  .. "\" -e " .. process_viewers[1])
         end,
         { group = "launchers", description = "Open default process viewer (" .. process_viewers[1] .. ")" }
     ),
     awful.key(
-        { modkey, "Control" }, "s", function()
+        { modkey, "Control" }, "Print", function()
             awful.spawn.easy_async_with_shell(
                 "date +%Y%m%d_%H%M%S",
                 function(date)
                     awful.spawn.easy_async_with_shell(
-                        "slop -q -t 0 -l -b 3 -c 0.4,0.3,0.5,0.4",
+                        "slop --highlight --tolerance=0.0 --bordersize=3.0 --color=0.4,0.3,0.5,0.4",
                         function(size, err)
                             if err ~= "" or size == "" or date == "" then
+                                text = err:sub(1, -2) or ""
                                 naughty.notification({
                                     preset = device_notif_preset,
-                                    title = "Screenshot cancelled"
+                                    title = "Screenshot cancelled.",
+                                    text = text
                                 })
                                 return
                             end
-                            awful.spawn.with_shell("menyoki capture -r --size " .. size:sub(1, -2) .. " png save \"-\" > ~/desktop/" .. date:sub(1, -2) .. "_Screenshot.png | xclip -selection clipboard -t image/png")
+
+                            date = date:sub(1, -2)
+                            size = size:sub(1, -2)
+
+                            filename = os.getenv("HOME") .. "/desktop/" .. date .. "_Screenshot.png"
+
+                            awful.spawn.with_shell("menyoki capture --root --size=" .. size .. " png --compression=best save \"" .. filename .. "\" && cat \"" .. filename .. "\" | xclip -selection clipboard -target image/png")
                             naughty.notification({
                                 preset = device_notif_preset,
-                                title = "Screenshot saved at ~/desktop/" .. date:sub(1, -2) .. "_Screenshot.png"
+                                title = "Screenshot saved.",
+                                text  = filename
                             })
                         end
                     )
@@ -1078,33 +1162,41 @@ globalkeys = gears.table.join(
         { group = "launchers", description = "Open file manager (" .. file_manager .. ")" }
     ),
     awful.key(
-        {}, "XF86Calculator", function() awful.spawn(calculator) end,
+        { modkey, "Control" }, "m", function() awful.spawn(mail_client.exec) end,
+        { group = "launchers", description = "Open mail client (" .. mail_client.name .. ")" }
+    ),
+    awful.key(
+        { modkey, "Control" }, "=", function() awful.spawn(calculator) end,
         { group = "launchers", description = "Open calculator (" .. calculator .. ")" }
     ),
 
     -- Layout manipulation
     awful.key(
-        { modkey }, "[", function () awful.tag.incmwfact(-0.05) end,
+        { modkey }, "-", function () awful.tag.incmwfact(-0.05) end,
         { group = "layout", description = "Decrease master width" }
     ),
     awful.key(
-        { modkey }, "]", function () awful.tag.incmwfact(0.05) end,
+        { modkey }, "=", function () awful.tag.incmwfact(0.05) end,
         { group = "layout", description = "Increase master width" }
     ),
     awful.key(
-        { modkey, "Shift" }, "[", function () awful.tag.incnmaster(1, nil, true) end,
+        { modkey }, "0", function () awful.tag.selected().master_width_factor = 0.5 end,
+        { group = "layout", description = "Reset master width" }
+    ),
+    awful.key(
+        { modkey }, "[", function () awful.tag.incnmaster(1, nil, true) end,
         { group = "layout", description = "Increase the number of master clients" }
     ),
     awful.key(
-        { modkey, "Shift" }, "]", function () awful.tag.incnmaster(-1, nil, true) end,
+        { modkey }, "]", function () awful.tag.incnmaster(-1, nil, true) end,
         { group = "layout", description = "Decrease the number of master clients" }
     ),
     awful.key(
-        { modkey }, "=", function () awful.tag.incncol(1, nil, true) end,
+        { modkey, "Shift" }, "[", function () awful.tag.incncol(1, nil, true) end,
         { group = "layout", description = "Increase the number of stack columns" }
     ),
     awful.key(
-        { modkey }, "-", function () awful.tag.incncol(-1, nil, true) end,
+        { modkey, "Shift" }, "]", function () awful.tag.incncol(-1, nil, true) end,
         { group = "layout", description = "Decrease the number of stack columns" }
     ),
     awful.key(
@@ -1142,11 +1234,11 @@ client_keys = gears.table.join(
         { modkey }, "v",
         function (c)
             local cid = c.window
-            local clip_cmd = "clipmenu -p 'Clipboard:' -F -pc " .. menubar_options
+            local clip_cmd = "clipmenu -p 'Clipboard:' -F -pc -g 2 " .. menubar_options
 
             awful.spawn.with_shell(
-                "CM_OUTPUT_CLIP=1 " .. clip_cmd .. " -w " .. cid .. " | "
-                .. "xdotool type --delay 0 --clearmodifiers --window " .. cid .. " --file -"
+                "CM_OUTPUT_CLIP=1 " .. clip_cmd .. " -w " .. cid .. " | " ..
+                "xdotool type --delay 0 --clearmodifiers --window " .. cid .. " --file -"
             )
         end,
         { group = "client", description = "Paste from clipboard history in window" }
@@ -1473,7 +1565,7 @@ awful.rules.rules = {
             }
         },
         properties = {
-            tag         = all_screens[screen2].tags[2],
+            tag         = awful.screen.focused().tags[2],
             switchtotag = true,
             focus       = true,
         }
@@ -1513,8 +1605,8 @@ awful.rules.rules = {
         },
         properties = {
             tag         = all_screens[screen2].tags[6],
-            switchtotag = false,
-            focus       = false,
+            switchtotag = true,
+            focus       = true,
         }
     },
     {
@@ -1659,7 +1751,7 @@ client.connect_signal("request::titlebars", function(c)
             layout  = wibox.layout.flex.horizontal
         },
         {
-        -- Right
+            -- Right
             layout = wibox.layout.fixed.horizontal(),
             -- awful.titlebar.widget.floatingbutton (c),
             -- awful.titlebar.widget.stickybutton   (c),
