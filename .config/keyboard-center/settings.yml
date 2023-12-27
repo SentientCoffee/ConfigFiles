@@ -44,7 +44,7 @@ mappings:
       name: Restart OpenRGB
       string: command
       type: command
-      value: [5, /bin/sh -c "killall openrgb; sleep 2s; openrgb --startminimized"]
-openRGB: {MEMORY_1: G910}
+      value: [5, /bin/sh -c "killall openrgb; sleep 2s; openrgb --profile "G910" --startminimized"]
+openRGB: {MEMORY_1: G910, MEMORY_2: G910, MEMORY_3: G910}
 settings: {minOnStart: true, retryCount: 5, showNotifications: false, usbDeviceID: 0,
   usbTimeout: 1000}
