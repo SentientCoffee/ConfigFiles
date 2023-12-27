@@ -11,8 +11,13 @@ SYS_MODMAP="/etc/X11/xinit/.Xmodmap"
 [ -f "${USER_MODMAP}"    ] && xmodmap "${USER_MODMAP}"
 
 run () {
-    pgrep "${1}" || "$@" > "${XDG_CACHE_HOME}/logs/${1}.log" 2>&1 &
+    if ! pgrep "${1}" ; then
+        printf "Running %s\n" "${@}"
+        "${@}" > "${XDG_CACHE_HOME}/logs/${1}.log" 2>&1 &
+    fi
 }
+
+printf -- "\n---------- Setting up X config... ----------\n"
 
 DP_MONITORS=$(xrandr | grep -v "eDP1" | grep "DP" | grep -e "\bconnected\b"),
 HDMI_MONITORS=$(xrandr | grep "HDMI" | grep -e "\bconnected\b")
@@ -27,17 +32,15 @@ fi
 # run xrandr --output HDMI1 --rotate left  2>/dev/null
 # run xlayoutdisplay --dpi 96 --wait 3
 
-run clipmenud                 # > "${XDG_CACHE_HOME}/logs/clipmenu.log"        2>&1
-run discord --start-minimized # > "${XDG_CACHE_HOME}/logs/discord.log"         2>&1
-run keepassxc                 # > "${XDG_CACHE_HOME}/logs/keepassxc.log"       2>&1
-run keyboard-center           # > "${XDG_CACHE_HOME}/logs/keyboard-center.log" 2>&1
-run lutris                    # > "${XDG_CACHE_HOME}/logs/lutris.log"          2>&1
-run mailspring -b             # > "${XDG_CACHE_HOME}/logs/mailspring.log"      2>&1
-run nm-applet                 # > "${XDG_CACHE_HOME}/logs/nm-applet.log"       2>&1
-run openrgb --startminimized  # > "${XDG_CACHE_HOME}/logs/openrgb.log"         2>&1
-run pcmanfm -d                # > "${XDG_CACHE_HOME}/logs/pcmanfm.log"         2>&1
-run picom -b                  # > "${XDG_CACHE_HOME}/logs/picom.log"           2>&1
+printf "Done.\n"
+printf -- "\n---------- Starting applications... ----------\n"
+run keyboard-center
+run openrgb --startminimized --profile "G910"
 
-run lxsession -s "Awesome" -e "Awesome" # > "${XDG_CACHE_HOME}/logs/lxsession.log" 2>&1
+sleep 5;
+
+printf -- "\n---------- Starting window manager desktop environment... ----------\n"
+
+run lxsession -s "Awesome" -e "Awesome"
 run dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
-exec awesome --replace > "${XDG_CACHE_HOME}/logs/awesomewm.log" 2>&1
+awesome --replace > "${XDG_CACHE_HOME}/logs/awesomewm.log" 2>&1

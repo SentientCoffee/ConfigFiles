@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Discord
+Type=Application
+Exec=/usr/bin/discord --start-minimized
+Icon=discord
+StartupNotify=true
+GenericName=Chat

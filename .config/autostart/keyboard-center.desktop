@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Keyboard Center
+Type=Application
+Exec=/usr/bin/keyboard-center
+Icon=keyboard-center
+Hidden=true

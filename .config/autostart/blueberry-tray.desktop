@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Blueberry Tray
+Comment=Blueberry tray icon
+Exec=/usr/bin/blueberry-tray
+Icon=blueberry-tray
+# AutostartCondition=GSettings org.blueberry tray-enabled
+X-GNOME-Autostart-Delay=5
+Terminal=false
+Type=Application
+Categories=GTK;GNOME;Settings;X-GNOME-NetworkSettings;
+StartupNotify=false
+NoDisplay=true
+NotShowIn=GNOME;KDE;Unity;

@@ -1,0 +1,6 @@
+[Desktop Entry]
+Exec=/usr/bin/pcmanfm --daemon-mode
+Name=PCManFM
+Icon=/usr/share/icons/Tela-purple/scalable/places/default-folder.svg
+Comment=A lightweight Gtk+ based file manager for X Window.
+Type=Application
