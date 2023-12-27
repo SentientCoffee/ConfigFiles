@@ -4,7 +4,7 @@
   // ---------------------------------------------------------------------------------------------
 
   "debug.autoExpandLazyVariables":     true,
-  "debug.console.fontFamily":          "'FiraCode Nerd Font', 'FiraCode NF', Hack, monospace",
+  "debug.console.fontFamily":          "'FiraCode Nerd Font Propo', 'Hack Nerd Font Propo', monospace",
   "debug.console.fontSize":            14,
   "debug.console.historySuggestions":  true,
   "debug.console.closeOnEnd":          false,
@@ -28,9 +28,9 @@
   "editor.cursorSurroundingLinesStyle":       "default",
   "editor.cursorWidth":                       1,
   "editor.detectIndentation":                 false,
-  "editor.fontFamily":                        "'FiraCode Nerd Font', 'FiraCode NF', Hack, monospace",
+  "editor.fontFamily":                        "'FiraCode Nerd Font Propo', 'Hack Nerd Font Propo', monospace",
   "editor.fontLigatures":                     "'ss01', 'ss02', 'ss03', 'ss05', 'ss06', 'ss08', 'cv16'",
-  "editor.fontSize":                          16,
+  "editor.fontSize":                          14,
   "editor.fontWeight":                        "200",
   "editor.guides.bracketPairs":               true,
   "editor.guides.bracketPairsHorizontal":     false,
@@ -199,7 +199,6 @@
   "zenMode.centerLayout":    false,
   "zenMode.fullScreen":      true,
   "zenMode.hideLineNumbers": false,
-  "zenMode.hideTabs":        false,
   "zenMode.hideActivityBar": false,
 
   // ---------------------------------------------------------------------------------------------
@@ -481,7 +480,6 @@
 
   "todo-tree.filtering.useBuiltInExcludes":        "file and search excludes",
   "todo-tree.general.debug":                       true,
-  "todo-tree.general.enableFileWatcher":           true,
   "todo-tree.general.rootFolder":                  "${workspaceFolder}",
   "todo-tree.general.revealBehaviour":             "start of todo",
   "todo-tree.highlights.highlightDelay":           100,
@@ -639,7 +637,7 @@
     "editor.suggestSelection":                        "first",
     "editor.tabCompletion":                           "onlySnippets",
     "editor.tabSize":                                 2,
-    "editor.wordBasedSuggestions":                    false,
+    "editor.wordBasedSuggestions":                    "off",
     "editor.language.colorizedBracketPairs":          [
       [ "[", "]" ],
       [ "(", ")" ],
