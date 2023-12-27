@@ -1,14 +1,15 @@
 [Added Associations]
 inode/symlink=pcmanfm.desktop;
-application/x-shellscript=userapp-micro-6WH1A2.desktop;codium.desktop;
-text/plain=userapp-micro-YFCVA2.desktop:codium.desktop;
+application/x-shellscript=focus.desktop;micro.desktop;codium.desktop;
+text/plain=nsxiv.desktop;focus.desktop;micro.desktop;codium.desktop;
 image/x-xcursor=codium.desktop;
-image/png=userapp-nsxiv-A0AEQ1.desktop;
+image/png=nsxiv.desktop;
 image/jpeg=nsxiv.desktop;
-application/json=codium.desktop;
+application/json=codium.desktop;focus.desktop;
 application/octet-stream=wine-Programs-Image-Line-FL Studio 20.desktop;
 application/pdf=librewolf.desktop;
-application/xml=userapp-micro-YFCVA2.desktop;
+application/xml=focus.desktop;micro.desktop;
+application/x-tex-gf=focus.desktop;
 
 [Default Applications]
 x-scheme-handler/mailspring=Mailspring.desktop
@@ -18,10 +19,10 @@ x-scheme-handler/https=librewolf.desktop
 x-scheme-handler/about=librewolf.desktop
 x-scheme-handler/unknown=librewolf.desktop
 inode/directory=pcmanfm.desktop
-application/x-shellscript=codium.desktop
-text/plain=codium.desktop
-image/png=userapp-nsxiv-A0AEQ1.desktop
+application/x-shellscript=focus.desktop
+text/plain=focus.desktop
+image/png=nsxiv.desktop
 application/pdf=mupdf.desktop
-application/json=codium.desktop
+application/json=focus.desktop
 
 [Removed Associations]
