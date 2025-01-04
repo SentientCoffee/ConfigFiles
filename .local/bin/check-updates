@@ -1,0 +1,38 @@
+#!/bin/sh
+#
+#   check-updates: Safely print a list of pending updates.
+#
+#   Copyright (c) 2011 Kyle Keen <keenerd@gmail.com>
+#   Modified Sentient Coffee (c) 2023
+#
+#   This program is free software; you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation; either version 2 of the License, or
+#   (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+if [ -z "${CHECKUPDATE_DB}" ]; then
+    CHECKUPDATE_DB="${TMPDIR:-/tmp}/checkup-db-${USER}/"
+fi
+
+trap 'rm -f ${CHECKUPDATE_DB}/db.lck' INT TERM EXIT
+
+DBPath=$(awk '/DBPath/ { print $3 }' /etc/pacman.conf)
+DBPath="${DBPath:-"/var/lib/pacman/"}"
+
+mkdir -p "${CHECKUPDATE_DB}"
+ln -s "${DBPath}/local" "${CHECKUPDATE_DB}" &> /dev/null
+fakeroot pacman -Sqy --dbpath "${CHECKUPDATE_DB}" &> /dev/null
+
+PARU_ARGS="-Qu"
+[ -n "${1}" ] && [ "${1}" = "-q" ] && PARU_ARGS="-Qqu"
+
+paru ${PARU_ARGS} --dbpath "${CHECKUPDATE_DB}" 2> /dev/null

@@ -1,0 +1,126 @@
+# working_directory = "~"
+
+[window]
+decorations     = "none"
+dynamic_padding = true
+dynamic_title   = true
+startup_mode    = "Windowed"
+title           = "alacritty"
+
+[window.padding]
+x = 6
+y = 6
+
+[terminal.shell]
+program = "/usr/bin/zsh"
+
+[mouse]
+hide_when_typing = true
+
+[scrolling]
+history    = 10000
+multiplier = 2
+
+[selection]
+semantic_escape_chars = ''' 	/\()[]{}"'`~+=-_,.;:<>~!?@#$%^&*|│'''
+
+# ---------------------------
+# Style
+# ---------------------------
+
+[font]
+size = 10
+
+[font.normal]
+family = "FiraCode Nerd Font Propo"
+style  = "Regular"
+
+[font.offset]
+x = 0
+y = 0
+
+[colors]
+draw_bold_text_with_bright_colors = false
+
+[colors.bright]
+black   = "#4d4d4d"
+blue    = "#3366e6"
+cyan    = "#4de6e6"
+green   = "#33e64d"
+magenta = "#e64dcc"
+red     = "#e64d4d"
+white   = "#ffffff"
+yellow  = "#e6cc4d"
+
+[colors.cursor]
+cursor  = "CellForeground"
+text    = "CellBackground"
+
+[colors.normal]
+black   = "#1a1a1a"
+blue    = "#194db2"
+cyan    = "#19b2cc"
+green   = "#339919"
+magenta = "#b23399"
+red     = "#993333"
+white   = "#b2b2b2"
+yellow  = "#b29933"
+
+[colors.primary]
+background = "#1a1a1a"
+foreground = "#b4b4b4"
+
+[colors.search.focused_match]
+background = "#c5944b"
+foreground = "#ffffff"
+
+[colors.search.matches]
+background = "#6b4f26"
+foreground = "CellForeground"
+
+[cursor]
+blink_interval   = 400
+thickness        = 0.15
+unfocused_hollow = true
+
+[cursor.style]
+blinking = "On"
+shape    = "Beam"
+
+# ---------------------------
+# Bindings
+# ---------------------------
+
+[[keyboard.bindings]]
+mods   = "Shift"
+key    = "PageUp"
+action = "ScrollPageUp"
+
+[[keyboard.bindings]]
+mods   = "Shift"
+key    = "PageDown"
+action = "ScrollPageDown"
+
+[[keyboard.bindings]]
+mods   = "Control"
+key    = "Numpad0"
+action = "ResetFontSize"
+
+[[keyboard.bindings]]
+mods   = "Control"
+key    = "Insert"
+action = "ResetFontSize"
+
+[general]
+live_config_reload = true
+
+[terminal]
+
+# [[keyboard.bindings]]
+# mods   = "Control|Shift"
+# key    = "Return"
+# action = "SpawnNewInstance"
+
+[[mouse.bindings]]
+mouse  = "Right"
+action = "PasteSelection"

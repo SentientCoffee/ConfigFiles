@@ -18,7 +18,7 @@
         "clients": [
             {
                 "ip": "127.0.0.1",
-                "port": 12345
+                "port": 6742
             }
         ]
     },
@@ -34,7 +34,7 @@
             "ASRock Polychrome USB": false,
             "ASUS AREZ Strix RX Vega 56 O8G": false,
             "ASUS Aura Addressable": false,
-            "ASUS Aura Core": true,
+            "ASUS Aura Core": false,
             "ASUS Aura GPU": false,
             "ASUS Aura GPU (ENE)": false,
             "ASUS Aura Motherboard": false,

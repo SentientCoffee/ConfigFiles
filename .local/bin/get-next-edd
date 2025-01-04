@@ -1,0 +1,56 @@
+#!/bin/sh
+
+RSS=$(curl -s "https://rss.evangelizo.org/rss/v2/evangelizo_rss-sp.xml")
+
+FIRST_READING="${RSS#*\<item\>}"
+PSALM="${FIRST_READING#*\<item\>}"
+SECOND_READING_OR_GOSPEL="${PSALM#*\<item\>}"
+GOSPEL_OR_MEDITATION="${SECOND_READING_OR_GOSPEL#*\<item\>}"
+MEDITATION_OR_PREV_DAY="${GOSPEL_OR_MEDITATION#*\<item\>}"
+
+FIRST_READING="${FIRST_READING%%\</item\>*}"
+PSALM="${PSALM%%\</item\>*}"
+SECOND_READING_OR_GOSPEL="${SECOND_READING_OR_GOSPEL%%\</item\>*}"
+GOSPEL_OR_MEDITATION="${GOSPEL_OR_MEDITATION%%\</item\>*}"
+MEDITATION_OR_PREV_DAY="${MEDITATION_OR_PREV_DAY%%\</item\>*}"
+
+FIRST_TITLE="${FIRST_READING%%\</title\>*}"
+FIRST_TITLE="${FIRST_TITLE#*\<title\>}"
+FIRST_DATE="${FIRST_TITLE%:*}"
+FIRST_TITLE="${FIRST_TITLE#*: }"
+
+PSALM_TITLE="${PSALM%%\</title\>*}"
+PSALM_TITLE="${PSALM_TITLE#*\<title\>}"
+PSALM_TITLE="${PSALM_TITLE#*: }"
+
+SECOND_OR_GOSPEL_TITLE="${SECOND_READING_OR_GOSPEL%%\</title\>*}"
+SECOND_OR_GOSPEL_TITLE="${SECOND_OR_GOSPEL_TITLE#*\<title\>}"
+SECOND_OR_GOSPEL_TITLE="${SECOND_OR_GOSPEL_TITLE#*: }"
+
+GOSPEL_OR_MEDITATION_TITLE="${GOSPEL_OR_MEDITATION%%\</title\>*}"
+GOSPEL_OR_MEDITATION_TITLE="${GOSPEL_OR_MEDITATION_TITLE#*\<title\>}"
+GOSPEL_OR_MEDITATION_TITLE="${GOSPEL_OR_MEDITATION_TITLE#*: }"
+
+MEDITATION_OR_PREV_TITLE="${MEDITATION_OR_PREV_DAY%%\</title\>*}"
+MEDITATION_OR_PREV_TITLE="${MEDITATION_OR_PREV_TITLE#*\<title\>}"
+LAST_DATE="${MEDITATION_OR_PREV_TITLE%:*}"
+MEDITATION_OR_PREV_TITLE="${MEDITATION_OR_PREV_TITLE#*: }"
+
+echo -e "Current date: ${FIRST_DATE}"
+echo -e "Prev date:    ${LAST_DATE}\n"
+
+OUTPUT=""
+
+printf -v OUTPUT "Primera lectura: %s\n" "${FIRST_TITLE}"
+printf -v OUTPUT "%s%s\n" "${OUTPUT}"    "${PSALM_TITLE}"
+
+if [ "${FIRST_DATE}" = "${LAST_DATE}" ] ; then
+    printf -v OUTPUT "%sSegunda lectura: %s\n" "${OUTPUT}" "${SECOND_OR_GOSPEL_TITLE}"
+    printf -v OUTPUT "%s%s\n"                  "${OUTPUT}" "${GOSPEL_OR_MEDITATION_TITLE}"
+    printf -v OUTPUT "%sMeditación: %s"        "${OUTPUT}" "${MEDITATION_OR_PREV_TITLE}"
+else
+    printf -v OUTPUT "%s%s\n"                  "${OUTPUT}" "${SECOND_OR_GOSPEL_TITLE}"
+    printf -v OUTPUT "%sMeditación: %s"        "${OUTPUT}" "${GOSPEL_OR_MEDITATION_TITLE}"
+fi
+
+curl -s -H prio:3 -d "${OUTPUT}" "https://nextcloud.lan/index.php/apps/uppush/push/pMQWY7llK318dhm7pjwCokDXDi0"

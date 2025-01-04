@@ -1,31 +1,35 @@
 mappings:
   MEMORY_1:
+    MACRO_1:
+      gamemode: 0
+      name: ''
+      string: '`'
+      type: key
+      value: [1, 41]
     MACRO_2:
       gamemode: 0
-      name: example-cut
-      string:
-      - [Ctrl, X]
-      - [Ctrl, V]
-      type: macro
-      value:
-      - - [1, 29]
-        - [1, 45]
-      - - [1, 29]
-        - [1, 47]
+      name: ''
+      string: Tab
+      type: key
+      value: [1, 15]
     MACRO_3:
       gamemode: 0
-      name: example-nice
-      string:
-      - [N]
-      - [I]
-      - [C]
-      - [E]
-      type: macro
-      value:
-      - - [1, 49]
-      - - [1, 23]
-      - - [1, 46]
-      - - [1, 18]
+      name: ''
+      string: '0x37'
+      type: key
+      value: [1, 29]
+    MACRO_4:
+      gamemode: 0
+      name: ''
+      string: '0x50'
+      type: key
+      value: [1, 42]
+    MACRO_5:
+      gamemode: 0
+      name: ''
+      string: '0x37'
+      type: key
+      value: [1, 29]
     MACRO_8:
       gamemode: 0
       name: Screen Off
@@ -47,4 +51,4 @@ mappings:
       value: [5, /bin/sh -c "killall openrgb; sleep 2s; openrgb --profile "G910" --startminimized"]
 openRGB: {MEMORY_1: G910, MEMORY_2: G910, MEMORY_3: G910}
 settings: {minOnStart: true, retryCount: 5, showNotifications: false, usbDeviceID: 0,
-  usbTimeout: 1000}
+  usbTimeout: 1000, useOpenRGB: true}

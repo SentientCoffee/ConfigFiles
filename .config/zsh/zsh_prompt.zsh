@@ -33,7 +33,6 @@ fi
 # Special sequences
 NEWLINE="\n"
 USER_HOST="%n@%M"
-DIRECTORY="%~"
 SHELL_PROMPT="${ZSH_NAME} %#"
 
 # Color combos
@@ -41,27 +40,29 @@ RESET="%f%k%b%s"
 BOLD="%B"
 INVERSE="%S"
 
-GIT_COLOR_HINT="$MAGENTA"
+GIT_COLOR_HINT="${MAGENTA}"
 
-printf -v START_COLOR_1        "%%F{%s}"        "$RED"
-printf -v USER_HOST_COLOR      "%%F{%s}%%K{%s}" "$BRIGHT_WHITE"   "$RED"
-printf -v TRANSITION_COLOR_1_1 "%%F{%s}%%K{%s}" "$RED"            "$GREEN"
-printf -v DIRECTORY_COLOR      "%%F{%s}%%K{%s}" "$BRIGHT_WHITE"   "$GREEN"
-printf -v TRANSITION_COLOR_1_2 "%%F{%s}"        "$GREEN"
+printf -v START_COLOR_1        "%%F{%s}"        "${RED}"
+printf -v USER_HOST_COLOR      "%%F{%s}%%K{%s}" "${BRIGHT_WHITE}"   "${RED}"
+printf -v TRANSITION_COLOR_1_1 "%%F{%s}%%K{%s}" "${RED}"            "${GREEN}"
+printf -v DIRECTORY_COLOR      "%%F{%s}%%K{%s}" "${BRIGHT_WHITE}"   "${GREEN}"
+printf -v TRANSITION_COLOR_1_2 "%%F{%s}"        "${GREEN}"
 
-printf -v TRANSITION_COLOR_1_3 "%%F{%s}"        "$GIT_COLOR_HINT"
-printf -v GIT_COLOR            "%%F{%s}%%K{%s}" "$BRIGHT_WHITE"   "$GIT_COLOR_HINT"
-printf -v TRANSITION_COLOR_1_4 "%%F{%s}"        "$GIT_COLOR_HINT"
+printf -v TRANSITION_COLOR_1_3 "%%F{%s}"        "${GIT_COLOR_HINT}"
+printf -v GIT_COLOR            "%%F{%s}%%K{%s}" "${BRIGHT_WHITE}"   "${GIT_COLOR_HINT}"
+printf -v TRANSITION_COLOR_1_4 "%%F{%s}"        "${GIT_COLOR_HINT}"
 
-printf -v RETURN_CODE_COLOR    "%%F{%s}%%K{%s}" "$BRIGHT_RED"   "$BLACK"
-printf -v START_COLOR_2        "%%F{%s}"        "$BLUE"
-printf -v SHELL_COLOR          "%%F{%s}%%K{%s}" "$BRIGHT_WHITE" "$BLUE"
-printf -v TRANSITION_COLOR_2_1 "%%F{%s}"        "$BLUE"
+printf -v RETURN_CODE_COLOR    "%%F{%s}%%K{%s}" "${BRIGHT_RED}"   "${BLACK}"
+printf -v START_COLOR_2        "%%F{%s}"        "${BLUE}"
+printf -v SHELL_COLOR          "%%F{%s}%%K{%s}" "${BRIGHT_WHITE}" "${BLUE}"
+printf -v TRANSITION_COLOR_2_1 "%%F{%s}"        "${BLUE}"
 
 # Commands
 source "${XDG_CONFIG_HOME}/shell/git_prompt.sh"
 
 make_top_ps1_prompt () {
+    DIRECTORY="$(dirs -p | sed ':a;N;$!ba;s/\n/ ❯ /g')"
+
     print -n "${INVERSE}${START_COLOR_1}${STARTER_L}"
 
     print -n "${RESET}${USER_HOST_COLOR}"
@@ -95,9 +96,9 @@ make_bottom_ps1_prompt () {
 }
 
 make_bottom_rps1_prompt () {
-    TRANSITION_COLOR_2_2="%F{%0(?.$GREEN.$RED)}"
-    RETURN_CODE_COLOR="%F{$BRIGHT_WHITE}%K{%0(?.$GREEN.$RED)}"
-    TRANSITION_COLOR_2_3="%F{%0(?.$GREEN.$RED)}"
+    TRANSITION_COLOR_2_2="%F{%0(?.${GREEN}.${RED})}"
+    RETURN_CODE_COLOR="%F{${BRIGHT_WHITE}}%K{%0(?.${GREEN}.${RED})}"
+    TRANSITION_COLOR_2_3="%F{%0(?.${GREEN}.${RED})}"
 
     print -n "${RESET}${TRANSITION_COLOR_2_2}${ENDER_R}${SEPARATOR_R}"
     print -n "${RESET}${RETURN_CODE_COLOR} %? "
@@ -119,13 +120,13 @@ prompt_length () {
     local -i x y=${#1} m
 
     if (( y )); then
-        while (( ${${(%):-$1%$y(l.1.0)}[-1]} )); do
+        while (( ${${(%):-${1}%${y}(l.1.0)}[-1]} )); do
             x=y
             (( y *= 2 ))
         done
         while (( y > x + 1 )); do
             (( m = x + (y - x) / 2 ))
-            (( ${${(%):-$1%$m(l.x.y)}[-1]} = m ))
+            (( ${${(%):-${1}%${m}(l.x.y)}[-1]} = m ))
         done
     fi
 
@@ -135,16 +136,16 @@ prompt_length () {
 fill_line () {
     emulate -L zsh
 
-    prompt_length $1
+    prompt_length ${1}
     local -i left_len=RETURN
 
-    prompt_length $2 9999
+    prompt_length ${2} 9999
     local -i right_len=RETURN
 
     local -i pad_len=$((COLUMNS - left_len - right_len - ${ZLE_RPROMPT_INDENT:-1}))
     if (( pad_len < 1 )); then
         # Not enough space for the right part. Drop it.
-        typeset -g RETURN=$1
+        typeset -g RETURN=${1}
     else
         local pad=${(pl.$pad_len.. .)}  # pad_len spaces
         typeset -g RETURN=${1}${pad}${2}
@@ -170,8 +171,7 @@ make_zsh_prompt () {
     # RPS1="[%B%F{%0(?.${GREEN}.${RED})}%?%f%b]"
     # RPS2="[%B%F{%0(?.${GREEN}.${RED})}%^%f%b]"
 
-    local CURRENT_DIR="${PWD/#${HOME}/\~}"
-    local CURRENT_DIR="${HOME_DIR#\\}"
+    local CURRENT_DIR="${PWD/#${HOME}/~}"
 
     # Window title
     printf "\033]0;%s ❯ %s@%s ❯ %s\007"   "${SHELL##*/}" "${USER}" "${HOSTNAME%%.*}${HOST%%.*}" "${CURRENT_DIR}"
@@ -179,4 +179,3 @@ make_zsh_prompt () {
 
 # Final output
 add-zsh-hook -Uz precmd make_zsh_prompt
-

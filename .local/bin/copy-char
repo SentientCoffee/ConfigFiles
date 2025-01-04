@@ -1,0 +1,14 @@
+#!/bin/sh
+
+if [ -z "${1}" ]; then
+    echo "You must provide a character code to copy."
+    exit 1
+fi
+
+CHAR_CODE="${1#0x}"
+
+ZERO_FILL="00000000"
+ZEROES="${ZERO_FILL::${#ZERO_FILL}-${#CHAR_CODE}}"
+
+printf "\U${ZEROES}${CHAR_CODE}" | xclip -r -selection clipboard
+echo "Copied \"$(xclip -selection clipboard -o)\" to the clipboard."

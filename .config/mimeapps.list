@@ -10,6 +10,10 @@ application/octet-stream=wine-Programs-Image-Line-FL Studio 20.desktop;
 application/pdf=librewolf.desktop;
 application/xml=focus.desktop;micro.desktop;
 application/x-tex-gf=focus.desktop;
+x-scheme-handler/mailto=userapp-Thunderbird-I4IMV2.desktop;
+x-scheme-handler/mid=userapp-Thunderbird-I4IMV2.desktop;
+x-scheme-handler/webcal=userapp-Thunderbird-6UQLV2.desktop;
+x-scheme-handler/webcals=userapp-Thunderbird-6UQLV2.desktop;
 
 [Default Applications]
 x-scheme-handler/mailspring=Mailspring.desktop
@@ -24,5 +28,13 @@ text/plain=focus.desktop
 image/png=nsxiv.desktop
 application/pdf=mupdf.desktop
 application/json=focus.desktop
+x-scheme-handler/discord-455712169795780630=discord-455712169795780630.desktop
+x-scheme-handler/mailto=userapp-Thunderbird-I4IMV2.desktop
+message/rfc822=userapp-Thunderbird-I4IMV2.desktop
+x-scheme-handler/mid=userapp-Thunderbird-I4IMV2.desktop
+x-scheme-handler/webcal=userapp-Thunderbird-6UQLV2.desktop
+text/calendar=userapp-Thunderbird-6UQLV2.desktop
+application/x-extension-ics=userapp-Thunderbird-6UQLV2.desktop
+x-scheme-handler/webcals=userapp-Thunderbird-6UQLV2.desktop
 
 [Removed Associations]

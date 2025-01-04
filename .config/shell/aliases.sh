@@ -57,4 +57,4 @@ alias yarn="yarn --use-yarnrc \"${XDG_CONFIG_HOME}/yarn/config\""
 [ -n "${ZSH_VERSION}"  ] && alias refresh="source ${XDG_CONFIG_HOME}/zsh/.zshrc ; rehash ; updatedb"
 [ -n "${BASH_VERSION}" ] && alias refresh="source ${HOME}/.bashrc ; updatedb"
 
-mkcd () { mkdir -pv "${1}" && cd "${1}" || exit 1; }
+mkcd () { mkdir -pv "${1}" && cd "${1}" || return 1; }

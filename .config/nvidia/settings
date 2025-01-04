@@ -2,7 +2,7 @@
 # /home/daniel/.config/nvidia/settings
 #
 # Configuration file for nvidia-settings - the NVIDIA Settings utility
-# Generated on Sat Jul 23 03:39:09 2022
+# Generated on Fri Aug 23 13:37:11 2024
 #
 
 # ConfigProperties:
@@ -10,11 +10,12 @@
 RcFileLocale = C
 DisplayStatusBar = Yes
 SliderTextEntries = Yes
-IncludeDisplayNameInConfigFile = No
+IncludeDisplayNameInConfigFile = Yes
 UpdateRulesOnProfileNameChange = Yes
-Timer = PowerMizer_Monitor_(GPU_0),Yes,1000
-Timer = Thermal_Monitor_(GPU_0),Yes,1000
 Timer = Memory_Used_(GPU_0),Yes,3000
+Timer = Thermal_Monitor_(GPU_0),Yes,1000
+Timer = PowerMizer_Monitor_(GPU_0),Yes,1000
 
 # Attributes:
 
+[GPU:0]/GPUPowerMizerMode=1

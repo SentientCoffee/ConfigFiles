@@ -1,0 +1,14 @@
+#!/bin/sh
+
+xrandr --listmonitors | tail -n +2 | grep -Eo '[^ ]+$' | while read DISP; do
+    echo "Checking ${DISP}..."
+    ORIG_RES=$(xrandr -q | grep "${DISP}" | grep -Eo '[0-9]+x[0-9]+' | head -n1)
+    if [ -n "${ORIG_RES}" ]; then
+        echo "Fixing up ${DISP}..."
+
+        # Switch to an integer scaling mode (1.0 scale) to fix the leftover mouse cursor issue,
+        # then switch back to whatever the resolution was before.
+        xrandr --output "${DISP}" --scale 1.0
+        xrandr --output "${DISP}" --scale-from "${ORIG_RES}"
+    fi
+done

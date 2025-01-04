@@ -47,7 +47,7 @@ BG_BRIGHT_WHITE="107"
 
 # Symbols
 CURRENT_TTY=$(tty)
-if [[ ${CURRENT_TTY} =~ "/dev/pts" && $EUID -ne 0 ]]; then
+if [[ ${CURRENT_TTY} =~ "/dev/pts" && ${EUID} -ne 0 ]]; then
     STARTER=""
     SEPARATOR=""
     ENDER=""
@@ -60,7 +60,6 @@ fi
 # Special sequences
 NEWLINE="\n"
 USER_HOST="\u@\h"
-DIRECTORY="\w"
 SHELL_PROMPT="\s \\$"
 
 # Color combos
@@ -70,54 +69,55 @@ RESET="\[\e[0m\]"
 BOLD="\[\e[1m\]"
 INVERSE="\[\e[7m\]"
 
-printf -v START_COLOR_1        "\[\e[%s;%sm\]" "$FG_INVERSE"      "$FG_RED"
-printf -v USER_HOST_COLOR      "\[\e[%s;%sm\]" "$FG_BRIGHT_WHITE" "$BG_RED"
-printf -v TRANSITION_COLOR_1_1 "\[\e[%s;%sm\]" "$FG_RED"          "$BG_GREEN"
-printf -v DIRECTORY_COLOR      "\[\e[%s;%sm\]" "$FG_BRIGHT_WHITE" "$BG_GREEN"
-printf -v TRANSITION_COLOR_1_2 "\[\e[%s;%sm\]" "$FG_GREEN"        "$BG_MAGENTA"
-printf -v GIT_COLOR            "\[\e[%s;%sm\]" "$FG_BRIGHT_WHITE" "$BG_MAGENTA"
-printf -v TRANSITION_COLOR_1_3 "\[\e[%s;%sm\]" "$FG_MAGENTA"      "$BG_DEFAULT"
+printf -v START_COLOR_1        "\[\e[%s;%sm\]" "${FG_INVERSE}"      "${FG_RED}"
+printf -v USER_HOST_COLOR      "\[\e[%s;%sm\]" "${FG_BRIGHT_WHITE}" "${BG_RED}"
+printf -v TRANSITION_COLOR_1_1 "\[\e[%s;%sm\]" "${FG_RED}"          "${BG_GREEN}"
+printf -v DIRECTORY_COLOR      "\[\e[%s;%sm\]" "${FG_BRIGHT_WHITE}" "${BG_GREEN}"
+printf -v TRANSITION_COLOR_1_2 "\[\e[%s;%sm\]" "${FG_GREEN}"        "${BG_MAGENTA}"
+printf -v GIT_COLOR            "\[\e[%s;%sm\]" "${FG_BRIGHT_WHITE}" "${BG_MAGENTA}"
+printf -v TRANSITION_COLOR_1_3 "\[\e[%s;%sm\]" "${FG_MAGENTA}"      "${BG_DEFAULT}"
 
-printf -v RETURN_CODE_COLOR    "\[\e[%sm\]"    "$FG_BRIGHT_RED"
-printf -v START_COLOR_2        "\[\e[%s;%sm\]" "$FG_INVERSE"      "$FG_BLUE"
-printf -v SHELL_COLOR          "\[\e[%s;%sm\]" "$FG_BRIGHT_WHITE" "$BG_BLUE"
-printf -v TRANSITION_COLOR_2_1 "\[\e[%sm\]"    "$FG_BLUE"
+printf -v RETURN_CODE_COLOR    "\[\e[%sm\]"    "${FG_BRIGHT_RED}"
+printf -v START_COLOR_2        "\[\e[%s;%sm\]" "${FG_INVERSE}"      "${FG_BLUE}"
+printf -v SHELL_COLOR          "\[\e[%s;%sm\]" "${FG_BRIGHT_WHITE}" "${BG_BLUE}"
+printf -v TRANSITION_COLOR_2_1 "\[\e[%sm\]"    "${FG_BLUE}"
 
-GIT_COLOR_HINT_BG="$BG_MAGENTA"
-GIT_COLOR_HINT_FG="$FG_MAGENTA"
+GIT_COLOR_HINT_BG="${BG_MAGENTA}"
+GIT_COLOR_HINT_FG="${FG_MAGENTA}"
 
 # Commands
 source "${XDG_CONFIG_HOME}/shell/git_prompt.sh"
 
 make_ps1_prompt () {
-    RETURN_CODE="$?"
+    RETURN_CODE="${?}"
     RETURN_CODE="${RETURN_CODE##0}"
+    DIRECTORY="$(dirs -p | sed ':a;N;$!ba;s/\n/ ❯ /g')"
 
     echo -n "${START_COLOR_1}${STARTER}"
 
     echo -n "${RESET}${USER_HOST_COLOR}"
-    [[ $EUID -ne 0 ]] && echo -n " ${USER_HOST} " || echo -n " ROOT "
+    [[ ${EUID} -ne 0 ]] && echo -n " ${USER_HOST} " || echo -n " ROOT "
 
     echo -n "${TRANSITION_COLOR_1_1}${SEPARATOR}"
     echo -n "${DIRECTORY_COLOR} ${DIRECTORY} "
 
     get_git_info
-    if [[ -n $GIT_INFO ]]; then
-        printf -v TRANSITION_COLOR_1_2 "\[\e[%s;%sm\]" "$FG_GREEN"          "$GIT_COLOR_HINT_BG"
-        printf -v GIT_COLOR            "\[\e[%s;%sm\]" "$FG_BRIGHT_WHITE"   "$GIT_COLOR_HINT_BG"
-        printf -v TRANSITION_COLOR_1_3 "\[\e[%sm\]"    "$GIT_COLOR_HINT_FG"
+    if [[ -n ${GIT_INFO} ]]; then
+        printf -v TRANSITION_COLOR_1_2 "\[\e[%s;%sm\]" "${FG_GREEN}"          "${GIT_COLOR_HINT_BG}"
+        printf -v GIT_COLOR            "\[\e[%s;%sm\]" "${FG_BRIGHT_WHITE}"   "${GIT_COLOR_HINT_BG}"
+        printf -v TRANSITION_COLOR_1_3 "\[\e[%sm\]"    "${GIT_COLOR_HINT_FG}"
 
         echo -n "${TRANSITION_COLOR_1_2}${SEPARATOR}"
         echo -n "${GIT_COLOR} ${GIT_INFO} "
         echo -n "${RESET}${TRANSITION_COLOR_1_3}${SEPARATOR}"
     else
-        printf -v TRANSITION_COLOR_1_2 "\[\e[%sm\]" "$FG_GREEN"
+        printf -v TRANSITION_COLOR_1_2 "\[\e[%sm\]" "${FG_GREEN}"
         echo -n "${RESET}${TRANSITION_COLOR_1_2}${SEPARATOR}"
     fi
 
     echo -n "${BOLD}${ENDER}${RESET}${NEWLINE}"
 
-    if [[ -n $RETURN_CODE ]]; then
+    if [[ -n ${RETURN_CODE} ]]; then
         echo -n "${RETURN_CODE_COLOR}${RETURN_CODE} "
     fi
 
@@ -136,8 +136,8 @@ make_bash_prompt () {
     PS1=$(make_ps1_prompt)
     # PS1="\u@\h:\W [\s] \\$ " # Backup prompt for debugging
 
-    printf "\033]0;%s ❯ %s@%s ❯ %s\007"\
-     "${SHELL##*/}" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}" # Window title
+    printf "\033]0;%s ❯ %s@%s ❯ %s\007" \
+     "${SHELL##*/}" "${USER}" "${HOSTNAME%%.*}" "${PWD/#${HOME}/\~}" # Window title
 }
 
 # Final output

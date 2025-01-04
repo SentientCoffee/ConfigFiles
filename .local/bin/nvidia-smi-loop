@@ -1,0 +1,20 @@
+#!/bin/sh
+
+TIMEOUT="${1:-0.5}"
+clear
+
+COLS=${COLUMNS}
+ROWS=${LINES}
+
+while true; do
+    if [ ${COLS} != ${COLUMNS} ] || [ ${ROWS} != ${LINES} ]; then
+        COLS=${COLUMNS}
+        ROWS=${LINES}
+
+        clear
+    fi
+
+    nvidia-smi || break
+    sleep ${TIMEOUT}
+    printf "\033[0;0f"
+done

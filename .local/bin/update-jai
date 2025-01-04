@@ -1,0 +1,51 @@
+#!/usr/bin/sh
+
+ZIP_FILE="${1}"
+BETA_DATE_OVERRIDE="${2}"
+JAI_HOME="${XDG_DATA_HOME}/jai"
+
+if [ -z "${ZIP_FILE}" ]; then
+    echo "Please specify an input jai archive."
+    exit 1
+fi
+
+ZIP_FILE="$(readlink -f "${ZIP_FILE}")"
+
+if [ ! -f "${ZIP_FILE}" ]; then
+    echo "Jai archive '${ZIP_FILE}' not found."
+    exit 1
+fi
+
+BETA_VERSION="0${ZIP_FILE##*jai-beta}"
+BETA_VERSION=${BETA_VERSION%*.zip}
+BETA_VERSION=${BETA_VERSION//-/.}
+
+7z e -y "${ZIP_FILE}" -- "jai/CHANGELOG.txt" > /dev/null
+BETA_DATE=$(grep -E "${BETA_VERSION}" "CHANGELOG.txt")
+BETA_DATE=${BETA_DATE##*, }
+
+DATE_TEST="$(expr "${BETA_DATE}" : "Version")"
+[ -z "${BETA_DATE}"    ] && BETA_DATE="${BETA_DATE_OVERRIDE}"
+[ "${DATE_TEST}" -gt 0 ] && BETA_DATE="${BETA_DATE_OVERRIDE}"
+
+if [ -z "${BETA_DATE}" ]; then
+    echo "Beta date not found. Please add date as parameter: '${0##*/} ${1} \"<date>\"'"
+    exit 1
+fi
+
+rm "CHANGELOG.txt"
+
+[ ! -d "${JAI_HOME}" ] && mkdir -pv "${JAI_HOME}"
+pushd "${JAI_HOME}" > /dev/null
+
+ls -A1 | grep -v '.git' | xargs -I{} rm -rf "{}"
+7z x -o"${JAI_HOME}/.." "${ZIP_FILE}"
+echo "--"
+
+git add -A
+git status --short
+git commit --date "${BETA_DATE}" --message "Beta ${BETA_VERSION}, ${BETA_DATE}" --quiet
+echo "Beta ${BETA_VERSION}, ${BETA_DATE}"
+git tag "v${BETA_VERSION}" HEAD
+
+popd > /dev/null

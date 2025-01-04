@@ -25,7 +25,9 @@ export JAVA_JDK="/usr/lib/jvm/default/bin"
 export LESSHISTFILE="${XDG_CACHE_HOME}/less/history"
 
 export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME}/npm/npmrc"
+export NVM_DIR="${XDG_CONFIG_HOME}/nvm"
 
+export PARALLEL_HOME="${XDG_CONFIG_HOME}/parallel"
 export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/pythonrc"
 
 export QT_QPA_PLATFORMTHEME="qt5ct"
@@ -47,4 +49,5 @@ export BROWSER="librewolf"
 export CALCULATOR="speedcrunch"
 export EDITOR="focus"
 
-export PATH="${HOME}/.local/bin:${HOME}/desktop:${ANDROID_PATH}:${PATH}"
+PATH_ADDITION="${HOME}/.local/bin:${HOME}/desktop:${ANDROID_PATH}:"
+[ "${PATH#*${PATH_ADDITION}}" = "${PATH}" ] && export PATH="${PATH_ADDITION}${PATH}"

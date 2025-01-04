@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Chatterino
+Icon=/home/daniel/.local/share/chatterino/logo.png
+Type=Application
+Exec=chatterino
+TryExec=chatterino
+Terminal=false

@@ -17,9 +17,14 @@ run () {
     fi
 }
 
-printf -- "\n---------- Setting up X config... ----------\n"
+printf -- "\n---------- Starting applications... ----------\n"
+run keyboard-center
+run openrgb --startminimized --profile "G910"
 
-DP_MONITORS=$(xrandr | grep -v "eDP1" | grep "DP" | grep -e "\bconnected\b"),
+printf "Done.\n"
+printf -- "\n---------- Setting up Xrandr config... ----------\n"
+
+DP_MONITORS=$(xrandr | grep -v "eDP1" | grep "DP" | grep -e "\bconnected\b")
 HDMI_MONITORS=$(xrandr | grep "HDMI" | grep -e "\bconnected\b")
 if [ -n "${DP_MONITORS}" ] ; then
     source "${XDG_CONFIG_HOME}/arandr/2_monitors_dp.sh"
@@ -33,12 +38,11 @@ fi
 # run xlayoutdisplay --dpi 96 --wait 3
 
 printf "Done.\n"
-printf -- "\n---------- Starting applications... ----------\n"
-run keyboard-center
-run openrgb --startminimized --profile "G910"
+printf -- "\n---------- Disabling DPMS... ----------\n"
+xset dpms 0 0 0 # https://wiki.archlinux.org/title/Display_Power_Management_Signaling
+xset s off -dpms
 
-sleep 5;
-
+printf "Done.\n"
 printf -- "\n---------- Starting window manager desktop environment... ----------\n"
 
 run lxsession -s "Awesome" -e "Awesome"

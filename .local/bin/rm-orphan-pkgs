@@ -1,0 +1,5 @@
+#!/bin/sh
+
+PACKAGES=$(paru -Qqtd)
+[ -z "${PACKAGES}" ] && echo "No orphan packages to remove." && exit 0
+paru -Rns ${PACKAGES}

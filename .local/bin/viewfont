@@ -1,0 +1,17 @@
+#!/bin/sh
+
+FONT_NAME="${1}"
+FONT_SIZE="${2:-32}"
+START_GLYPH="${3:-0}"
+
+if [ -z "${FONT_NAME}" ]; then
+    echo "Please supply a font name."
+    exit 1
+fi
+
+# [ -n "${FONT_SIZE}" ] || FONT_SIZE=32
+# [ -n "${START_GLYPH}" ] || START_GLYPH=0
+
+START_GLYPH=$(printf "%d" ${START_GLYPH})
+
+xfd -rows 16 -columns 20 -start ${START_GLYPH} -fa "${FONT_NAME}-${FONT_SIZE}"

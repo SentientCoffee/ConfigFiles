@@ -1,17 +1,19 @@
-ENV="${HOME}/.ssh/agent.env"
+SSH_ENV="${HOME}/.ssh/agent.env"
 
 agent_load_env () {
-    test -f "${ENV}" && source "${ENV}" >| /dev/null;
+    test -f "${SSH_ENV}" && source "${SSH_ENV}" >| /dev/null;
 }
 
 agent_start () {
-    (umask 077; ssh-agent >| "${ENV}")
-    source "${ENV}" >| /dev/null ;
+    (umask 077; ssh-agent >| "${SSH_ENV}")
+    source "${SSH_ENV}" >| /dev/null ;
 }
 
 agent_add_keys () {
-    ssh-add "${HOME}/.ssh/id_ed25519"
-    ssh-add "${HOME}/.ssh/id_ed25519_ontariotech"
+    ssh-add "${HOME}/.ssh/id_ed25519_github"
+    ssh-add "${HOME}/.ssh/id_ed25519_github_otu"
+    ssh-add "${HOME}/.ssh/id_ed25519_rpi"
+    ssh-add "${HOME}/.ssh/id_ed25519_brix"
 }
 
 # ---------------------------------------------------
@@ -38,4 +40,4 @@ else
 
 fi
 
-unset ENV
+unset SSH_ENV

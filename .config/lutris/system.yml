@@ -1,0 +1,7 @@
+system:
+  disable_compositor: true
+  game_path: /home/daniel/games
+  locale: ''
+  pulse_latency: true
+  reset_desktop: true
+  xephyr_fullscreen: false

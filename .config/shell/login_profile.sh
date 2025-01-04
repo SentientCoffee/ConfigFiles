@@ -5,3 +5,5 @@ mkdir -p "${UPDATEDB_DIR}"
 /usr/bin/updatedb -l 0 -o "${UPDATEDB_DIR}/plocate.db"
 
 printf -- "Done.\n\n"
+
+source "/usr/share/nvm/init-nvm.sh"

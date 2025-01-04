@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Discord
 Type=Application
-Exec=/usr/bin/discord --start-minimized
+Exec=/usr/bin/discord --start-minimized --ignore-gpu-blocklist --disable-features=UseOzonePlatform --enable-features=VaapiVideoDecoder --use-gl=desktop --enable-gpu-rasterization --enable-zero-copy
 Icon=discord
 StartupNotify=true
 GenericName=Chat

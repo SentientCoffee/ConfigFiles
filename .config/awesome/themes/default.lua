@@ -50,7 +50,7 @@ theme.border_width  = dpi(3)
 
 ----------------------------------------------------------------------------
 
-theme.status_bar_factor = 32 / 1000
+theme.status_bar_factor = 36.0 / 1000.0
 
 ----------------------------------------------------------------------------
 
@@ -76,8 +76,9 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
 
 ----------------------------------------------------------------------------
 
-theme.systray_base_size    = dpi(20)
-theme.systray_icon_spacing = dpi(3)
+theme.systray_base_size    = dpi(32)
+theme.systray_icon_spacing = dpi(8)
+theme.systray_max_rows     = 3
 
 ----------------------------------------------------------------------------
 

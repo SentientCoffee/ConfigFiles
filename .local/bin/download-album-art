@@ -1,0 +1,38 @@
+#!/bin/sh
+
+URL="${1}"
+NAME="${2}"
+EXT="${3:-webp}"
+DIMENSIONS="${4:-1000x1000}"
+
+usage () {
+    echo "Usage: ${0##*/} <url> <filename> [<extension = webp>] [<image dimensions = 1000x1000>]"
+}
+
+if [ -z "${URL}" ]; then
+    printf "Please provide a URL for download.\n\n"
+    usage
+    exit 1
+fi
+
+if [ -z "${NAME}" ]; then
+    printf "Please give a name for the downloaded image.\n\n"
+    usage
+    exit 1
+fi
+
+if [ $(expr "${URL}" : ".*lastfm\.freetls\.fastly\.net.*") -gt 0 ]; then
+    URL=$(echo "${URL}" | sed -E "s|/[0-9]+x[0-9]+/|/1500x0/|")
+fi
+
+echo "Downloading album art from '${URL}' to '${NAME}'..."
+curl -Lso "${NAME}.${EXT}" "${URL}"
+
+echo "Converting '${NAME}' from ${EXT} to png..."
+magick "${NAME}.${EXT}" "${NAME}.png"
+rm -f "${NAME}.${EXT}"
+
+echo "Resizing image to ${DIMENSIONS}..."
+magick "${NAME}.png" -resize ${DIMENSIONS}\! "${NAME}.png"
+
+echo "Done."

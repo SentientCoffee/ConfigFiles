@@ -1,14 +1,18 @@
 [user]
     email = 22991229+SentientCoffee@users.noreply.github.com
-    name = Daniel
+    name  = Daniel
+
 [core]
     longpaths = true
-    editor = micro
+    editor    = micro
+
 [init]
     defaultBranch = master
-    templatedir = ~/.config/git/templates
+    templatedir   = ~/.config/git/templates
+
 [protocol "file"]
     allow = always
+
 [alias]
     gconf = "config --global --edit"
     lconf = "config --local --edit"
@@ -17,3 +21,14 @@
 
 [color]
     ui = auto
+
+[delta]
+    color-only          = false
+    dark                = true
+    file-modified-label = modified:
+    line-numbers        = true
+    navigate            = true
+    navigate-regex      = '^(commit|added:|removed:|renamed:|modified:|•)'
+    syntax-theme        = OneHalfDark
+    tabs                = 4
+    true-color          = always
